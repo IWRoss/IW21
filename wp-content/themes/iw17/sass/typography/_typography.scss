@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'Flama';
+    src: url('fonts/flamabook-webfont.woff2') format('woff2'),
+         url('fonts/flamabook-webfont.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Flama';
+    src: url('fonts/flamamedium-webfont.woff2') format('woff2'),
+         url('fonts/flamamedium-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Flama';
+    src: url('fonts/flama-bold-webfont.woff2') format('woff2'),
+         url('fonts/flama-bold-webfont.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+}
+
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+	color: lighten( $color__text-main, 15% );
+	font-family: $font__main;
+	@include font-size(1);
+	line-height: $font__line-height-body;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@media all and ( min-width: $breakpoint-large ) {
+    body,
+    button,
+    input,
+    select,
+    optgroup,
+    textarea {
+    	@include font-size(1.125);
+    }
+}
+
+@import "headings";
+
+@import "copy";

@@ -1,0 +1,43 @@
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+
+.aligncenter {
+	clear: both;
+	@include center-block;
+}
+
+// .alignfull {
+// 	width: 100vw;
+// 	position: relative;
+// 	margin-left: -50vw;
+// 	left: 50%;
+// }
+
+.alignwide,
+.alignfull {
+	margin: 0 calc(50% - 50vw);
+	max-width: 100vw;
+	width: 100vw;
+}
+
+@media screen and (min-width: $breakpoint-medium) {
+	.alignwide {
+		margin: 0 calc((640px - #{$breakpoint-medium}) / 2);
+		max-width: $breakpoint-medium;
+		width: $breakpoint-medium;
+
+		.alignfull &,
+		.alignwide & {
+			margin: 0 auto;
+		}
+	}
+}

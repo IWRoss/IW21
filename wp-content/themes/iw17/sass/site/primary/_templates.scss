@@ -1,0 +1,328 @@
+.post-template-single-event {
+
+    .entry-header {
+        margin-bottom: 2em;
+    }
+
+    .entry-content {
+        position: relative;
+        overflow-y: hidden;
+
+        .attachment-post-thumbnail {
+            width: 100%;
+            margin: 1em 0;
+        }
+
+    	> p:last-of-type:after {
+    		display: none;
+    	}
+    }
+
+    .event-leader {
+        margin-bottom: $size__margin / 2;
+    }
+
+    .event-details {
+        padding: $size__margin / 2;
+        border: 1px dotted $color__background-hr;
+        background-color: white;
+        margin: 0;
+
+        div {
+            margin-bottom: 0.2em;
+            font-family: $font__heading;
+        }
+
+        dt {
+            display: inline-block;
+            font-weight: normal;
+
+            &:after {
+                content: ':';
+            }
+        }
+
+        dd {
+            display: inline-block;
+            margin: 0;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+    }
+}
+
+@media screen and (min-width: $breakpoint-small) {
+    .post-template-single-event {
+        .entry-content {
+            padding-right: 52%;
+
+            .event-media {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 48%;
+                margin: 1em 0;
+            }
+
+            .attachment-post-thumbnail {
+                margin: 0;
+            }
+        }
+
+        .event-leader {
+            margin-bottom: $size__margin;
+            padding: 0;
+
+            .btn {
+                margin: 0;
+            }
+        }
+
+        .event-details {
+            margin: 0;
+            padding: 0;
+
+            div {
+                width: 33.33%;
+                float: left;
+                padding: 1em;
+                margin: 0;
+            }
+
+            .event-additional-information {
+                width: 100%;
+                background-color: lighten( $color__background-hr, 10% );
+            }
+
+            dt,
+            dd {
+                display: block;
+                margin: 0;
+            }
+
+            dd {
+                @include font-size(1.25);
+            }
+
+            &:after {
+                content: '';
+                clear: both;
+                display: table;
+            }
+        }
+
+        .event-date {
+            border-right: 1px dotted $color__background-hr;
+        }
+
+        .event-location {
+            border-left: 1px dotted $color__background-hr;
+        }
+    }
+}
+
+@media screen and (min-width: $breakpoint-medium) {
+    .post-template-single-event {
+        .entry-content {
+            padding-right: 64%;
+
+            .event-media {
+                width: 60%;
+            }
+        }
+    }
+}
+
+.page-template-page-team {
+    .team-member--img {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        margin-bottom: 1em;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .team-member--name {
+        font-family: $font__heading;
+    }
+
+    .team-member--role {
+        margin: 0 0 $size__margin;
+    }
+}
+
+.team-modal--open {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.75em;
+    line-height: 1;
+    vertical-align: middle;
+    text-align: center;
+    font-family: $font__heading;
+    text-transform: uppercase;
+    text-decoration: none;
+    z-index: 1;
+    @include font-size(0.875);
+
+    &:after {
+        content: '';
+        width: 1000px;
+        height: 1000px;
+        background-color: rgba($color__text-highlight,0.75);
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%) scale(0);
+        transition: all 0.2s ease-out;
+        z-index: -1;
+    }
+
+    &:hover {
+        color: white;
+
+        &:after {
+            transform: translate(-50%,-50%) scale(1);
+        }
+    }
+}
+
+.iw-modal {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba($color__text-main, 0.4);
+    padding: $size__margin / 2;
+}
+
+.iw-modal-window {
+    margin: 5% auto 0;
+    max-width: $size__site-main / 2;
+    position: relative;
+    background-color: white;
+
+    &.team-modal-window {
+        max-width: $size__site-main;
+    }
+
+    .close {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: $color__text-highlight;
+        color: white;
+        width: 30px;
+        height: 30px;
+        @include font-size(2);
+        text-align: center;
+        line-height: 30px;
+        z-index: 2;
+
+        &:hover {
+            @include font-size(2.5);
+        }
+    }
+}
+
+.iw-modal--content {
+    position: relative;
+    z-index: 1;
+    padding: $size__margin / 2;
+
+    &.team-modal--content {
+        padding: 200px + $size__margin / 2 $size__margin / 2 $size__margin / 2;
+    }
+
+    > :first-child {
+        margin-top: 0;
+    }
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+
+    .team-member--email a,
+    .team-member--phone a {
+        font-weight: bold;
+    }
+}
+
+.team-modal--img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background-size: cover;
+    background-position: 50% 25%;
+}
+
+
+@media screen and (min-width: $breakpoint-xsmall) {
+    .iw-modal--content {
+        padding: $size__margin;
+
+        &.team-modal--content {
+            padding: 300px + $size__margin $size__margin $size__margin;
+        }
+    }
+
+    .team-modal--img {
+        height: 300px;
+    }
+}
+
+@media screen and (min-width: $breakpoint-small) {
+    .page-template-page-team {
+        .team-member--img {
+            height: 270px;
+        }
+    }
+
+    .iw-modal--content.team-modal--content {
+        margin-left: 50%;
+        padding: $size__margin;
+    }
+
+    .team-modal--img {
+        bottom: 0;
+        right: 50%;
+        height: auto;
+        background-position: center;
+    }
+}
+
+@media screen and (min-width: $breakpoint-medium) {
+    .page-template-page-team {
+        .team-member--img {
+            overflow-y: hidden;
+            cursor: default;
+            height: 340px;
+        }
+    }
+}
+
+@media screen and (min-height: $breakpoint-medium) {
+    .team-modal-window {
+        margin: 15% auto 0;
+    }
+}
+
+.page-template-page-team--call-to-action {
+    padding: $size__margin;
+    background-color: $color__text-main;
+    color: white;
+
+    > :first-child {
+        margin-top: 0;
+    }
+}

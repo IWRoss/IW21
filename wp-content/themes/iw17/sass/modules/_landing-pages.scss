@@ -1,0 +1,23 @@
+.uagb-marketing-btn__link {
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.uagb-timeline__heading {
+    margin-top: 0;
+}
+
+.uagb-timeline-desc-content {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 1023px) {
+
+    .uagb-slick-carousel .slick-arrow {
+        display: none !important;
+    }
+
+}

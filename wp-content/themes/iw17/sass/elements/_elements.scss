@@ -1,0 +1,72 @@
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+	box-sizing: inherit;
+}
+
+body {
+	background: $color__background-body; /* Fallback for when there is no custom background color defined. */
+}
+
+blockquote {
+	font-family: $font__heading;
+	font-weight: bold;
+	font-size: 1.25em;
+	background-color: $color__text-highlight;
+	color: white;
+	padding: 1em;
+	position: relative;
+	margin: $size__margin 0 $size__margin * 1.25;
+
+	> :first-child {
+		margin-top: 0;
+	}
+
+	> :last-child {
+		margin-bottom: 0;
+	}
+
+	&:after {
+		content: "";
+		position: absolute;
+		top: 100%;
+		right: $size__margin;
+		border-top: $size__margin / 4 solid $color__text-highlight;
+		border-left: $size__margin / 4 solid $color__text-highlight;
+		border-right: $size__margin / 4 solid transparent;
+		border-bottom: $size__margin / 4 solid transparent;
+	}
+
+	&:nth-of-type(even):after {
+		right: auto;
+		left: $size__margin;
+		border-left: $size__margin / 4 solid transparent;
+		border-right: $size__margin / 4 solid $color__text-highlight;
+	}
+}
+
+hr {
+	background-color: $color__background-hr;
+	border: 0;
+	height: 1px;
+	margin-bottom: 1.5em;
+}
+
+@import "lists";
+
+img {
+	height: auto; /* Make sure images are scaled correctly. */
+	max-width: 100%; /* Adhere to container width. */
+}
+
+figure {
+	margin: 1em 0; /* Extra wide images within figure tags don't overflow the content area. */
+}
+
+@import "tables";
+
+@import "backgrounds";

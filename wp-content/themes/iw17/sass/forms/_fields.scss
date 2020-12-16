@@ -1,0 +1,151 @@
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+	width: 100%;
+	transition: all 0.1s linear;
+	border: 2px solid transparent;
+	border-radius: 0;
+	background-color: #eee;
+	padding: $size__margin / 4;
+	font-family: $font__heading;
+	font-weight: bold;
+}
+
+textarea {
+	resize: none;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="range"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="time"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="color"]:focus,
+textarea:focus {
+	@include shadow-hover-extruded;
+	outline: none;
+	background-color: white;
+	border-color: $color__text-highlight;
+	color: $color__text-main;
+}
+
+label {
+	@include font-size(1);
+}
+
+.wpcf7-form {
+	p:first-of-type {
+		margin-top: 0;
+	}
+	p:last-of-type {
+		margin-bottom: 0;
+	}
+
+	label {
+		font-family: $font__heading;
+	}
+}
+
+.wpcf7-response-output {
+	padding: 20px;
+	font-family: $font__heading;
+	color: white;
+	background-color: $color__text-highlight;
+	border: none;
+	margin: 2em 0 0;
+	font-weight: bold;
+}
+
+input[type="submit"] {
+	width: 100%;
+	margin-top: 1em;
+	font-family: $font__heading;
+	font-weight: bold;
+	text-transform: uppercase;
+	@include font-size(1.25);
+	transition: all 0.1s linear;
+	color: white;
+	border-radius: 0;
+	border: 15px solid transparent;
+	border-image: url('imgs/border.png') 15;
+	padding: $size__margin / 4;
+	background-color: rgba($color__text-highlight, 1);
+
+	&:hover {
+		background-color: rgba($color__text-highlight, 0);
+		color: $color__text-highlight;
+	}
+}
+
+.g-recaptcha > div {
+	margin: 0 auto;
+}
+
+.mc-field-group label {
+	display: none;
+}
+
+.disclaimer {
+	@include font-size(0.75);
+}
+
+.search-field {
+	@include font-size(1.25);
+}
+
+input[type="checkbox"] {
+	width: 1em;
+	margin-right: 0.5em;
+	display: none;
+
+	& + label {
+		padding: 1em 2em;
+		background-color: white;
+		border: 0.125em dashed #ddd;
+		font-family: $font__heading;
+		cursor: pointer;
+	}
+
+	&:checked + label {
+		border: 0.125em solid $color__text-highlight;
+		background-color: $color__text-highlight;
+		color: white;
+
+		&:before {
+			content: "\2713";
+			display: inline-block;
+			margin-right: 0.5em;
+			transform: scale(1.5);
+		}
+	}
+}
+
+.comment-form input[type="checkbox"] {
+
+	&+label {
+		display: block;
+		width: 50%;
+	}
+}

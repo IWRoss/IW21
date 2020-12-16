@@ -1,0 +1,85 @@
+.page-content .wp-smiley,
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+	border: none;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: 0;
+}
+
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+
+/* Make sure logo link wraps around logo image. */
+.custom-logo-link {
+	display: inline-block;
+}
+
+.inline-icon {
+	display: inline-block;
+	height: 1em;
+	margin-right: 0.25em;
+}
+
+.video-wrapper {
+	position: relative;
+	padding-bottom: 56.25%;
+	height: 0;
+
+	embed,
+	iframe,
+	object {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.bg-video {
+	object-fit: cover;
+	width: 100vw;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.wpbr-review__content p {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+
+	&:hover {
+		white-space: inherit;
+	}
+}
+
+.wpbr-collection__item:hover .wpbr-review__content p {
+	white-space: inherit;
+}
+
+/*--------------------------------------------------------------
+## Captions
+--------------------------------------------------------------*/
+@import "captions";
+
+/*--------------------------------------------------------------
+## Galleries
+--------------------------------------------------------------*/
+@import "galleries";
+
+/*--------------------------------------------------------------
+## Lity
+--------------------------------------------------------------*/
+@import "lity";
+
+/*--------------------------------------------------------------
+## Animations
+--------------------------------------------------------------*/
+@import "animations";
