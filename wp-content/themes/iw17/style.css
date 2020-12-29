@@ -1688,6 +1688,9 @@ a {
     display: inline-block;
     vertical-align: middle; }
 
+.load-previous-posts {
+  margin-bottom: 40px; }
+
 .feed-title {
   font-family: "Flama", sans-serif;
   font-weight: bold;
@@ -2901,11 +2904,23 @@ object {
   left: 0; }
 
 .wpbr-review__content p {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden; }
+  white-space: inherit;
+  overflow: hidden;
+  height: 3em;
+  position: relative; }
+  .wpbr-review__content p:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2em;
+    background: linear-gradient(rgba(255, 255, 255, 0), white);
+    display: block; }
   .wpbr-review__content p:hover {
-    white-space: inherit; }
+    height: auto; }
+  .wpbr-review__content p:hover:after {
+    display: none; }
 
 .wpbr-collection__item:hover .wpbr-review__content p {
   white-space: inherit; }

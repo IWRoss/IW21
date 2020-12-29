@@ -12,9 +12,6 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
-		<?php
-		if ( have_posts() ) : ?>
-
 			<header class="page-header">
 				<?php
 					the_archive_title( '<h1 class="page-title">', '</h1>' );
@@ -22,31 +19,47 @@ get_header(); ?>
 				?>
 			</header><!-- .page-header -->
 
-			<?php
-			echo '<div class="masonry-grid"><div class="masonry-grid-sizer"></div><div class="masonry-gutter-sizer"></div>';
+			<div class="entry-feed">
 
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+				<?php if ( isset($_GET['infsc'] ) && $_GET['infsc'] > 1 ) : ?>
+					<div class="load-previous-posts">
+						<a href="<?php echo home_url($wp->request); ?>/?infsc=<?php echo max(1, intval($_GET['infsc']) - 5); ?>" class="btn">Load more recent posts</a>
+					</div>
+				<?php endif; ?>
 
-				if ( $template = get_page_template_slug() ) :
-					$template = preg_replace( '/(single-)|(work-)+/', '', wp_basename( $template, '.php' ) );
 
-					get_template_part( 'template-parts/feed/feed', $template );
-				else :
-					get_template_part( 'template-parts/feed/feed', 'standard' );
-				endif;
+				<?php if ( have_posts() && ! isset($_GET['infsc'] ) ) : ?>
+					
+					<div class="feed" class="masonry-grid" data-chunk="1">
+						<div class="masonry-grid-sizer"></div>
+						<div class="masonry-gutter-sizer"></div>
 
-			endwhile;
+						<?php 
+						
+						while ( have_posts() ) : the_post();
 
-			echo '</div>';
+							$template = 'standard';
 
-			the_posts_navigation();
+							if (get_page_template_slug()) {
+								$template = iw17_template_nice_name();
+							}
 
-		else :
+							get_template_part( 'template-parts/feed/feed', $template, array(
+								'chunk' => $paged,
+								'index' => $index
+							)  );
 
-			get_template_part( 'template-parts/content', 'none' );
+						endwhile;
 
-		endif; ?>
+						?>
+
+					</div>
+
+				<?php endif; ?>
+			</div>
+
+			<?php echo '<div id="loader" class="loader"> <div id="spinner" class="spinner"> <div class="spinner-block"></div> <div class="spinner-block"></div> <div class="spinner-block"></div> <div class="spinner-block"></div> </div> <p>Loading more</p> </div>'; ?>
+
 
 		</main><!-- #main -->
 	</div><!-- #primary -->

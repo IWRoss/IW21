@@ -7,18 +7,18 @@ $thumb_url_array = wp_get_attachment_image_src(
     true
 );
 
-$user_author_image = get_field( 'author_image', 'user_'. get_the_author_meta( 'ID' ) );
+$user_author_image = get_field('author_image', 'user_' . get_the_author_meta('ID'));
 
 $classes = iw17_get_the_post_classes_string();
 
 $post_link = get_permalink();
 
-if ( $has_link = get_field('link_to_url') ) {
+if ($has_link = get_field('link_to_url')) {
     $post_link = $has_link;
 }
 
-if ( has_post_thumbnail() ) : ?>
-    <div class="grid-item feed-item <?php echo $classes; ?>" style="background-image: url('<?php echo $thumb_url_array[0]; ?>')">
+if (has_post_thumbnail()) : ?>
+    <div class="grid-item feed-item <?php echo $classes; ?>" style="background-image: url('<?php echo $thumb_url_array[0]; ?>')" data-index="<?php echo $args['index']; ?>">
 <?php else : ?>
     <div class="grid-item feed-item <?php echo $classes; ?>">
 <?php endif; ?>
@@ -28,11 +28,11 @@ if ( has_post_thumbnail() ) : ?>
 
         <span class="feed-excerpt"><?php the_excerpt(); ?></span>
 
-        <?php if ( $user_author_image && get_post_type() !== 'work' ): ?>
+        <?php if ($user_author_image && get_post_type() !== 'work') : ?>
             <img src="<?php echo $user_author_image; ?>" alt="Author" class="author-image">
         <?php endif; ?>
 
-        <?php if ( $overlay = get_field( 'overlay' ) ) : ?>
+        <?php if ($overlay = get_field('overlay')) : ?>
             <div class="sketch-overlay" style="background-image:url('<?php echo $overlay['url']; ?>')"></div>
         <?php endif; ?>
     </a>

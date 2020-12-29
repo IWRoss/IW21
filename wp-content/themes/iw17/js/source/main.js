@@ -82,54 +82,6 @@
 
         } );
 
-        /**
-         * Infinite scroll.
-         *
-         * Loads more posts when user reaches the bottom.
-         */
-        var currentPage = 1,
-            bufferPage = 2,
-            $feed = $( '#feed' );
-
-        var loadPosts = function() {
-
-            if ( $feed.length && $( window ).scrollTop() + $( window ).height() > $( document ).height() - 100 ) {
-
-
-                if ( currentPage < bufferPage ) {
-                    currentPage++;
-
-                    $.ajax( {
-                        url: ajaxpagination.ajaxurl,
-                        type: 'post',
-                        data: {
-                            action: 'ajax_feed_pagination',
-                            id: ajaxpagination.id,
-                            options: ajaxpagination.options,
-                            paged: bufferPage
-                        },
-                        beforeSend: function(){
-                            $( '#loader' ).show();
-                        },
-                        success: function( result ) {
-                            $masonryGrid.append( result );
-
-                            $masonryGrid.masonry( 'reloadItems' ).masonry( 'layout' );
-
-                            $( '#loader' ).hide();
-
-                            if ( $(result).filter( '.grid-item' ).length == ajaxpagination.ppp ) {
-                                bufferPage++;
-                            }
-                        }
-                    } );
-                }
-
-            }
-        }
-
-        $( window ).on( 'scroll', loadPosts );
-
         var resizeTimer;
 
         $( window ).on( 'resize', function(e) {
@@ -154,10 +106,6 @@
             }, 500 );
         } );
 
-        if ( $( window ).height() === $( document ).height() ) {
-            loadPosts();
-        }
-
         var $pathItems = $( '.path-item' );
 
         $pathItems.each( function( index ) {
@@ -170,12 +118,22 @@
     } );
 
     // Parallax functions
-    $( window ).scroll( function() {
-        var windowHeight = $( this ).height(),
-            scrollTop = $( this ).scrollTop();
+    $( window ).on( 'scroll', $.throttle(16, function() {
+        var scrollTop = $( this ).scrollTop();
 
-        $( '.parallax' ).css( 'backgroundPosition', '50% ' + scrollTop / 100 + '%' );
-    } );
+        $( '.parallax' ).each(function(){
+            var $this = $(this),
+                objectTop = $this.offset().top,
+                objectHeight = $this.outerHeight();
+
+            if (objectTop + objectHeight < scrollTop) {
+                return;
+            }
+
+            $this.css( 'backgroundPosition', '50% ' + scrollTop / 100 + '%' );
+        });
+
+    } ) );
 
     $( 'iframe' ).wrap('<div class="video-wrapper" />');
 
@@ -223,6 +181,6 @@
     $(window).on('scroll', function () {
         fade();
     });
-
+    
 
 } )( jQuery );

@@ -8,6 +8,7 @@ body {
 .parallax {
 	background-position: 50% 0px;
 	background-repeat: repeat;
+	// transition: background-position 0.2s ease-out;
 
 	&.background {
 		position: absolute;

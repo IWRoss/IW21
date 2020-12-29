@@ -46,7 +46,7 @@
 		endif;
 
 		?>
-		<header id="masthead" class="site-hero parallax">
+		<header id="masthead" class="site-hero">
 
 			<div class="site-header">
 				<div class="site-branding">

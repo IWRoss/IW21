@@ -51,12 +51,28 @@ object {
 }
 
 .wpbr-review__content p {
-	white-space: nowrap;
-	text-overflow: ellipsis;
+	white-space: inherit;
 	overflow: hidden;
+	height: 3em;
+	position: relative;
+
+	&:after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 2em;
+		background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+		display: block;
+	}
 
 	&:hover {
-		white-space: inherit;
+		height: auto;
+	}
+
+	&:hover:after {
+		display: none;
 	}
 }
 
