@@ -210,3 +210,8 @@ require get_template_directory() . '/inc/blocks.php';
 * Load Custom Blocks file.
  */
 require get_template_directory() . '/inc/template-hooks.php';
+
+/**
+* Load Development functions.
+ */
+require get_template_directory() . '/inc/development.php';

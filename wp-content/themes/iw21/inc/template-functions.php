@@ -39,18 +39,6 @@ function iw21_excerpt_length( $length ) {
 }
 add_filter( 'excerpt_length', 'iw21_excerpt_length', 999 );
 
-
-/**
- * Limit max menu depth in admin panel to 2
- */
-function iw21_limit_depth( $hook ) {
-  if ( $hook != 'nav-menus.php' ) return;
-
-  // override default value right after 'nav-menu' JS
-  wp_add_inline_script( 'nav-menu', 'wpNavMenu.options.globalMaxDepth = 0;', 'after' );
-}
-// add_action( 'admin_enqueue_scripts', 'iw21_limit_depth' );
-
 /**
  * Change document title separator
  */
@@ -71,32 +59,6 @@ add_filter( 'document_title_parts', function( $title ) {
 
     return $title;
 } );
-
-/**
- * Return a permalink to a random post in the portfolio category
- */
-function iw21_random_post() {
-
-	global $post;
-
-	$args = array(
-		'post_type' 	 => 'post',
-		'orderby' 		 => 'rand',
-		'posts_per_page' => 1,
-		'post__not_in' 	 => array( get_the_ID() ),
-		'category_name'	 => 'portfolio'
-	);
-
-	$random_query = new WP_Query( $args );
-
-	while ( $random_query->have_posts() ) : $random_query->the_post();
-		$permalink = get_permalink();
-	endwhile;
-
-	wp_reset_postdata();
-
-	return $permalink;
-}
 
 /**
  * Return true if post/page meets conditions
@@ -248,24 +210,25 @@ function iw21_get_the_title() {
 function iw21_render_post_title( $title = false ) {
 	global $post;
 
-	if ( ! $title )
+	if ( ! $title ) {
 		$title = iw21_get_the_title();
+	}
 
 	$longest_word = array_reduce( str_word_count( strip_tags( $title ), 1 ), function( $v, $p ) {
 		return strlen($v) > strlen($p) ? $v : $p;
 	} );
 
-	if ( strlen( strip_tags( $title ) ) >= 25 || strlen( $longest_word ) >= 12 ) :
-		$length = 'long-title';
-	else :
-		$length = 'short-title';
-	endif;
+	$length = 'short-title';
 
-	if ( is_page() ) :
+	if ( strlen( strip_tags( $title ) ) >= 25 || strlen( $longest_word ) >= 12 ) {
+		$length = 'long-title';
+	}
+
+	$type = 'entry-title';
+
+	if ( is_page() ) {
 		$type = 'page-title';
-	else :
-		$type = 'entry-title';
-	endif;
+	}
 
 	echo sprintf( '<h1 class="%s %s">%s</h1>', $type, $length, $title );
 }
@@ -349,21 +312,6 @@ function iw21_get_query_options( $paged = false ) {
 
     return $options;
 }
-
-
-/**
- * Style custom columns
- */
-function iw21_localhost_reminder() {
-	if ( get_option( 'siteurl' ) === 'http://iw.test' ) {
-		echo '<style type="text/css">';
-		echo '#wpadminbar { background-color: #0073aa; }';
-		echo '#wp-admin-bar-site-name .ab-item:after { content: " (Local)"; }';
-		echo '</style>';
-	}
-}
-add_action( 'admin_head', 'iw21_localhost_reminder' );
-add_action( 'wp_head', 'iw21_localhost_reminder' );
 
 /**
  * Floating action button

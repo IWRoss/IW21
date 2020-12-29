@@ -65,7 +65,8 @@
 .page-template-default .hentry,
 .post-template-default .hentry,
 .work-template-default .hentry,
-.post-template-single-insight .hentry {
+.post-template-single-insight .hentry,
+.page-template-page-search .hentry {
 	max-width: 640px;
 }
 
@@ -77,6 +78,10 @@
 	max-width: 800px;
 }
 
+.page-template-page-search .hentry {
+	margin: 0 auto;
+}
+
 .has-hero-image .entry-content {
 	color: white;
 }
@@ -84,7 +89,6 @@
 @media all and ( min-width: $breakpoint-small ) {
 	.archive-description,
 	.page-template-page-home .entry-content,
-	// .page-template-page-feed .entry-content,
 	.page-template-page-team .entry-content,
 	.post-template-path .entry-content,
 	.work-template-path .entry-content,

@@ -7,7 +7,7 @@
 
 ?>
 
-<div <?php do_action('iw21_feed_item_html_outer_tag_attributes'); ?>>
+<div <?php do_action('iw21_feed_item_html_outer_tag_attributes', $args); ?>>
     <a <?php do_action('iw21_feed_item_html_link_tag_attributes'); ?> class="feed-item-link">
 
         <span class="feed-title">

@@ -1551,7 +1551,8 @@ a {
 .page-template-default .hentry,
 .post-template-default .hentry,
 .work-template-default .hentry,
-.post-template-single-insight .hentry {
+.post-template-single-insight .hentry,
+.page-template-page-search .hentry {
   max-width: 640px; }
 
 .page-template-story .hentry,
@@ -1560,6 +1561,9 @@ a {
 .work-template-case-study .hentry,
 .work-template-infographic .hentry {
   max-width: 800px; }
+
+.page-template-page-search .hentry {
+  margin: 0 auto; }
 
 .has-hero-image .entry-content {
   color: white; }

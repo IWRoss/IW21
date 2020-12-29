@@ -178,9 +178,9 @@
 
     } );
 
-    $(window).on('scroll', function () {
+    $(window).on('scroll', $.throttle(16, function () {
         fade();
-    });
+    }));
     
 
 } )( jQuery );

@@ -69,7 +69,7 @@ function iw21_feed_item_html_link_tag_attributes() {
 add_action('iw21_feed_item_html_link_tag_attributes', 'iw21_feed_item_html_link_tag_attributes', 10);
 
 /**
- * Add author image if exists
+ * Add author image to feed item if exists
  */
 function iw21_author_image() {
 
@@ -92,7 +92,7 @@ function iw21_author_image() {
 add_action('iw21_author_image', 'iw21_author_image', 10);
 
 /**
- * Add overlay if exists
+ * Add overlay to feed item if exists
  */
 function iw21_feed_overlay() {
 
@@ -103,3 +103,66 @@ function iw21_feed_overlay() {
     }
 }
 add_action('iw21_feed_overlay', 'iw21_feed_overlay', 10);
+
+/**
+ * Create a team member image with modal link
+ */
+function iw21_team_member_image($member) {
+
+    // Image
+    $attributes = '';
+
+    if ($team_image = get_field('team_image', 'user_' . $member['ID'])) {
+
+        $attributes = sprintf(
+            ' style="background-image:url(\'%s\')"',
+            $team_image['sizes']['medium_large']
+        );
+
+    }
+
+    // Link
+    $link = sprintf(
+        '<a href="#" rel="team-%d" data-iw-modal="open" class="team-modal--open">Click for bio</a>',
+        $member['ID']
+    );
+
+    // Put it together
+    echo sprintf(
+        '<div class="team-member--img"%s>%s</div>',
+        $attributes,
+        $link
+    );
+
+}
+add_action('iw21_team_member_image', 'iw21_team_member_image', 10);
+
+/**
+ * 
+ */
+function iw21_sharing_links() {
+
+    global $post;
+
+    if (get_post_type() !== 'post' && get_post_type() !== 'work') {
+        return;
+    }
+
+    get_template_part('template-parts/post/element', 'sharing-links');
+		
+}
+add_action('iw21_content_footer', 'iw21_sharing_links', 10);
+
+/**
+ * 
+ */
+function iw21_oembed_video() {
+
+    global $post;
+
+    if ($oembed = get_field('video')) :
+        echo sprintf('<div class="video-wrapper">%s</div>', $oembed);
+    endif;
+    
+}
+add_action('iw21_after_content', 'iw21_oembed_video', 10);

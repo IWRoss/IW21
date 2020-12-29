@@ -608,9 +608,9 @@ this},r._applyDataApi=function(){var e={};t("[data-match-height], [data-mh]").ea
 
     } );
 
-    $(window).on('scroll', function () {
+    $(window).on('scroll', $.throttle(16, function () {
         fade();
-    });
+    }));
     
 
 } )( jQuery );
