@@ -100,6 +100,10 @@ function iw21_scripts() {
 		wp_enqueue_script( 'iw21-slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js' );
 	}
 
+	if (is_page(get_page_by_title('The A-Z of Human Performance Live Shows')) ) {
+		wp_enqueue_script( 'iw21-signup-form', get_template_directory_uri() . '/js/signup-form.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/signup-form.js'), true);
+	}
+
 	if ( is_page_template( 'page-templates/page-feed.php' ) || is_archive() ) {
 		wp_enqueue_script('iw21-infinite-scroll', get_template_directory_uri() . '/js/infinite-scroll.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/infinite-scroll.js'), true);
 	}
@@ -127,7 +131,8 @@ add_action( 'wp_enqueue_scripts', 'iw21_scripts' );
 function iw21_load_external_scripts() {
 	echo '<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">';
 	echo '<script>var templateDir = "', get_bloginfo( 'template_url' ), '";</script>';
-	echo '<style> .preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1000; background-color: #ff8d00; } </style>';
+	echo '<script>var siteURL = "', get_site_url(), '";</script>';
+	echo '<style> .preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1000; background-color: white; } </style>';
 }
 add_action( 'wp_head', 'iw21_load_external_scripts' );
 

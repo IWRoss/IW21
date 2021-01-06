@@ -27,10 +27,7 @@
 
 	<div class="preloader">
 		<div class="preloader-inner">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 50" class="lines-logo">
-				<polygon points="14.01 0.03 0.72 49.97 18.14 49.97 31.9 0.03 14.01 0.03" style="fill:#fff;fill-rule:evenodd" />
-				<polygon points="41.13 0.03 27.84 49.97 45.3 49.97 59.05 0.03 41.13 0.03" style="fill:#fff;fill-rule:evenodd" />
-			</svg>
+			<?php get_template_part('template-parts/elements/element', 'logo'); ?>
 		</div>
 	</div>
 

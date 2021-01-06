@@ -571,6 +571,59 @@ body {
   .parallax.background .graph {
     background-image: url("imgs/graphy@2x.png"); } }
 
+.iw-slash {
+  animation: 0.75s linear 0s infinite shift-right; }
+
+@keyframes shift-right {
+  0% {
+    transform: translateX(0); }
+  100% {
+    transform: translateX(28px); } }
+
+.iw-clip-a {
+  animation: 0.75s linear 0s infinite cover-down; }
+
+@keyframes cover-down {
+  0% {
+    transform: translateY(0); }
+  50% {
+    transform: translateY(48px); }
+  100% {
+    transform: translateY(48px); } }
+
+.iw-clip-b {
+  animation: 0.75s linear 0s infinite cover-up; }
+
+@keyframes cover-up {
+  0% {
+    transform: translateY(0); }
+  50% {
+    transform: translateY(0); }
+  100% {
+    transform: translateY(-48px); } }
+
+.iw-clip-c {
+  animation: 0.75s linear 0s infinite reveal-down; }
+
+@keyframes reveal-down {
+  0% {
+    transform: translateY(-48px); }
+  50% {
+    transform: translateY(0); }
+  100% {
+    transform: translateY(0); } }
+
+.iw-clip-d {
+  animation: 0.75s linear 0s infinite reveal-up; }
+
+@keyframes reveal-up {
+  0% {
+    transform: translateY(48px); }
+  50% {
+    transform: translateY(48px); }
+  100% {
+    transform: translateY(0); } }
+
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
@@ -742,6 +795,22 @@ input[type="checkbox"] {
 .comment-form input[type="checkbox"] + label {
   display: block;
   width: 50%; }
+
+.signup-form-group input[type="checkbox"]:checked + label {
+  border: 0.125em solid #A12326;
+  background-color: #A12326;
+  color: white; }
+
+.signup-form-group a:not(.btn) {
+  color: #A12326;
+  text-decoration: none; }
+  .signup-form-group a:not(.btn):before {
+    content: "\2713";
+    display: inline-block;
+    margin-right: 0.5em;
+    transform: scale(1.5); }
+  .signup-form-group a:not(.btn):hover {
+    color: #771a1c; }
 
 /*--------------------------------------------------------------
 # Navigation

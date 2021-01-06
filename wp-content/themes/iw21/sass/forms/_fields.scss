@@ -149,3 +149,31 @@ input[type="checkbox"] {
 		width: 50%;
 	}
 }
+
+.signup-form-group {
+
+	input[type="checkbox"] {
+
+		&:checked+label {
+			border: 0.125em solid #A12326;
+			background-color: #A12326;
+			color: white;
+		}
+	}
+
+	a:not(.btn) {
+		color: #A12326;
+		text-decoration: none;
+
+		&:before {
+			content: "\2713";
+			display: inline-block;
+			margin-right: 0.5em;
+			transform: scale(1.5);
+		}
+
+		&:hover {
+			color: darken(#A12326, 10%);
+		}
+	}
+}
