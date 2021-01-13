@@ -8,6 +8,7 @@
         $('.select-all-week').html('<a href="#" class="select-all-week-link">Select All</a>');
         $('.select-all').html('<a href="#" class="select-all-link">Select All Sessions</a>');
         $('.signup-form-group form').attr('action', 'https://formspree.io/f/mdopynjw');
+        $('.page-id-5106 .coblocks-form form').attr('action', 'https://formspree.io/f/xoqpykgo');
     });
 
     $(document).on('click', '.select-all-week-link', function (e) {

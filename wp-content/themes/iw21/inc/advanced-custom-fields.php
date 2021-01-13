@@ -63,61 +63,6 @@ function iw21_quote_relationship_redirect() {
 add_action( 'template_redirect', 'iw21_quote_relationship_redirect' );
 
 /**
- * Update the home field relationship
- */
-function iw21_update_home_feed_relationship( $post_id ) {
-
-    if ( ! in_array( get_post_type( $post_id ), array( 'post', 'work' ) ) )
-        return;
-
-    $home = get_page_by_title( 'Home' );
-
-    $feed_object = get_field_object( 'selected_posts', $home->ID );
-
-    if ( array_search( $post_id, $feed_object['value'] ) !== false )
-        return;
-
-    array_unshift( $feed_object['value'], $post_id );
-
-    update_field(
-        $feed_object['key'],
-        $feed_object['value'],
-        $home->ID
-    );
-}
-// add_action( 'save_post', 'iw21_update_home_feed_relationship' );
-
-/**
- * Shuffle home feed
- */
-function iw21_shuffle_home_feed_posts() {
-    $home = get_page_by_title( 'Home' );
-
-    $feed_object = get_field_object( 'selected_posts', $home->ID );
-
-    shuffle( $feed_object['value'] );
-
-    echo '<pre>';
-    print_r( $feed_object['value'] );
-    echo '</pre>';
-    die();
-}
-// add_action( 'admin_head', 'iw21_shuffle_home_feed_posts' );
-
-/**
- * Get the post company and return;
- */
-function iw21_post_company() {
-    global $post;
-
-    if ( $company = get_field( 'company' ) ) :
-        return '<span class="post-company">'  . $company . '</span>';
-    else :
-        return false;
-    endif;
-}
-
-/**
  * Render posts and work in relationship field
  */
 function iw21_relationship_result( $title, $post, $field, $post_id ) {

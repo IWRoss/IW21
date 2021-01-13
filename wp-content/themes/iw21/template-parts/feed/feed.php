@@ -4,66 +4,62 @@ global $wp;
 
 $page_or_paged = 'paged';
 
-if ( is_front_page() ) {
+if (is_front_page()) {
     $page_or_paged = 'page';
+}
+
+$paged = get_query_var($page_or_paged) ? get_query_var($page_or_paged) : 1;
+
+$feed_query = $GLOBALS['wp_query'];
+
+/* Build our query */
+if ( !is_archive()) {
+    $feed_query = new WP_Query($args);
 }
 
 ?>
 
 <div class="entry-feed">
-    <?php
+    <?php if (isset($_GET['infsc']) && $_GET['infsc'] > 1) : ?>
 
-        $paged = get_query_var( $page_or_paged ) ? get_query_var( $page_or_paged ) : 1;
+        <div class="load-previous-posts">
+            <a href="<?php echo home_url($wp->request); ?>/?infsc=<?php echo max(1, intval($_GET['infsc']) - 5); ?>" class="btn">Load more recent posts</a>
+        </div>
 
-        if ( isset($_GET['infsc'] ) && $_GET['infsc'] > 1 ) : ?>
+    <?php endif;
 
-            <div class="load-previous-posts">
-                <a href="<?php echo home_url($wp->request); ?>/?infsc=<?php echo max(1, intval($_GET['infsc']) - 5); ?>" class="btn">Load more recent posts</a>
-            </div>
-        
-        <?php endif;
+    // The loop
+    if ($feed_query->have_posts() && !isset($_GET['infsc'])) : /* Start the loop */  ?>
 
-        /* Build our query */
-        $feed_query = new WP_Query(iw21_get_query_options());
+        <div class="feed" class="masonry-grid" data-chunk="<?php echo $paged; ?>">
+            <div class="masonry-grid-sizer"></div>
+            <div class="masonry-gutter-sizer"></div>
 
-        // The loop
-        if ( $feed_query->have_posts() && ! isset($_GET['infsc'] ) ) : /* Start the loop */  ?>
+            <?php
 
-            <div class="feed" class="masonry-grid" data-chunk="<?php echo $paged; ?>">
-                <div class="masonry-grid-sizer"></div>
-                <div class="masonry-gutter-sizer"></div>
+            $index = 1;
 
-                <?php
+            while ($feed_query->have_posts()) : $feed_query->the_post();
 
-                $index = 1;
+                get_template_part('template-parts/feed/feed', 'item', array(
+                    'chunk' => $paged,
+                    'index' => $index
+                ));
 
-                while ( $feed_query->have_posts() ) : $feed_query->the_post();
+            endwhile;
 
-                    get_template_part( 'template-parts/feed/feed', 'item', array(
-                        'chunk' => $paged,
-                        'index' => $index
-                    )  );
+            $index++;
 
-                endwhile;
+            ?>
 
-                $index++;
+        </div>
 
-                ?>
 
-            </div>
-            
+    <?php endif;
 
-        <?php endif;
-
-        wp_reset_postdata();
+    wp_reset_postdata();
 
     ?>
 </div>
 
-<?php
-
-// if ( $feed_query->post_count === (int)get_option( 'posts_per_page' ) ) :
-    echo '<div id="loader" class="loader"> <div id="spinner" class="spinner"> <div class="spinner-block"></div> <div class="spinner-block"></div> <div class="spinner-block"></div> <div class="spinner-block"></div> </div> <p>Loading more</p> </div>';
-// endif;
-
-?>
+<?php get_template_part('template-parts/elements/element', 'spinner'); ?>

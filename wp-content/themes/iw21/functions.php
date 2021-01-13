@@ -64,6 +64,32 @@ function iw21_setup() {
 
 	// Add image sizes.
 	add_image_size( 'iw21-feed', 614, 614 );
+
+	add_theme_support('editor-color-palette', array(
+		array(
+			'name' => __('IW Orange', 'iw21'),
+			'slug' => 'iw-orange',
+			'color' => '#ff8d00',
+		),
+		array(
+			'name' => __('IW Blue', 'iw21'),
+			'slug' => 'iw-blue',
+			'color' => '#16467B',
+		),
+		array(
+			'name' => __('IW Black', 'iw21'),
+			'slug' => 'iw-black',
+			'color' => '#22222A',
+		),
+		array(
+			'name' => __('White', 'iw21'),
+			'slug' => 'iw-white',
+			'color' => '#ffffff',
+		)
+	));
+
+	add_theme_support('align-wide');
+
 }
 endif;
 add_action( 'after_setup_theme', 'iw21_setup' );
@@ -88,42 +114,68 @@ function iw21_scripts() {
 	global $post;
 	global $wp_query;
 
+	/**
+	 * Global scripts
+	 */
 	wp_enqueue_style( 'iw21-style', get_stylesheet_uri(), false, filemtime( get_stylesheet_directory() . '/style.css' ) );
 
 	wp_enqueue_script( 'iw21-scripts', get_template_directory_uri() . '/js/scripts.min.js', array( 'jquery' ), filemtime( get_stylesheet_directory() . '/js/scripts.min.js' ), true );
 
+	/**
+	 * Situational scripts
+	 */
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-
+	
 	if ( ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'clients' ) ) || is_front_page() ) {
 		wp_enqueue_script( 'iw21-slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js' );
 	}
 
+	/**
+	 * Custom scripts
+	 */ 
 	if (is_page(get_page_by_title('The A-Z of Human Performance Live Shows')) ) {
 		wp_enqueue_script( 'iw21-signup-form', get_template_directory_uri() . '/js/signup-form.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/signup-form.js'), true);
 	}
 
-	if ( is_page_template( 'page-templates/page-feed.php' ) || is_archive() ) {
+	if (is_page('5106') ) {
+		wp_enqueue_script( 'iw21-signup-form', get_template_directory_uri() . '/js/signup-form.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/signup-form.js'), true);
+	}
+
+	if ( has_block('acf/modal') ) {
+		wp_enqueue_script('iw21-modal-block', get_template_directory_uri() . '/js/modal-block.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/modal-block.js'), true);
+	}
+
+	/**
+	 * Infinite scroll scripts
+	 */
+	if ( is_page_template( 'page-templates/page-feed.php' ) || is_archive() || is_404() ) {
 		wp_enqueue_script('iw21-infinite-scroll', get_template_directory_uri() . '/js/infinite-scroll.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/infinite-scroll.js'), true);
-	}
-
-	if ( is_page_template( 'page-templates/page-feed.php' ) ) {
-		wp_localize_script('iw21-infinite-scroll', 'iw21Scroll', array(
+	
+		$localizationArgs = array(
 			'ajaxurl' => admin_url('admin-ajax.php'),
-			'id'	  => $post->ID,
-			'options' => iw21_get_query_options(),
 			'ppp'	  => get_option('posts_per_page')
-		));
-	}
+		);
 
-	if ( is_archive() ) {
-		wp_localize_script('iw21-infinite-scroll', 'iw21Scroll', array(
-			'ajaxurl' => admin_url('admin-ajax.php'),
-			'id'	  => $post->ID,
-			'options' => $wp_query->query,
-			'ppp'	  => get_option('posts_per_page')
-		));
+		if (is_page_template('page-templates/page-feed.php')) {
+			$localizationArgs['id'] = $post->ID;
+			$localizationArgs['options'] = iw21_get_query_options();
+		}
+
+		if (is_archive()) {
+			$localizationArgs['id'] = $post->ID;
+			$localizationArgs['options'] = $wp_query->query;
+		}
+
+		if (is_404()) {
+			$localizationArgs['id'] = 0;
+			$localizationArgs['options'] = array(
+				'post_type' => 'post'
+			);
+		}
+
+		wp_localize_script('iw21-infinite-scroll', 'iw21Scroll', $localizationArgs);
 	}
 }
 add_action( 'wp_enqueue_scripts', 'iw21_scripts' );
@@ -197,11 +249,6 @@ require get_template_directory() . '/inc/seo.php';
 require get_template_directory() . '/inc/mailchimp.php';
 
 /**
-* Load Schindler file.
- */
-require get_template_directory() . '/inc/schindler.php';
-
-/**
 * Load Landing Pages file.
  */
 require get_template_directory() . '/inc/landing-pages.php';
@@ -220,3 +267,8 @@ require get_template_directory() . '/inc/template-hooks.php';
 * Load Development functions.
  */
 require get_template_directory() . '/inc/development.php';
+
+/**
+* Load Admin functions.
+ */
+require get_template_directory() . '/inc/admin.php';

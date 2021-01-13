@@ -10,6 +10,12 @@
         transitionDuration: 0
     };
 
+    function triggerScroll() {
+        if ($('body').height() < $(window).height()) {
+            $(window).scroll();
+        }
+    }
+
     // We're now tracking our progress in the URL, so we'll need this function
     $.urlParam = function(name){
         var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
@@ -55,12 +61,16 @@
                     $( '.entry-feed' ).append( response );
                     
                     $('.feed[data-chunk="' + chunk + '"]').masonry(masonryOptions);
+
+                    triggerScroll();
                 }
             });
             
         } else {
             $('.feed').masonry(masonryOptions);
         }
+
+        triggerScroll();
 
     });
 

@@ -28,7 +28,7 @@
 
 	wp_reset_postdata();
 
-	get_template_part( 'template-parts/feed/feed' );
+	get_template_part( 'template-parts/feed/feed', '', iw21_get_query_options() );
 
 	get_template_part( 'template-parts/feed/element', 'cta' );
 

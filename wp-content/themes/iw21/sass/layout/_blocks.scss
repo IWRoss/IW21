@@ -88,6 +88,13 @@
         display: flex;
         align-items: center;
         padding: 0 $size__margin * 2;
+        max-height: 100vh;
+    }
+}
+
+@media screen and (min-width: $breakpoint-xlarge) {
+    .block-header {
+        padding: 0 $size__margin * 3;
     }
 }
 
@@ -172,4 +179,19 @@
         margin-right: 0.5em;
         filter: brightness(0) invert(1);
     }
+}
+
+.wp-block-media-text__media img {
+    margin-bottom: $size__margin;
+}
+
+@media screen and (min-width: $breakpoint-medium) {
+    .wp-block-media-text__media img {
+        margin-bottom: 0;
+    }
+}
+
+.block-modal {
+    max-width: 20em;
+    margin: 0 auto;
 }

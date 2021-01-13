@@ -14,7 +14,7 @@
     $( 'a[href*=\\#]' ).click( function(e) {
         e.preventDefault();
 
-        if ( ! $.attr( this, 'rel' ) ) {
+        if (!$.attr(this, 'rel') || $.attr(this, 'rel') === 'noopener noreferrer') {
             $root.animate( {
                 scrollTop: $( $.attr(this, 'href') ).offset().top
             }, 300);

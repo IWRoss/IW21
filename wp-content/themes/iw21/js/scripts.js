@@ -444,7 +444,7 @@ this},r._applyDataApi=function(){var e={};t("[data-match-height], [data-mh]").ea
     $( 'a[href*=\\#]' ).click( function(e) {
         e.preventDefault();
 
-        if ( ! $.attr( this, 'rel' ) ) {
+        if (!$.attr(this, 'rel') || $.attr(this, 'rel') === 'noopener noreferrer') {
             $root.animate( {
                 scrollTop: $( $.attr(this, 'href') ).offset().top
             }, 300);

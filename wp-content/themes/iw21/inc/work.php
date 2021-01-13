@@ -91,7 +91,7 @@ function iw21_register_work_taxonomies() {
 		'hierarchical'               => false,
 		'public'                     => true,
 		'show_ui'                    => true,
-		'show_admin_column'          => true,
+		'show_admin_column'          => false,
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => false,
 	) );
@@ -129,47 +129,6 @@ function iw21_register_work_taxonomies() {
 
 }
 add_action( 'init', 'iw21_register_work_taxonomies', 0 );
-
-/**
- * Add Company column and reorder columns
- */
-function iw21_set_custom_edit_work_columns( $columns ) {
-	$new_columns = array();
-
-    foreach( $columns as $key => $title ) {
-    	if ( $key == 'title' ) {
-			$new_columns['company'] = __( 'Company', 'iw21' );
-		}
-
-    	$new_columns[$key] = $title;
-    }
-
-	unset( $new_columns['tags'] );
-
-    return $new_columns;
-}
-add_filter( 'manage_posts_columns', 'iw21_set_custom_edit_work_columns' );
-
-/**
- * Add custom column contents
- */
-function iw21_custom_work_column( $column, $post_id ) {
-
-	switch( $column ) {
-
-		case 'company' :
-
-			if ( $company = get_field( 'company', $post_id ) ){
-				echo '<span class="row-title">', $company, '</span>';
-			} else {
-				echo '&ndash;';
-			}
-
-			break;
-
-	}
-}
-add_action( 'manage_posts_custom_column', 'iw21_custom_work_column', 10, 2 );
 
 /**
  * Style custom columns

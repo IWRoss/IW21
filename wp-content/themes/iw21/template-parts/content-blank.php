@@ -7,4 +7,10 @@
  * @package Interactive_Workshops_2021
  */
 
-the_content();
+?>
+
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+	<?php the_content(); ?>
+
+</article><!-- #post-<?php the_ID(); ?> -->

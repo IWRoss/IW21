@@ -56,7 +56,8 @@
 .work-template-case-study .hentry,
 .post-template-story .hentry,
 .post-template-default .hentry,
-.post-template-single-insight .hentry {
+.post-template-single-insight .hentry,
+.page-template-page-noheader .hentry {
 	width: 100%;
 	margin: 0 auto;
 }
@@ -66,7 +67,8 @@
 .post-template-default .hentry,
 .work-template-default .hentry,
 .post-template-single-insight .hentry,
-.page-template-page-search .hentry {
+.page-template-page-search .hentry,
+.page-template-page-noheader .hentry {
 	max-width: 640px;
 }
 
@@ -130,6 +132,10 @@
 	.post-template-story & {
 		margin-bottom: 0.5em;
 	}
+}
+
+.page-template-default .page-title {
+	text-align: center;
 }
 
 .archive .page-title {

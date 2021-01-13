@@ -3,8 +3,7 @@
 /**
  * Add ACF Blocks
  */
-function iw21_add_custom_blocks()
-{
+function iw21_add_custom_blocks() {
 
     // check function exists.
     if (function_exists('acf_register_block_type')) {
@@ -46,6 +45,24 @@ function iw21_add_custom_blocks()
                 'mode' => false
             )
         ));
+
+        // Register block for feed
+        acf_register_block_type(array(
+            'name'              => 'modal',
+            'title'             => __('Modal'),
+            'description'       => __('Descriptive Text'),
+            'render_template'   => 'template-parts/blocks/block-modal.php',
+            'category'          => 'common',
+            'icon'              => array(
+                'background' => '#ff8d00',
+                'foreground' => '#ffffff',
+                'src'        => 'welcome-comments',
+            ),
+            'mode'              => 'edit',
+            'supports'          => array(
+                'mode' => false
+            )
+        ));
     }
 }
 add_action('acf/init', 'iw21_add_custom_blocks');
@@ -74,3 +91,34 @@ function iw21_add_body_classes_for_blocks_in_content($classes) {
     return $classes;
 }
 add_filter('body_class', 'iw21_add_body_classes_for_blocks_in_content');
+
+
+/**
+ * Add ACF Blocks
+ */
+function iw21_add_landing_page_blocks() {
+
+    // check function exists.
+    if (function_exists('acf_register_block_type')) {
+
+        // Register block for Schindler Logos
+        acf_register_block_type(array(
+            'name'              => 'landing-page-logos',
+            'title'             => __('Company Logos (Generic)'),
+            'description'       => __('A custom block for a landing page page, displaying a slider of logos.'),
+            'render_template'   => 'template-parts/blocks/block-logos.php',
+            'category'          => 'common',
+            'icon'              => array(
+                'background' => '#ff8d00',
+                'foreground' => '#ffffff',
+                'src'        => 'slides',
+            ),
+            'mode'              => 'edit',
+            'supports'          => array(
+                'align' => array('wide', 'full'),
+                'mode' => false
+            )
+        ));
+    }
+}
+add_action('acf/init', 'iw21_add_landing_page_blocks');

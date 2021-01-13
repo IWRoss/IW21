@@ -7,7 +7,6 @@
  * @package Interactive_Workshops_2021
  */
 
-if ( ! function_exists( 'iw21_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
  */
@@ -42,9 +41,7 @@ function iw21_posted_on() {
 	echo '<img src="' . $image . '" class="author-image" /><span class="byline"> ' . $byline . '</span><span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
 
 }
-endif;
 
-if ( ! function_exists( 'iw21_posted_by' ) ) :
 /**
  * Prints HTML with meta information for the current author.
  */
@@ -62,9 +59,7 @@ function iw21_posted_by() {
 	echo '<img src="' . $image . '" class="author-image" /><span class="byline">' . $byline . '</span>';
 
 }
-endif;
 
-if ( ! function_exists( 'iw21_entry_footer' ) ) :
 /**
  * Prints HTML with meta information for the categories, tags and comments.
  */
@@ -106,4 +101,17 @@ function iw21_entry_footer() {
 		echo '</span>';
 	}
 }
-endif;
+
+/**
+ * Get the post company and return;
+ */
+function iw21_post_company() {
+	
+	global $post;
+
+	if ($company = get_field('company')) {
+		return '<span class="post-company">'  . $company . '</span>';
+	}
+
+	return false;
+}

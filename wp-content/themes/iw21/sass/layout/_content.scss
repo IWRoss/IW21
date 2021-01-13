@@ -37,6 +37,12 @@
     }
 }
 
+@media screen and (min-width: $breakpoint-xlarge) {
+    .site-header {
+        padding: 0 $size__margin * 3;
+    }
+}
+
 .site-branding {
     text-decoration: none !important;  // Safari adds text decoration to    text element inside svg
 
@@ -123,6 +129,12 @@
     .site-logo {
         max-width: 357px;
         left: $size__margin * 2;
+    }
+}
+
+@media screen and (min-width: $breakpoint-xlarge) {
+    .site-logo {
+        left: $size__margin * 3;
     }
 }
 
