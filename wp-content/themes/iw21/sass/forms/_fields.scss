@@ -142,6 +142,16 @@ input[type="checkbox"] {
 	}
 }
 
+.has-background input[type="checkbox"] {
+	&+label {
+		background-color: transparent;
+	}
+
+	&:checked+label {
+		background-color: $color__text-highlight;
+	}
+}
+
 .comment-form input[type="checkbox"] {
 
 	&+label {
@@ -176,4 +186,23 @@ input[type="checkbox"] {
 			color: darken(#A12326, 10%);
 		}
 	}
+}
+
+.flex-form {
+
+	.coblocks-field.checkbox {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 0.5em;
+
+		.coblocks-label {
+			grid-column-start: 1;
+			grid-column-end: 3;
+		}
+
+		.coblocks-checkbox-label {
+			width: 100%;
+		}
+	}
+
 }

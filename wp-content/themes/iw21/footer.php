@@ -35,13 +35,6 @@
 </footer><!-- #colophon -->
 </div><!-- #page -->
 
-
-<script type="text/javascript">
-	jQuery(window).on('load', function() {
-		jQuery('.preloader').fadeOut(250);
-	});
-</script>
-
 <?php wp_footer(); ?>
 
 </body>

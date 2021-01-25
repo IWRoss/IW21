@@ -611,6 +611,9 @@ this},r._applyDataApi=function(){var e={};t("[data-match-height], [data-mh]").ea
     $(window).on('scroll', $.throttle(16, function () {
         fade();
     }));
-    
+
+    $('.coblocks-field.coblocks-field--date').on('change', function(){
+        $(this).val($(this).val().replace('S ', ' '));
+    });
 
 } )( jQuery );

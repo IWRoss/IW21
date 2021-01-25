@@ -12,6 +12,10 @@
 
             $(this).append(contentBlock.html());
 
+            // var $contentBlock = $('#' + $(this).data('insert'));
+
+            // $contentBlock.find('form').appendTo($(this));
+
         });
 
     });

@@ -181,6 +181,9 @@
     $(window).on('scroll', $.throttle(16, function () {
         fade();
     }));
-    
+
+    $('.coblocks-field.coblocks-field--date').on('change', function(){
+        $(this).val($(this).val().replace('S ', ' '));
+    });
 
 } )( jQuery );

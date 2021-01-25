@@ -166,3 +166,85 @@ function iw21_oembed_video() {
     
 }
 add_action('iw21_after_content', 'iw21_oembed_video', 10);
+
+/**
+ * 
+ */
+function iw21_footer_scripts() {
+
+    global $post;
+
+    if ($oembed = get_field('video')) :
+        echo sprintf('<div class="video-wrapper">%s</div>', $oembed);
+    endif;
+    
+}
+add_action('iw21_after_footer', 'iw21_footer_scripts', 10);
+
+/**
+ * 
+ */
+function iw21_connect_rsvps_on_form_submit($request)
+{
+
+    $parameters = json_decode($request->get_body(), true);
+
+    $email = $parameters['submission']['email'];
+
+    $dates = $parameters['submission']['field-listen[value]'];
+
+    $events = explode(', ', $parameters['submission'][$dates]);
+
+    $events = array_filter($events, function ($el) {
+
+        if (strlen($el) != 26) {
+            return false;
+        }
+
+        return true;
+    });
+
+    $results = [];
+
+    foreach ($events as $event) {
+
+        $url = 'https://hooks.zapier.com/hooks/catch/9327164/o00n6a1/';
+        // $url = 'https://d96d0487377ef05608b7c074bdb077d4.m.pipedream.net';
+
+        $payload = array(
+            'submission' => array(
+                'field-event-id[value]' => $event,
+                'email' => $email
+            )
+        );
+
+        $fields_string = json_encode($payload);
+
+        //open connection
+        $ch = curl_init();
+
+        //set the url, number of POST vars, POST data
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json', 
+            'Content-Length: ' . strlen($fields_string)
+        ));
+
+        //So that curl_exec returns the contents of the cURL; rather than echoing it
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        //execute post
+        $results[$event] = json_decode(curl_exec($ch));
+    }
+
+    return $results;
+}
+add_action('rest_api_init', function () {
+    register_rest_route('rsvps/v1', 'add/', array(
+        'methods' => 'POST',
+        'callback' => 'iw21_connect_rsvps_on_form_submit',
+        'permission_callback' => '__return_true'
+    ));
+});

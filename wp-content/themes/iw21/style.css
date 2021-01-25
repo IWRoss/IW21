@@ -792,6 +792,12 @@ input[type="checkbox"] {
       margin-right: 0.5em;
       transform: scale(1.5); }
 
+.has-background input[type="checkbox"] + label {
+  background-color: transparent; }
+
+.has-background input[type="checkbox"]:checked + label {
+  background-color: #FF8D00; }
+
 .comment-form input[type="checkbox"] + label {
   display: block;
   width: 50%; }
@@ -811,6 +817,16 @@ input[type="checkbox"] {
     transform: scale(1.5); }
   .signup-form-group a:not(.btn):hover {
     color: #771a1c; }
+
+.flex-form .coblocks-field.checkbox {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0.5em; }
+  .flex-form .coblocks-field.checkbox .coblocks-label {
+    grid-column-start: 1;
+    grid-column-end: 3; }
+  .flex-form .coblocks-field.checkbox .coblocks-checkbox-label {
+    width: 100%; }
 
 /*--------------------------------------------------------------
 # Navigation
