@@ -1,0 +1,38 @@
+.block-client {
+  padding: 2em;
+  padding-top: 4em;
+  border: none;
+  border-left: 1em solid #FF8D00;
+  margin: 5em 0 2em;
+  background: #FBFBFB;
+  box-shadow: 0em 0.5em 1em 0em rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+
+.block-client-innerblocks > :first-child {
+  margin-top: 0;
+}
+.block-client-innerblocks > :last-child {
+  margin-bottom: 0;
+}
+
+.block-client-logo {
+  position: absolute;
+  top: -3em;
+  width: 6em;
+  height: 6em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+.block-client-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+:root [data-type="acf/client"] {
+  background: none !important;
+}

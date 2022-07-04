@@ -22,13 +22,14 @@ ol {
 }
 
 li:before {
-	.entry-content ul > &,
-	.entry-path ul > & {
+	.entry-content ul.is-style-default > & ,
+	.entry-path ul.is-style-default > &,
+	.work-template-case-study .entry-section--the_results ul>& {
 		content: '//';
 		display: inline-block;
 		width: 2em;
 		margin-left: -2em;
-		font-weight: bold;
+		font-weight: 500;
 		color: $color__text-highlight;
 	}
 
@@ -88,9 +89,27 @@ li > ol {
 }
 
 dt {
-	font-weight: bold;
+	font-weight: 500;
 }
 
 dd {
 	margin: 0 1.5em 0.5em;
+}
+
+.is-style-checkbox {
+	li {
+		margin-bottom: 1em;
+	}
+
+	li::before {
+		top: .25em;
+	}
+}
+
+@media (min-width: 600px) {
+	.is-style-checkbox {
+		li::before {
+			top: .25em;
+		}
+	}
 }

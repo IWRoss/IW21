@@ -1,0 +1,64 @@
+{
+    "key": "group_5981c547946b0",
+    "title": "Team",
+    "fields": [
+        {
+            "key": "field_61f3cc75d830b",
+            "label": "Team",
+            "name": "team_repeater",
+            "type": "repeater",
+            "instructions": "Add team members by their user account. The team will be displayed in the order below, and uses information from each individual's profile (including <strong>nickname<\/strong>, <strong>team image<\/strong>, <strong>description<\/strong>, and <strong>role<\/strong>).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_61f3cc83d830c",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Add Team Member",
+            "sub_fields": [
+                {
+                    "key": "field_61f3cc83d830c",
+                    "label": "User",
+                    "name": "user",
+                    "type": "user",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "role": "",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "array"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_template",
+                "operator": "==",
+                "value": "page-templates\/page-team.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1643368619
+}

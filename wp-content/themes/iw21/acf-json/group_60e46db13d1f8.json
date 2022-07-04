@@ -1,0 +1,43 @@
+{
+    "key": "group_60e46db13d1f8",
+    "title": "Menu item opens Modal",
+    "fields": [
+        {
+            "key": "field_60e46dcb2caaf",
+            "label": "Opens Modal",
+            "name": "opens_modal",
+            "type": "true_false",
+            "instructions": "This menu item opens a modal window as long as it's an image or oembed link",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Opens Modal",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "nav_menu_item",
+                "operator": "==",
+                "value": "location\/menu-1"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1625589945
+}

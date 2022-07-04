@@ -23,30 +23,8 @@ get_header(); ?>
 			</header><!-- .page-header -->
 
 			<?php
-			echo '<div class="masonry-grid"><div class="masonry-grid-sizer"></div><div class="masonry-gutter-sizer"></div>';
 
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
-
-				if ( $template = get_page_template_slug() ) {
-
-					$template = preg_replace( '/(single-)|(work-)+/', '', wp_basename( $template, '.php' ) );
-
-					if ( locate_template( $template ) == '' ) {
-						$template = 'standard';
-					}
-
-				} else {
-					$template = 'standard';
-				}
-
-				get_template_part( 'template-parts/feed/feed', $template );
-
-			endwhile;
-
-			echo '</div>';
-
-			the_posts_navigation();
+			get_template_part('template-parts/feed/feed', '');
 
 		else :
 

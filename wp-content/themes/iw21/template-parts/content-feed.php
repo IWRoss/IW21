@@ -10,7 +10,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
+	
 	<header class="entry-header">
 		<?php iw21_render_post_title(); ?>
 	</header><!-- .entry-header -->
@@ -28,7 +28,8 @@
 
 	wp_reset_postdata();
 
-	get_template_part( 'template-parts/feed/feed', '', iw21_get_query_options() );
+	// get_template_part( 'template-parts/feed/feed', '', iw21_get_query_options() );
+	get_template_part( 'template-parts/feed/feed', '', iw21_build_args_from_query_builder(get_field('feed_builder')) );
 
 	get_template_part( 'template-parts/feed/element', 'cta' );
 

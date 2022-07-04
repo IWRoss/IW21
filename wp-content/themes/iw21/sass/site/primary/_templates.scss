@@ -46,7 +46,7 @@
             display: inline-block;
             margin: 0;
             text-transform: uppercase;
-            font-weight: bold;
+            font-weight: 500;
         }
     }
 }
@@ -133,6 +133,23 @@
     }
 }
 
+@media screen and (min-width: $breakpoint-small) {
+    .archive.author .page-header {
+        display: flex;
+
+        .page-title {
+            flex-grow: 1;
+        }
+
+        .archive-description {
+            flex-grow: 0;
+            width: 30%;
+        }
+    }
+}
+
+
+.archive,
 .page-template-page-team {
     .team-member--img {
         position: relative;
@@ -252,7 +269,11 @@
 
     .team-member--email a,
     .team-member--phone a {
-        font-weight: bold;
+        font-weight: 500;
+    }
+
+    .team-member--details dd {
+        margin-left: 0;
     }
 }
 

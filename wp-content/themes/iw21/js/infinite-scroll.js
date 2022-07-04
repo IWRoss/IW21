@@ -1,147 +1,132 @@
-(function($){
-    
-    var chunk = 1;
+(function ($) {
+  /**
+   * Import ScrollTrigger
+   */
+  gsap.registerPlugin(ScrollTrigger);
 
-    var masonryOptions = {
-        itemSelector: '.grid-item',
-        columnWidth: '.masonry-grid-sizer',
-        gutter: '.masonry-gutter-sizer',
-        percentPosition: true,
-        transitionDuration: 0
+  /**
+   *
+   */
+  let active = 0, // Which chunk is in view
+    loaded = 0; // What's the highest chunk loaded
+
+  /**
+   * Back off, browser, I got this... (if there's a history of scrolling)
+   */
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+
+  /**
+   * If there are any chunks already in the DOM, create a new ScrollTrigger for them
+   */
+  window.onload = function () {
+    let targets = gsap.utils.toArray('.feed-item[data-index="1"]'),
+      paged = urlParam("infsc");
+
+    if (paged) {
+      addPostsToFeed(paged);
+    }
+
+    for (let target of targets) {
+      createNewScrollTrigger(target);
+    }
+  };
+
+  /**
+   *
+   * @param {*} n
+   */
+  const urlParam = function (name) {
+    var results = new RegExp("[?&]" + name + "=([^&#]*)").exec(
+      window.location.href
+    );
+
+    if ($.isArray(results)) {
+      return results[1];
+    }
+
+    return false;
+  };
+
+  /**
+   *
+   * @param {*} n
+   */
+  const updateURL = function (n) {
+    if (!window.history.replaceState) {
+      return false;
+    }
+
+    window.history.replaceState(n, n, "?infsc=" + n);
+  };
+
+  /**
+   * Grab posts from database and add them to the feed
+   * @param {*} n
+   */
+  const addPostsToFeed = function (n) {
+    // Set up our HTTP request
+    var xhr = new XMLHttpRequest();
+
+    // Setup our listener to process completed requests
+    xhr.onload = function () {
+      let doc = new DOMParser().parseFromString(xhr.response, "text/html");
+
+      const feed = document.getElementById("feed");
+
+      let node = feed.appendChild(doc.body.children[0]);
+
+      createNewScrollTrigger(node);
+
+      while (doc.body.children.length > 0) {
+        feed.appendChild(doc.body.children[0]);
+      }
     };
 
-    function triggerScroll() {
-        if ($('body').height() < $(window).height()) {
-            $(window).scroll();
-        }
-    }
+    let data = {
+      id: iw21Scroll.id,
+      options: iw21Scroll.options,
+      ppp: iw21Scroll.ppp,
+      chunk: n,
+    };
 
-    // We're now tracking our progress in the URL, so we'll need this function
-    $.urlParam = function(name){
-        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    let body = "body=" + JSON.stringify(data);
 
-        if ( $.isArray(results) ) {
-            return results[1];
-        }
+    xhr.open("POST", iw21Scroll.ajaxurl + "?action=ajax_feed_pagination");
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send(body);
+  };
 
-        return false;
-    }
+  /**
+   *
+   * @param {*} element
+   */
+  const createNewScrollTrigger = function (element) {
+    ScrollTrigger.create({
+      trigger: element,
+      start: "top center",
+      end: "bottom center",
+      onEnter: () => {
+        active = parseInt(element.dataset.chunk);
 
-    // Back off, browser, I got this... (if there's a history of scrolling)
-    if ('scrollRestoration' in history) {
-        history.scrollRestoration = 'manual';
-    }
+        if (active > loaded) {
+          loaded = active;
 
-    // When the page loads, fetch posts if paginated
-    $(window).on('pageshow', function(){
-
-        var anchor = $.urlParam('infsc');
-
-        if ( anchor ) {
-
-            chunk = parseInt(anchor);
-
-            $.ajax({
-                type: "POST",
-                url: iw21Scroll.ajaxurl,
-                data: {
-                    "action": 'ajax_feed_pagination',
-                    "id": iw21Scroll.id,
-                    "options": iw21Scroll.options,
-                    "ppp": iw21Scroll.ppp,
-                    "chunk": chunk
-                },
-                beforeSend: function() {
-                    $('#loader').show();
-                },
-                success: function(response) {
-
-                    $('#loader').hide();
-                    
-                    $( '.entry-feed' ).append( response );
-                    
-                    $('.feed[data-chunk="' + chunk + '"]').masonry(masonryOptions);
-
-                    triggerScroll();
-                }
-            });
-            
-        } else {
-            $('.feed').masonry(masonryOptions);
+          addPostsToFeed(active + 1);
         }
 
-        triggerScroll();
+        updateURL(active);
+      },
+      onLeaveBack: () => {
+        if (element == element.parentNode.firstElementChild) {
+          return false;
+        }
 
+        active = parseInt(element.dataset.chunk) - 1;
+
+        updateURL(active);
+      },
     });
-
-    $(window).on('scroll', $.throttle(50, function() {
-
-        // selectors
-        var $window = $(window),
-            $chunk = $('.feed');
-
-        var scroll = $window.scrollTop();
-
-        $chunk.each( function(){
-            var $this = $(this);
-
-
-            if ( $this.position().top > scroll + 500 ) {
-                return;
-            }
-
-            if ( $this.position().top + $this.height() <= scroll + 500 ) {
-                return;
-            }
-
-            if (window.history.replaceState) {
-                //prevents browser from storing history with each change:
-                window.history.replaceState($this.data('chunk'), $this.data('chunk'), '?infsc=' + $this.data('chunk'));
-            }
-
-            if ( $this.data('chunk') == chunk ) {
-                chunk++;
-
-                $.ajax({
-                    type: "POST",
-                    url: iw21Scroll.ajaxurl,
-                    data: {
-                        "action": 'ajax_feed_pagination',
-                        "id": iw21Scroll.id,
-                        "options": iw21Scroll.options,
-                        "ppp": iw21Scroll.ppp,
-                        "chunk": chunk
-                    },
-                    beforeSend: function() {
-                        $('#loader').show();
-                    },
-                    success: function(response) {
-                        $('#loader').hide();
-
-                        $( '.entry-feed' ).append( response );
-
-                        $('.feed[data-chunk="' + chunk + '"]').masonry(masonryOptions);
-                    }
-                });
-            }
-
-        });
-        
-    }));
-
-
-    $('.feed').on('click', 'a[data-remember]', function(){
-
-        var $this = $(this),
-            $chunk = $this.parents('.feed');
-
-        if (window.history.replaceState) {
-            //prevents browser from storing history with each change:
-            window.history.replaceState($chunk.data('chunk'), $chunk.data('chunk'), '/?infsc=' + $chunk.data('chunk'));
-        }
-
-        window.location = $this.attr('href');
-    });
-
-
+  };
 })(jQuery);

@@ -51,6 +51,14 @@ add_filter('document_title_separator', function ($sep) {
 });
 
 /**
+ * 
+ */
+function iw21_sprintf($string, $replacements)
+{
+	return str_replace(array_keys($replacements), array_values($replacements), $string);
+}
+
+/**
  * Alter title part of document title to add company in certain instances
  */
 add_filter('document_title_parts', function ($title) {
@@ -169,6 +177,15 @@ function iw21_get_the_post_classes()
 		endforeach;
 	endif;
 
+	// Outcome class
+	$outcomes = get_the_terms($post->post_id, 'outcome');
+
+	if ($outcomes) :
+		foreach ($outcomes as $outcome) :
+			$classes[] = 'outcome-' . $outcome->slug;
+		endforeach;
+	endif;
+
 	if ($template = get_page_template_slug()) :
 		$classes[] = 'feed-' . wp_basename($template, '.php');
 
@@ -181,7 +198,7 @@ function iw21_get_the_post_classes()
 
 	$classes[] = 'post-type-' . get_post_type();
 
-	if ($span = get_field('span')) :
+	if ($span = get_field('span', $post)) :
 		$classes[] = 'grid-item--width' . $span;
 	endif;
 
@@ -205,7 +222,7 @@ function iw21_get_the_title()
 	$title = get_the_title();
 
 
-	if ($company = get_field('company')) {
+	if ($company = get_field('company', $post)) {
 		$title = '<span class="post-company">' . $company . ' //</span> ' . $title;
 	} else if ($terms = get_the_terms($post->ID, 'industry')) {
 		$title = '<span class="post-company">' . $terms[0]->name . ' //</span> ' . $title;
@@ -386,7 +403,7 @@ function iw21_custom_disable_author_page()
 		exit;
 	}
 }
-add_action('template_redirect', 'iw21_custom_disable_author_page');
+// add_action('template_redirect', 'iw21_custom_disable_author_page');
 
 function iw21_body_class($classes)
 {
@@ -436,6 +453,7 @@ function iw21_body_class($classes)
 		'is-desktop'           => !wp_is_mobile(),
 		// Common
 		'has-blocks'           => function_exists('has_blocks') && has_blocks(),
+		'no-header'			   => function_exists('get_field') && get_field('hide_header')
 	);
 
 	// Sidebars
@@ -463,6 +481,7 @@ function iw21_preloader()
 	<script type="text/javascript">
 		jQuery(window).on('load', function() {
 			jQuery('.preloader').fadeOut(250);
+			jQuery('body').addClass('loaded');
 		});
 	</script>
 
@@ -486,16 +505,457 @@ function iw21_update_form_element_with_javascript()
 		$script_content .= 'jQuery(\'.coblocks-field--email[type="email"]\').attr(\'name\', \'email\');';
 	}
 
-	if ($checkboxes = get_field('checkboxes')) {
+	if ($custom_names = get_field('custom_names')) {
 
-		foreach ($checkboxes as $checkbox) {
-			$script_content .= sprintf('jQuery("%s").attr("value", "%s");', $checkbox['css_selector'], $checkbox['value']);
+		foreach ($custom_names as $custom_name) {
+			$script_content .= sprintf('jQuery("%s").attr("name", "%s");', $custom_name['css_selector'], $custom_name['name']);
 		}
-
 	}
+
+	if ($custom_values = get_field('custom_values')) {
+
+		foreach ($custom_values as $custom_value) {
+			$script_content .= sprintf('jQuery("%s").attr("value", "%s");', $custom_value['css_selector'], $custom_value['value']);
+		}
+	}
+
+	if ($custom_classes = get_field('custom_classes')) {
+
+		foreach ($custom_classes as $custom_class) {
+			$script_content .= sprintf('jQuery("%s").addClass("%s");', $custom_class['css_selector'], $custom_class['class']);
+		}
+	}
+
+	$script_content .= sprintf('jQuery(".coblocks-form form").append("<input type=\"hidden\" name=\"referrer\" value=\"%s\">");', get_the_title());
 
 	printf('<script>jQuery(document).on("ready", function(){%s});</script>', $script_content);
 }
 add_action('wp_footer', 'iw21_update_form_element_with_javascript');
 
 
+function iw21_load_template_field_choices($field)
+{
+
+	// reset choices
+	$field['choices'] = array();
+
+
+	// get the textarea value from options page without any formatting
+	$choices = wp_get_theme()->get_page_templates(null, 'post') + wp_get_theme()->get_page_templates(null, 'work') + wp_get_theme()->get_page_templates(null, 'page');
+
+	// loop through array and add to field 'choices'
+	if (is_array($choices)) {
+
+		foreach ($choices as $path => $label) {
+
+			$field['choices'][$path] = $label;
+		}
+	}
+
+	asort($field['choices']);
+
+	// return the field
+	return $field;
+}
+
+add_filter('acf/load_field/name=template', 'iw21_load_template_field_choices');
+
+function iw21_build_args_from_query_builder($field)
+{
+
+	$args = array(
+		'posts_per_page' => get_option('posts_per_page'),
+		'post_type'		 => array('post', 'work')
+	);
+
+	if ($field) {
+
+		foreach ($field as $rule) {
+
+			if ($rule['acf_fc_layout'] === 'post_type') {
+				$args['post_type'] = $rule['post_type'];
+			}
+
+			if (in_array($rule['acf_fc_layout'], array('category', 'post_tag'))) {
+
+				$args['tax_query'][] = array(
+					'taxonomy' => $rule['acf_fc_layout'],
+					'field' => 'id',
+					'terms' => $rule[$rule['acf_fc_layout']]
+				);
+			}
+
+			if ($rule['acf_fc_layout'] === 'template') {
+				$args['meta_query'] = array(
+					array(
+						'key'   => '_wp_page_template',
+						'value' => $rule['template']
+					)
+				);
+			}
+
+			if ($rule['acf_fc_layout'] === 'length') {
+				$args['posts_per_page'] = $rule['length'];
+			}
+
+			if ($rule['acf_fc_layout'] === 'order') {
+				$args['order'] = $rule['order'];
+			}
+
+			if ($rule['acf_fc_layout'] === 'selection') {
+
+				/* Using Febrezey */
+				$args['post__in'] = $rule['selection'];
+				$args['orderby'] = 'post__in';
+			}
+		}
+	}
+
+	$args['post_status'] = 'publish';
+
+	return $args;
+}
+
+function iw21_edit_posts_orderby($orderby_statement)
+{
+	$orderby_statement = " term_taxonomy_id DESC, post_date DESC ";
+	return $orderby_statement;
+}
+
+function iw21_search_for_key($match, $search_key, $array)
+{
+	foreach ($array as $key => $val) {
+		if ($val[$search_key] === $match) {
+			return $key;
+		}
+	}
+	return null;
+}
+
+function iw21_block_colors($color_field, $background_field)
+{
+
+	$classes = [];
+	$inline_styles = [];
+
+	if ($color_field && strpos($color_field, '#') === false) {
+		$classes[] = sprintf('has-iw-%s-color', $color_field);
+	}
+
+	if ($color_field && strpos($color_field, '#') === 0) {
+		$classes[] = sprintf('has-custom-color', $color_field);
+		$inline_styles[] = sprintf('color: %s;', $color_field);
+	}
+
+	if ($background_field && strpos($background_field, '#') === false) {
+		$classes[] = sprintf('has-iw-%s-background-color', $background_field);
+	}
+
+	if ($background_field && strpos($background_field, '#') === 0) {
+		$classes[] = sprintf('has-custom-background-color', $background_field);
+		$inline_styles[] = sprintf('background-color: %s; border-color: %s;', $background_field, $background_field);
+	}
+
+	return [$classes, $inline_styles];
+}
+
+function iw21_multiline_text_to_tspans($original_text)
+{
+
+	if (!strstr($original_text, PHP_EOL)) return $original_text;
+
+	$text_string = '';
+
+	foreach (explode(PHP_EOL, $original_text) as $key => $line) {
+
+		$dy = $key ? '1em' : '-%sem';
+
+		$text_string .= sprintf('<tspan x="0" dy="%s">%s</tspan>', $dy, $line);
+	}
+
+	$text_string = sprintf($text_string, (count(explode(PHP_EOL, $original_text)) - 1) * 0.5);
+
+	return $text_string;
+}
+
+function iw21_convert_hex_to_rgb_color_array($hex)
+{
+	return sscanf($hex, "#%02x%02x%02x");
+}
+
+function iw21_hex_to_rgba($hex, $alpha = 1)
+{
+
+	$rgb_array = iw21_convert_hex_to_rgb_color_array($hex);
+
+	return sprintf('rgba(%d,%d,%d,%.2f)', $rgb_array[0], $rgb_array[1], $rgb_array[2], $alpha);
+}
+
+/**
+ * 
+ */
+function iw21_create_gradient_string($color_stops)
+{
+
+	$color_stops = array_map(function ($value) {
+
+		return array_merge($value, array(
+			'string' => sprintf('%s %d%%', $value['color'], $value['position'])
+		));
+	}, $color_stops);
+
+	return sprintf('linear-gradient(to bottom, %s);', implode(', ', array_column($color_stops, 'string')));
+}
+
+/**
+ * 
+ */
+function iw21_block_color_class($block)
+{
+
+	if (!empty($block['backgroundColor'])) {
+		return sprintf('has-%s-background-color', $block['backgroundColor']);
+	}
+
+	if (!empty($block['gradient'])) {
+		return sprintf('has-%s-gradient-background', $block['gradient']);
+	}
+
+	return 'no-background';
+}
+
+/**
+ * 
+ */
+function iw21_block_styles($block)
+{
+
+	$classes = [];
+
+	if (!empty($block['backgroundColor'])) {
+		$classes[] = sprintf('has-%s-background-color', $block['backgroundColor']);
+	}
+
+	if (!empty($block['textColor'])) {
+		$classes[] = sprintf('has-%s-color', $block['textColor']);
+	}
+
+	if (!empty($block['gradient'])) {
+		$classes[] = sprintf('has-%s-gradient-background', $block['gradient']);
+	}
+
+	$inline_styles = [];
+
+	if (!empty($block['style'])) {
+
+		foreach ($block['style']['color'] as $key => $value) {
+
+			$attribute = in_array($key, array('background', 'gradient')) ? 'background' : 'color';
+
+			$inline_styles[] = sprintf('%s: %s;', $attribute, $value);
+		}
+	}
+
+
+	return [$classes, $inline_styles];
+}
+
+/**
+ * 
+ */
+function iw21_get_amp_polyline_points($base64_encoded_results)
+{
+
+	try {
+
+		$results = array_map(function ($v) {
+			return implode(' ', iw21_convert_scores_to_coordinates($v, 25));
+		}, json_decode(
+			base64_decode($base64_encoded_results),
+			true
+		));
+
+		return $results;
+	} catch (Exception $e) {
+		return false;
+	}
+}
+
+/**
+ * 
+ */
+function iw21_convert_scores_to_coordinates($scores, $offset)
+{
+
+	$points = array_map(function ($k, $v) use ($offset) {
+
+		$coordinate_string = '%s,%s';
+
+		switch ($k) {
+			case 0:
+				return sprintf(
+					$coordinate_string,
+					$offset,
+					-$v + $offset
+				);
+			case 1:
+				return sprintf(
+					$coordinate_string,
+					sqrt($v * $v / 2) + $offset,
+					-sqrt($v * $v / 2) + $offset
+				);
+			case 2:
+				return sprintf(
+					$coordinate_string,
+					$v + $offset,
+					$offset
+				);
+			case 3:
+				return sprintf(
+					$coordinate_string,
+					sqrt($v * $v / 2) + $offset,
+					sqrt($v * $v / 2) + $offset
+				);
+			case 4:
+				return sprintf(
+					$coordinate_string,
+					$offset,
+					$v + $offset
+				);
+			case 5:
+				return sprintf(
+					$coordinate_string,
+					-sqrt($v * $v / 2) + $offset,
+					sqrt($v * $v / 2) + $offset
+				);
+			case 6:
+				return sprintf(
+					$coordinate_string,
+					-$v + $offset,
+					$offset
+				);
+			case 7:
+				return sprintf(
+					$coordinate_string,
+					-sqrt($v * $v / 2) + $offset,
+					-sqrt($v * $v / 2) + $offset
+				);
+		}
+	}, array_keys($scores), $scores);
+
+	$points[8] = $points[0];
+
+	return $points;
+}
+
+/**
+ * 
+ */
+function iw21_get_amp_circle_elements($polyline_points)
+{
+
+	$points = explode(' ', $polyline_points);
+
+	$elements = '';
+
+	foreach ($points as $point) {
+		[$x, $y] = explode(',', $point);
+
+		$elements .= sprintf('<circle cx="%s" cy="%s" r="0.75"></circle>', $x, $y);
+	}
+
+	return $elements;
+}
+
+/**
+ * 
+ */
+add_filter('cli_show_cookie_bar_only_on_selected_pages', 'webtoffee_custom_selected_pages', 10, 2);
+
+function webtoffee_custom_selected_pages($html, $slug)
+{
+
+	$slug_array = array('businessamp-results', 'amp-e', 'cisco-flm');
+	if (in_array($slug, $slug_array)) {
+		$html = '';
+		return $html;
+	}
+
+	// For wild card URL entry
+	foreach ($slug_array as $slug_ar) {
+		if (strpos($slug_ar, '*') !== false) {
+
+			if (fnmatch($slug_ar, $slug)) {
+				$html = '';
+				return $html;
+			}
+		}
+	}
+
+	return $html;
+}
+
+/**
+ * 
+ */
+function iw21_array_key_exists($key, $array)
+{
+	if (!is_array($array)) {
+		return false;
+	}
+
+	if (!array_key_exists($key, $array)) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * 
+ */
+function iw21_encrypt($message_to_encrypt, $secret_key, $method = 'aes128')
+{
+
+	$nonce_size = openssl_cipher_iv_length($method);
+
+	$nonce = openssl_random_pseudo_bytes($nonce_size);
+
+	$encrypted_message = openssl_encrypt($message_to_encrypt, $method, $secret_key, OPENSSL_RAW_DATA, $nonce);
+
+	return base64_encode($nonce . $encrypted_message);
+}
+
+/**
+ * 
+ */
+function iw21_decrypt($encrypted_data, $secret_key, $method = 'aes128')
+{
+
+	$encrypted_data = base64_decode($encrypted_data, true);
+
+	$nonce_size = openssl_cipher_iv_length($method);
+
+	$nonce = mb_substr($encrypted_data, 0, $nonce_size, '8bit');
+
+	$message_to_decrypt = mb_substr($encrypted_data, $nonce_size, null, '8bit');
+
+	return openssl_decrypt($message_to_decrypt, $method, $secret_key, OPENSSL_RAW_DATA, $nonce);
+}
+
+/**
+ * 
+ */
+function iw21_dump($variable)
+{
+	echo '<pre>', print_r($variable, true), '</pre>';
+}
+
+/**
+ * 
+ */
+function iw21_dump_and_die($variable)
+{
+	iw_dump($variable);
+	die();
+}

@@ -1,0 +1,103 @@
+@import '../../../sass/variables-site/variables-site';
+@import '../../../sass/mixins/mixins-master';
+
+.iw-block-tool {
+    position: relative;
+    align-self: stretch;
+    height: 100%;
+    width: 100%;
+    padding: 1.5em;
+    // background-color: $color__text-main;
+    background: linear-gradient(to bottom right, $color__text-main 0%, lighten($color__text-main, 20%) 100%);
+    opacity: 0;
+    @include shadow-hover();
+    transition: all 0.2s linear;
+
+    &:hover {
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+
+    &.is-preview {
+        opacity: 1;
+        transform: none;
+    }
+
+    .iw-block-tool-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: 0;
+        opacity: 0.75;
+        transition: opacity 0.2s linear;
+    }
+
+    &:hover .iw-block-tool-background {
+        opacity: 0.25;
+    }
+
+
+    .tool-title,
+    .tool-meta {
+        position: relative;
+        z-index: 5;
+        color: white;
+        font-family: $font__heading;
+    }
+
+    .tool-title {
+        font-weight: 500;
+    }
+
+    .iw-block-tool-inner {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        .tool-title {
+            margin-top: 0;
+            margin-bottom: 5em;
+        }
+
+        .tool-description {
+            margin-bottom: 0;
+        }
+    }
+
+    .tool-link {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .tool-link {
+        z-index: 10;
+    }
+
+    .tool-meta {
+        opacity: 0;
+        transition: all 0.2s ease;
+    }
+
+    &:hover .tool-meta {
+        opacity: 1;
+    }
+
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+
+}

@@ -58,7 +58,7 @@
 .comment-reply-link {
 	font-family: $font__heading;
 	text-transform: uppercase;
-	font-weight: bold;
+	font-weight: 500;
 	text-decoration: none;
 
 	&:hover {
@@ -76,7 +76,7 @@
 		content: '!';
 		display: inline-block;
 		font-family: $font__heading;
-		font-weight: bold;
+		font-weight: 500;
 		margin-right: 0.5em;
 		border-radius: 50%;
 		color: $color__background-pre;

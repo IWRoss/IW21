@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template part for displaying page content in page.php
  *
@@ -10,35 +11,41 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php iw21_render_post_title(); ?>
-	</header><!-- .entry-header -->
+	<?php if (!get_field('hide_header')) : ?>
+		<header class="entry-header">
+			<?php iw21_render_post_title(); ?>
+		</header><!-- .entry-header -->
+	<?php endif; ?>
 
 	<div class="entry-content">
 		<?php
-			the_content();
+		the_content();
 
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'iw21' ),
-				'after'  => '</div>',
-			) );
+		wp_link_pages(array(
+			'before' => '<div class="page-links">' . esc_html__('Pages:', 'iw21'),
+			'after'  => '</div>',
+		));
 		?>
 	</div><!-- .entry-content -->
 
-	<?php if ( $team = get_field( 'team' ) ) : ?>
+	<?php if ($team = get_field('team_repeater')) : ?>
 
 		<div class="toast">
 
 			<?php
-			
-			foreach( $team as $member ) :
+
+			foreach ($team as $member) :
+
+				echo '<div class="toast__col toast__col--1-of-4 toast__col--m-1-of-3 toast__col--s-1-of-2">';
 
 				/**
 				 * Show team member in grid
 				 */
 				get_template_part('template-parts/team/team', 'grid', array(
-					'member' => $member
-				));				
+					'member' => $member['user']
+				));
+
+				echo '</div>';
 
 			endforeach;
 

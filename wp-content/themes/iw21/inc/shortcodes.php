@@ -94,8 +94,8 @@ function iw21_logo_slider( $atts ) {
 	<script type="text/javascript">
 		( function( $ ) {
 			$('.client-logos').slick({
-				slidesToShow: 5,
-				slidesToScroll: 5,
+				slidesToShow: 6,
+				slidesToScroll: 6,
 				autoplay: true,
 				autoplaySpeed: 3000,
 				arrows: false,

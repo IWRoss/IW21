@@ -1,0 +1,59 @@
+.editor-block-list__layout .editor-block-list__block,
+.editor-post-title__block .editor-post-title__input,
+h1.rich-text.block-editor-rich-text__editable,
+h2.rich-text.block-editor-rich-text__editable,
+#post-title-0,
+table {
+    font-family: 'Flama', sans-serif;
+}
+
+h3.rich-text.block-editor-rich-text__editable,
+h4.rich-text.block-editor-rich-text__editable,
+h5.rich-text.block-editor-rich-text__editable,
+h6.rich-text.block-editor-rich-text__editable,
+.has-medium-font-size,
+.editor-block-list__layout .editor-block-list__block p,
+.rich-text.block-editor-rich-text__editable.wp-block-paragraph,
+.block-editor-block-list__layout.is-root-container,
+ul,
+ol
+{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.block-modal.is-preview {
+
+    .btn {
+        // display: block;
+        color: white;
+        background-color: $color__text-highlight;
+        text-align: center;
+        text-decoration: none;
+        padding: 1em;
+        margin-bottom: 1em;
+    }
+
+    .iw-modal {
+        padding: 1em;
+        background-color: white;
+        background-size: 10px 10px;
+        background-image: repeating-linear-gradient(45deg, rgb(235, 235, 235) 0, rgb(235, 235, 235) 3px, white 0, white 50%);
+
+        &:before {
+            content: "Visible when modal window is open:";
+            display: block;
+            background-color: white;
+            padding: 1em;
+        }
+    }
+
+    .iw-modal-window {
+        background-color: white;
+        padding: 1em;
+    }
+
+    .coblocks-form {
+        color: $color__text-main;
+    }
+
+}

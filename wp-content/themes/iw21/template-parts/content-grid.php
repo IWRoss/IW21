@@ -1,0 +1,20 @@
+<?php
+
+$featured_image_array = get_post_thumbnail_id() ? acf_get_attachment(get_post_thumbnail_id()) : '';
+
+?>
+
+
+<div class="iw-block-post-grid-post fade">
+
+    <?php echo iw21_media_tag($featured_image_array, 'iw-block-post-grid-post-background'); ?>
+
+    <a href="<?php the_permalink(); ?>" class="iw-block-post-grid-post-link">
+
+        <h4 class="iw-block-post-grid-post-title">
+            <?php the_title(); ?>
+        </h4>
+
+    </a>
+
+</div>

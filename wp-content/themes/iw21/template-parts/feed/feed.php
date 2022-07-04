@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * This template part renders a feed before any interaction with infinite scroll
+ */
+
 global $wp;
 
 $page_or_paged = 'paged';
@@ -13,46 +17,51 @@ $paged = get_query_var($page_or_paged) ? get_query_var($page_or_paged) : 1;
 $feed_query = $GLOBALS['wp_query'];
 
 /* Build our query */
-if ( !is_archive()) {
+if (!is_archive() && !is_search()) {
     $feed_query = new WP_Query($args);
 }
 
+$prev_posts_url = sprintf(
+    '%s/?infsc=%d%s',
+    home_url($wp->request),
+    max(1, intval(!empty($_GET['infsc']) ? $_GET['infsc'] : 0) - 5),
+    is_search() ? sprintf('&s=%s', get_search_query()) : ''
+);
+
 ?>
 
-<div class="entry-feed">
-    <?php if (isset($_GET['infsc']) && $_GET['infsc'] > 1) : ?>
+<?php if (isset($_GET['infsc']) && $_GET['infsc'] > 1) : ?>
+    <div class="load-previous-posts">
+        <a href="<?php echo $prev_posts_url; ?>" class="btn">Load more recent posts</a>
+    </div>
+<?php endif; ?>
 
-        <div class="load-previous-posts">
-            <a href="<?php echo home_url($wp->request); ?>/?infsc=<?php echo max(1, intval($_GET['infsc']) - 5); ?>" class="btn">Load more recent posts</a>
-        </div>
+<div id="feed" class="entry-feed feed">
 
-    <?php endif;
+
+    <?php
 
     // The loop
     if ($feed_query->have_posts() && !isset($_GET['infsc'])) : /* Start the loop */  ?>
 
-        <div class="feed" class="masonry-grid" data-chunk="<?php echo $paged; ?>">
-            <div class="masonry-grid-sizer"></div>
-            <div class="masonry-gutter-sizer"></div>
 
-            <?php
+        <?php
 
-            $index = 1;
+        $index = 1;
 
-            while ($feed_query->have_posts()) : $feed_query->the_post();
+        while ($feed_query->have_posts()) : $feed_query->the_post();
 
-                get_template_part('template-parts/feed/feed', 'item', array(
-                    'chunk' => $paged,
-                    'index' => $index
-                ));
-
-            endwhile;
+            get_template_part('template-parts/feed/feed', 'item', array(
+                'chunk' => $paged,
+                'index' => $index
+            ));
 
             $index++;
 
-            ?>
+        endwhile;
 
-        </div>
+        ?>
+
 
 
     <?php endif;

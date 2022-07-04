@@ -77,6 +77,11 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 @import "modules/accessibility";
 
 /*--------------------------------------------------------------
+# Colours
+--------------------------------------------------------------*/
+@import "modules/colors";
+
+/*--------------------------------------------------------------
 # Alignments
 --------------------------------------------------------------*/
 @import "modules/alignments";
@@ -110,3 +115,8 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 # Block Editor
 --------------------------------------------------------------*/
 @import "layout/blocks";
+
+/*--------------------------------------------------------------
+# Reports
+--------------------------------------------------------------*/
+@import "layout/reports";

@@ -59,11 +59,70 @@
             ]
         },
         {
-            "key": "field_6009647d7e141",
-            "label": "Checkboxes",
-            "name": "checkboxes",
+            "key": "field_6013e69acd348",
+            "label": "Custom Names",
+            "name": "custom_names",
             "type": "repeater",
-            "instructions": "If you would like to assign a custom value to a checkbox, you can do that here.",
+            "instructions": "If you would like to assign a custom name to a field, you can do that here.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Add Name",
+            "sub_fields": [
+                {
+                    "key": "field_6013e69acd349",
+                    "label": "CSS Selector",
+                    "name": "css_selector",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_6013e69acd34a",
+                    "label": "Name",
+                    "name": "name",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
+            "key": "field_6009647d7e141",
+            "label": "Custom Values",
+            "name": "custom_values",
+            "type": "repeater",
+            "instructions": "If you would like to assign a custom value to an input, you can do that here.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -116,6 +175,65 @@
                     "maxlength": ""
                 }
             ]
+        },
+        {
+            "key": "field_601d1b1548a28",
+            "label": "Custom Classes",
+            "name": "custom_classes",
+            "type": "repeater",
+            "instructions": "If you would like to assign a custom class to an input, you can do that here.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Add Class",
+            "sub_fields": [
+                {
+                    "key": "field_601d1b1548a29",
+                    "label": "CSS Selector",
+                    "name": "css_selector",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_601d1b1548a2a",
+                    "label": "Class",
+                    "name": "class",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -149,5 +267,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1611228426
+    "modified": 1612520258
 }

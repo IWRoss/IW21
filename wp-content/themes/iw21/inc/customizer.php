@@ -25,6 +25,7 @@ function iw21_customize_register( $wp_customize ) {
 			'render_callback' => 'iw21_customize_partial_blogdescription',
 		) );
 	}
+
 }
 add_action( 'customize_register', 'iw21_customize_register' );
 

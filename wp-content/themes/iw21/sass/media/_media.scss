@@ -7,6 +7,10 @@
 	padding: 0;
 }
 
+.wp-block-image.alignwide {
+	box-shadow: 0 0 0.75em 0.75em white;
+}
+
 /* Make sure embeds and iframes fit their containers. */
 embed,
 iframe,
@@ -50,29 +54,56 @@ object {
 	left: 0;
 }
 
-.wpbr-review__content p {
-	white-space: inherit;
-	overflow: hidden;
-	height: 3em;
-	position: relative;
+.wpbr-review {
+	font-size: 0.875em !important;
 
-	&:after {
-		content: '';
-		position: absolute;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		height: 2em;
-		background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
-		display: block;
+	.wpbr-review__content p {
+		white-space: inherit;
+		overflow: hidden;
+		height: 3em;
+		position: relative;
+
+		&:after {
+			content: '';
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			height: 2em;
+			background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+			display: block;
+		}
+
+		&:hover {
+			height: auto;
+		}
+
+		&:hover:after {
+			display: none;
+		}
 	}
 
-	&:hover {
-		height: auto;
-	}
-
-	&:hover:after {
+	.wpbr-review__timestamp {
 		display: none;
+	}
+
+	.wpbr-review__reviewer-image {
+		flex-basis: 2.5em;
+		width: 2.5em;
+		height: 2.5em;
+	}
+
+}
+
+.swiper-container-horizontal {
+	.swiper-pagination {
+		display: none;
+	}
+}
+
+.home .swiper-container-horizontal {
+	.swiper-pagination {
+		display: block;
 	}
 }
 

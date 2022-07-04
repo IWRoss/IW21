@@ -23,7 +23,7 @@
 	clear: both;
 }
 
-@mixin shadow-hover-extruded( $color__shadow: $color__text-highlight ) {
+@mixin shadow-hover-extruded($color__shadow: $color__text-highlight) {
 	transform: translate(-10px, 10px) !important;
 	box-shadow: 1px -1px 0 $color__shadow,
 		2px -2px 0 $color__shadow,
@@ -38,7 +38,7 @@
 }
 
 // 3D Hover effect
-@mixin shadow-hover( $color__shadow: $color__text-highlight ) {
+@mixin shadow-hover($color__shadow: $color__text-highlight) {
 	transform: translate(0, 0);
 	box-shadow: 0 0 0 $color__shadow,
 		0 0 0 $color__shadow,
@@ -52,7 +52,7 @@
 		0 0 0 $color__shadow;
 
 	&:hover {
-		@include shadow-hover-extruded( $color__shadow );
+		@include shadow-hover-extruded($color__shadow);
 
 		// This is to stop strobing when hovering on the shadows
 		&:before,
@@ -80,12 +80,29 @@
 
 /// Mixin printing a linear-gradient
 @mixin linear-gradient($direction, $color-stops...) {
-  @if is-direction($direction) == false {
-    $color-stops: ($direction, $color-stops);
-    $direction: 180deg;
-  }
+	@if is-direction($direction)==false {
+		$color-stops: ($direction, $color-stops);
+		$direction: 180deg;
+	}
 
-  background: nth(nth($color-stops, 1), 1);
-  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
-  background: linear-gradient($direction, $color-stops);
+	background: nth(nth($color-stops, 1), 1);
+	background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+	background: linear-gradient($direction, $color-stops);
+}
+
+/// Replace `$search` with `$replace` in `$string`
+/// @author Kitty Giraudel
+/// @param {String} $string - Initial string
+/// @param {String} $search - Substring to replace
+/// @param {String} $replace ('') - New value
+/// @return {String} - Updated string
+@function str-replace($string, $search, $replace: '') {
+
+	$index: str-index($string, $search);
+
+	@if $index {
+		@return str-slice($string, 1, $index - 1)+$replace+str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
 }

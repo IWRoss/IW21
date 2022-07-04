@@ -1,0 +1,43 @@
+@import '../../../sass/variables-site/variables-site';
+
+.iw-block-timeline {
+
+    &.is-preview {
+        padding: $size__margin;
+        background-size: 10px 10px;
+        background-image: repeating-linear-gradient(45deg, rgb(245, 245, 245) 0, rgb(245, 245, 245) 3px, white 0, white 50%);
+        overflow-x: scroll;
+
+        .iw-block-timeline-item {
+            padding: $size__margin;
+            background: #EEEEEE;
+            position: relative;
+            margin-bottom: $size__margin;
+            box-shadow: 0 1em 1em rgba(0,0,0,0.3);
+
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                border-bottom: 1em solid #EEEEEE;
+                border-left: 1em solid transparent;
+                border-right: 1em solid transparent;
+                transform: translateX(-50%);
+            }
+        }
+
+        .iw-block-timeline-inner>.block-editor-inner-blocks>.block-editor-block-list__layout {
+            display: flex;
+            width: 250%;
+        }
+
+        [data-type="acf/timeline-item"] {
+            width: 100%;
+            margin-right: $size__margin;
+        }
+
+    }
+
+}

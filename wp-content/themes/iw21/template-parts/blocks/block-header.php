@@ -6,15 +6,10 @@ $banner_image = get_field('banner_image');
 
 ?>
 
-<div class="block-header align<?php echo $block['align']; ?>" style="background-image: url('<?php echo $banner_image['url']; ?>'); background-size: cover;">
+<div id="<?php echo $block['id']; ?>" class="block-header align<?php echo $block['align']; ?>" style="background-image: url('<?php echo $banner_image['url']; ?>'); background-size: cover;">
     <div class="tagline">
         <h1 class="site-tagline">
-            <span class="site-tagline-first-line">
-                i<span class="dynamic-text" data-lines="<?php echo implode(',', $taglines[0]); ?>">nteractive</span><br />
-            </span>
-            <span class="site-tagline-second-line">
-                w<span class="dynamic-text" data-lines="<?php echo implode(',', $taglines[1]); ?>">orkshops</span>
-            </span>
+            <span class="fixed">i</span><span data-swap="<?php echo implode('|', $taglines[0]); ?>">nteractive</span><span class="fixed bold">w</span><span class="bold" data-swap="<?php echo implode('|', $taglines[1]); ?>">orkshops</span>
         </h1>
     </div>
 
@@ -37,3 +32,5 @@ $banner_image = get_field('banner_image');
 
     <?php endif; ?>
 </div>
+
+<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id']); ?>

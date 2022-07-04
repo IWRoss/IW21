@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: Feed Template
- * Template Post Type: page
+ * Template Post Type: page, post
  *
  * The template for displaying all pages
  *

@@ -1,5 +1,18 @@
 p {
 	margin-bottom: 1em;
+	font-size: 1.125em;
+
+	&.has-medium-font-size {
+		font-size: 1.25em !important;
+	}
+}
+
+@media screen and (min-width: $breakpoint-medium) {
+
+	p.has-medium-font-size {
+			font-size: 1.375em !important;
+	}
+
 }
 
 dfn, cite, em, i {

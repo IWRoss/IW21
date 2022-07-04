@@ -5,14 +5,28 @@ $color__background-button: #e6e6e6;
 $color__background-pre: #eee;
 $color__background-ins: #fff9c0;
 
-$color__text-main: #22222A;
-$color__text-highlight: #FF8D00;
+$color-iworange: #FF8D00;
+$color-iwblack: #282727;
+$color-iwteal: #21888F;
+$color-iwgrey: #616264;
+$color-playbookgreen: #64BE5F;
+$color-iwyellow: #FEBD2A;
+$color-iwmagenta: #EC008C;
+$color-teamboosterblue: #2C5E80;
+$color-iwpurple: #683C91;
+$color-iwlightblue: #A6DAE4;
+$color-iwtint: #FAF9F8;
 
-$color__text-screen: #21759b;
-$color__text-input: #666;
+$color__text-main: $color-iwblack;
+$color__text-highlight: $color-iworange;
+$color__text-secondary: $color-iwteal;
+$color__text-lowimportance: $color-iwgrey;
+
+$color__text-screen: $color-iwteal;
+$color__text-input: $color-iwgrey;
 $color__text-input-focus: #111;
 $color__link: $color__text-highlight;
-$color__link-hover: lighten($color__text-highlight, 10%);
+$color__link-hover: $color-iwteal;
 
 $color__border-button: #ccc #ccc #bbb;
 $color__border-button-hover: #ccc #bbb #aaa;

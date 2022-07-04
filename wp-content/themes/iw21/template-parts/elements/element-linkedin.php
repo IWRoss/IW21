@@ -1,4 +1,4 @@
-<div class="linkedin-banner">
+<div class="linkedin-banner alignfull">
 
     <div class="linkedin-banner-inner">
         <h3>Follow the leader</h3>

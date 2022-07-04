@@ -12,8 +12,8 @@
  * Get custom fields
  */
 $fields = array(
-	'headline' 		 => get_field('headline'),
-	'lead' 			 => get_field('lead'),
+	'headline' 		 	 => get_field('headline'),
+	'lead' 			 		 => get_field('lead'),
 	'the_challenge'  => get_field('the_challenge'),
 	'how_we_helped'  => get_field('how_we_helped'),
 	'the_results'    => get_field('the_results'),
@@ -23,14 +23,18 @@ $fields = array(
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<header class="entry-header">
-		<div class="industry-meta">
-			Case Study //
-			<?php echo get_the_term_list($post->ID, 'industry', 'Industry: <ul class="industry-list"><li class="industry">', ',</li><li>', '</li></ul>'); ?>
-		</div>
+	<?php if (!get_field('hide_header')) : ?>
 
-		<?php iw21_render_post_title($fields['headline']); ?>
-	</header><!-- .entry-header -->
+		<header class="entry-header">
+			<div class="industry-meta">
+				Case Study //
+				<?php echo get_the_term_list($post->ID, 'industry', 'Industry: <ul class="industry-list"><li class="industry">', ',</li><li>', '</li></ul>'); ?>
+			</div>
+
+			<?php iw21_render_post_title($fields['headline']); ?>
+		</header><!-- .entry-header -->
+
+	<?php endif; ?>
 
 	<div class="entry-content">
 

@@ -11,14 +11,17 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php iw21_render_post_title(); ?>
-	</header><!-- .entry-header -->
 
-	<?php if (get_post_type() === 'post') : ?>
-		<div class="entry-meta">
-			<?php iw21_posted_on(); ?>
-		</div><!-- .entry-meta -->
+	<?php if (!get_field('hide_header')) : ?>
+		<header class="entry-header">
+			<?php iw21_render_post_title(); ?>
+		</header><!-- .entry-header -->
+
+		<?php if (get_post_type() === 'post') : ?>
+			<div class="entry-meta">
+				<?php iw21_posted_on(); ?>
+			</div><!-- .entry-meta -->
+		<?php endif; ?>
 	<?php endif; ?>
 
 	<div class="entry-content">

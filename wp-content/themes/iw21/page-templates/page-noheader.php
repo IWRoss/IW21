@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: No Header Template
- * Template Post Type: page
+ * Template Post Type: page, work
  * 
  * The template for displaying the Schindler page
  *
@@ -22,7 +22,7 @@ get_header(); ?>
 
 			<?php
 			while ( have_posts() ) : the_post();
-
+				
 				get_template_part( 'template-parts/content', 'blank' );
 
 			endwhile; // End of the loop.

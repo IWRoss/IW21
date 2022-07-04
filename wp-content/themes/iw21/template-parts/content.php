@@ -11,21 +11,30 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php iw21_render_post_title(); ?>
 
-		<?php if ('post' === get_post_type()) : ?>
-			<div class="entry-meta">
-				<?php iw21_posted_on(); ?>
-			</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
+	<?php if (!get_field('hide_header')) : ?>
+		<header class="entry-header">
+			<?php iw21_back_button(); ?>
+
+			<?php iw21_render_post_title(); ?>
+
+			<?php get_field('subtitle') ? printf('<h3 class="entry-subtitle">%s</h3>', get_field('subtitle')) : ''; ?>
+
+			<?php if ('post' === get_post_type()) : ?>
+				<div class="entry-meta">
+					<?php iw21_posted_on(); ?>
+				</div><!-- .entry-meta -->
+			<?php endif; ?>
+		</header><!-- .entry-header -->
+	<?php endif; ?>
+
+	<?php if ('post' === get_post_type()) get_template_part('template-parts/post/element', 'pinned-meta'); ?>
 
 	<div class="entry-content">
 		<?php
 
 		do_action('iw21_before_content');
-		
+
 		the_content(sprintf(
 			wp_kses(
 				/* translators: %s: Name of current post. Only visible to screen readers */
@@ -51,5 +60,7 @@
 
 	<footer class="entry-footer">
 		<?php do_action('iw21_content_footer'); ?>
+
+		<?php iw21_back_button(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

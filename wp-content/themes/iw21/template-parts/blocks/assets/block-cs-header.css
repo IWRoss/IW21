@@ -1,0 +1,119 @@
+.cs-header {
+  position: relative;
+  width: 100%;
+  padding: 4em;
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  background-position: center;
+  background-size: cover;
+  z-index: 1;
+}
+.cs-header:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 0;
+  border-bottom: 2px solid #FF8D00;
+  z-index: 5;
+}
+.cs-header:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+}
+
+.cs-header-inner {
+  max-width: 30em;
+  color: white;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+.cs-header-inner .entry-title {
+  margin: 0.5em 0;
+}
+
+.cs-content {
+  padding: 5em 4em;
+}
+.cs-content p {
+  max-width: 30em;
+  margin: 0 auto 1em;
+}
+
+.iw-block-cs-header {
+  position: relative;
+}
+
+.cs-icon {
+  margin: 0 auto 1em;
+  max-width: 6em;
+}
+
+.cs-header-meta {
+  position: absolute;
+  top: 1.5rem;
+  left: 0;
+  bottom: 0;
+  width: 3rem;
+  overflow: hidden;
+  z-index: 5;
+}
+.cs-header-meta.cs-header-meta-right {
+  left: auto;
+  right: 0;
+}
+
+.cs-header-meta-inner {
+  position: absolute;
+  top: 100vh;
+  left: 1rem;
+  transform: rotate(-90deg);
+  transform-origin: 0 0;
+  height: 1rem;
+  line-height: 1;
+  font-size: 1rem;
+  white-space: nowrap;
+  color: #FF8D00;
+  display: flex;
+  width: 100vh;
+  align-items: center;
+}
+.cs-header-meta-inner:before, .cs-header-meta-inner:after {
+  content: "";
+  border-bottom: 2px solid #FF8D00;
+  height: 1px;
+  vertical-align: 25%;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.cs-header-meta.cs-header-meta-right .cs-header-meta-inner {
+  top: 0;
+  left: 2rem;
+  transform: rotate(90deg);
+}
+
+.cs-header-meta-span {
+  display: inline-block;
+  width: auto;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  font-weight: bold;
+  flex-grow: 0;
+  padding: 0.5rem;
+}

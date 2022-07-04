@@ -1,0 +1,66 @@
+@import '../../../sass/variables-site/variables-site';
+
+.block-modal {
+
+    a {
+        font-family: $font__heading;
+    }
+
+    .btn {
+        display: inline-block;
+        width: auto;
+        padding-left: 2em;
+        padding-right: 2em;
+        font-size: 0.75em;
+    }
+
+    .link {
+        padding-left: 1em;
+        padding-right: 1em;
+        color: currentColor;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.iw-modal {
+    .has-iw-white-color & {
+        color: $color__text-main;
+    }
+}
+
+.is-preview .iw-modal:after {
+    content: attr(id);
+    font-size: 0.75em;
+}
+
+:root [data-type="acf/modal"] {
+    background: none !important;
+}
+
+@media screen and (min-width: $breakpoint-small) {
+    .block-modal {
+
+        .btn {
+            font-size: 1em;
+        }
+
+        .block-modal-button-alignleft {
+            text-align: left;
+        }
+
+        .block-modal-button-alignright {
+            text-align: right;
+        }
+
+        .block-modal-button-align,
+        .block-modal-button-aligncenter {
+            text-align: center;
+        }
+
+    }
+
+}

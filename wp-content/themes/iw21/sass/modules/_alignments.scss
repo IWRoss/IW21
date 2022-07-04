@@ -64,8 +64,17 @@
 
 		.alignfull & {
 			width: 640px * 1.5;
-			max-width: 100%;
 			left: 0;
+		}
+	}
+
+	.alignfull>.wp-block-group__inner-container>.wp-block-group {
+		max-width: 800px;
+		margin: 0 auto;
+
+		&.alignwide,
+		&.alignfull {
+			max-width: 100%;
 		}
 	}
 

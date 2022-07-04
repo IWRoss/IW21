@@ -43,4 +43,19 @@ function iw21_custom_work_column($column, $post_id) {
 
 }
 add_action('manage_posts_custom_column', 'iw21_custom_work_column', 10, 2);
-add_action('manage_pages_custom_column', 'iw21_custom_work_column', 10, 2);
+
+/**
+ * Enqueue supplemental block editor styles.
+ */
+function iw21_block_editor_styles()
+{
+
+    $css_dependencies = array();
+
+    wp_enqueue_style('iw21-fonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i');
+
+    // Enqueue the editor styles.
+    wp_enqueue_style('iw21-block-editor-styles', get_theme_file_uri('/common.css'), $css_dependencies, wp_get_theme()->get('Version'), 'all');
+}
+
+add_action('enqueue_block_editor_assets', 'iw21_block_editor_styles', 1, 1);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Custom infinite scrolling feature
  *
@@ -7,57 +8,47 @@
  * @package Interactive_Workshops_2021
  */
 
-function iw21_get_a_page_of_posts_via_ajax() {
-	
-	$options = $_POST['options'];
-	
-	if (isset($_POST['chunk'])) {
-		$options['offset'] = (intval($_POST['chunk']) - 1) * $_POST['ppp'];
+function iw21_get_a_page_of_posts_via_ajax()
+{
+
+	$postdata = json_decode(str_replace("\\", '', $_POST['body']), true);
+
+	$options = $postdata['options'];
+
+	if (isset($postdata['chunk'])) {
+		$options['offset'] = (intval($postdata['chunk']) - 1) * $postdata['ppp'];
 	}
-	
+
+
 	/* Build our query */
 	$feed_query = new WP_Query($options);
 
-	if ($feed_query->have_posts()) : /* Start the loop */ ?>
+	if ($feed_query->have_posts()) : /* Start the loop */
 
-		<div class="feed" class="masonry-grid" data-chunk="<?php echo intval($_POST['chunk']); ?>">
-			<div class="masonry-grid-sizer"></div><div class="masonry-gutter-sizer"></div>
+		$index = 1;
 
-				<?php
+		while ($feed_query->have_posts()) : $feed_query->the_post();
 
-				$index = 1;
+			$template = 'standard';
 
-				while ($feed_query->have_posts()) : $feed_query->the_post();
+			if (get_page_template_slug()) {
+				$template = iw21_template_nice_name();
+			}
 
-					$template = 'standard';
+			get_template_part('template-parts/feed/feed', 'item', array(
+				'chunk' => $postdata['chunk'],
+				'index' => $index
+			));
 
-					if (get_page_template_slug()) {
-						$template = iw21_template_nice_name();
-					}
+			$index++;
 
-					// get_template_part('template-parts/feed/feed', $template, array(
-					// 	'chunk' => $options['paged'],
-					// 	'index' => $index
-					// ) );
+		endwhile;
 
-					get_template_part('template-parts/feed/feed', 'item', array(
-						'chunk' => $options['paged'],
-						'index' => $index
-					) );
+		wp_reset_postdata();
 
-					$index++;
-
-				endwhile;
-
-				wp_reset_postdata();
-
-				?>
-
-		</div>
-
-	<?php endif;
+	endif;
 
 	die();
 }
-add_action( 'wp_ajax_nopriv_ajax_feed_pagination', 'iw21_get_a_page_of_posts_via_ajax' );
-add_action( 'wp_ajax_ajax_feed_pagination', 'iw21_get_a_page_of_posts_via_ajax' );
+add_action('wp_ajax_nopriv_ajax_feed_pagination', 'iw21_get_a_page_of_posts_via_ajax');
+add_action('wp_ajax_ajax_feed_pagination', 'iw21_get_a_page_of_posts_via_ajax');

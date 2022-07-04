@@ -3,6 +3,7 @@
 .masonry-grid,
 .equal-height-grid {
     transition: opacity 0.2s linear;
+    
 
     /* clearfix */
     &:after {
@@ -10,6 +11,15 @@
         display: block;
         clear: both;
     }
+}
+
+.masonry-grid,
+.feed {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 1em 1em;
+    margin-bottom: 1em;
 }
 
 .masonry-grid-hidden {
@@ -31,8 +41,8 @@
 }
 
 .grid-item {
-    float: left;
-    margin-bottom: $size__gutter * 2;
+    // float: left;
+    // margin-bottom: $size__gutter * 2;
     transition: all 0.2s ease;
     position: relative;
 
@@ -46,53 +56,88 @@
 }
 
 @media all and ( min-width: $breakpoint-xsmall ) {
-    .masonry-grid-sizer,
+    .masonry-grid,
+    .feed {
+        // grid-template-columns: 1fr 1fr 1fr 1fr;
+        // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: stretch;
+    }
+
+    // .masonry-grid-sizer,
     .grid-item {
-        width: $size__col * 2 + $size__gutter;
+        width: 45%;
+        flex-grow: 1;
     }
 
-    .masonry-gutter-sizer {
-        width: $size__gutter;
+    .grid-item--width2 {
+        width: 100%;
+        flex-grow: 2;
+        // min-width: 400px;
+        // grid-column: span 2;
     }
 
-    .grid-item {
-        margin-bottom: $size__gutter;
-    }
+    // .masonry-grid-sizer,
+    // .grid-item {
+    //     width: $size__col * 2 + $size__gutter;
+    // }
 
-    .story {
-        .masonry-grid-sizer,
-        .grid-item {
-            width: $size__col * 2 + $size__gutter;
-        }
+    // .masonry-gutter-sizer {
+    //     width: $size__gutter;
+    // }
 
-        .grid-item--width2,
-        .grid-item--width3,
-        .grid-item--widthall {
-            width: 100%;
-        }
-    }
+    // .grid-item {
+    //     margin-bottom: $size__gutter;
+    // }
+
+    // .story {
+    //     .masonry-grid-sizer,
+    //     .grid-item {
+    //         width: $size__col * 2 + $size__gutter;
+    //     }
+
+    //     .grid-item--width2,
+    //     .grid-item--width3,
+    //     .grid-item--widthall {
+    //         width: 100%;
+    //     }
+    // }
 }
 
 @media all and ( min-width: $breakpoint-medium ) {
-    .masonry-grid-sizer,
+    .masonry-grid,
+    .feed {
+        // grid-template-columns: 1fr 1fr 1fr 1fr;
+        // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: stretch;
+    }
+
+    // .masonry-grid-sizer,
     .grid-item {
-        width: $size__col;
+        width: 20%;
     }
 
-    .grid-item--width2 { width: $size__col * 2 + $size__gutter; }
-    .grid-item--width3 { width: $size__col * 3 + $size__gutter * 2; }
-    .grid-item--widthall { width: 100%; }
-
-    .equal-height-grid {
-        .masonry-grid-sizer,
-        .grid-item {
-            width: 31%;
-        }
-
-        .masonry-gutter-sizer {
-            width: 3.5%;
-        }
+    .grid-item--width2 {
+        width: 50%;
+        // min-width: 400px;
+        // grid-column: span 2;
     }
+    // .grid-item--width3 { width: $size__col * 3 + $size__gutter * 2; }
+    // .grid-item--widthall { width: 100%; }
+
+    // .equal-height-grid {
+    //     .masonry-grid-sizer,
+    //     .grid-item {
+    //         width: 31%;
+    //     }
+
+    //     .masonry-gutter-sizer {
+    //         width: 3.5%;
+    //     }
+    // }
 }
 
 
@@ -178,7 +223,7 @@
         background-color: $color__text-main;
         color: white;
         font-family: $font__heading;
-        font-weight: bold;
+        font-weight: 500;
         font-size: 1.2em;
         overflow: visible;
 
@@ -251,7 +296,7 @@
     @include font-size(1);
     text-align: center;
     font-family: $font__heading;
-    font-weight: bold;
+    font-weight: 500;
     background-color: $color__text-highlight;
     transition: all 0.1s linear;
 
@@ -313,4 +358,8 @@
     > :last-child {
         margin-bottom: 0;
     }
+}
+
+.stretch-columns .wp-block-column {
+    align-items: stretch;
 }

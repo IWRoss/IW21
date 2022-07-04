@@ -1,18 +1,18 @@
 <?php
 
-$logos = get_field( 'logos' );
+$logos = get_field('logos');
 
 ?>
 
-<div class="schindler-block schindler-block-logos align<?php echo $block['align']; ?>">
+<div id="<?php echo $block['id']; ?>" class="schindler-block schindler-block-logos align<?php echo $block['align']; ?>">
 
     <div class="slider-container">
 
         <div id="logo-slider-<?php echo $block['id']; ?>" class="logo-slider">
 
-            <?php foreach ( $logos as $logo ) : ?>
+            <?php foreach ($logos as $logo) : ?>
 
-                <?php printf( '<img src="%s" alt="%s" />', $logo['url'], $logo['alt'] ); ?>
+                <?php printf('<img src="%s" alt="%s" />', $logo['url'], $logo['alt']); ?>
 
             <?php endforeach; ?>
 
@@ -23,19 +23,17 @@ $logos = get_field( 'logos' );
 </div>
 
 <script>
+    (function($) {
 
-    ( function($) {
-
-        $( '#logo-slider-<?php echo $block['id']; ?>' ).slick( {
+        $('#logo-slider-<?php echo $block['id']; ?>').slick({
             infinite: true,
-            slidesToShow: 5,
+            slidesToShow: 6,
             slidesToScroll: 1,
             centerMode: true,
             autoplaySpeed: 1500,
             arrows: false,
             autoplay: true,
-            responsive: [
-                {
+            responsive: [{
                     breakpoint: 768,
                     settings: {
                         centerPadding: '10px'
@@ -54,8 +52,9 @@ $logos = get_field( 'logos' );
                     }
                 }
             ]
-        } );
+        });
 
-    } )( jQuery )
-
+    })(jQuery)
 </script>
+
+<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id']); ?>

@@ -1,0 +1,141 @@
+@import '../../../sass/variables-site/variables-site';
+
+:root [data-type="acf/pin"] {
+    background: none !important;
+}
+
+.iw-block-pin {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1em;
+    z-index: 100;
+    font-size: 0.75em;
+
+    .wp-admin & {
+        position: static;
+    }
+
+    .btn {
+        margin-top: 0;
+        padding: 0.75em 1.25em;
+    }
+}
+
+.iw-block-pin-inner {
+    max-width: 80em;
+    margin: 0 auto;
+    padding-right: 3em;
+    position: relative;
+
+    > :first-child,
+    .wp-block-column> :first-child {
+        margin-top: 0;
+    }
+
+    > :last-child,
+    .wp-block-column> :last-child {
+        margin-bottom: 0;
+    }
+
+    .wp-block-column:nth-of-type(2) {
+        display: none;
+    }
+
+    &.iw-block-pin-inner-has_image {
+
+        > :nth-child(2) {
+            margin-top: 0;
+        }
+    }
+}
+
+.iw-block-pin-image {
+    display: none;
+}
+
+.iw-block-pin-close {
+    width: 2em;
+    height: 2em;
+    border: 0.125em solid currentColor;
+    color: currentColor;
+    position: absolute;
+    right: 1em;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    border-radius: 50%;
+
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 0.125em;
+        width: 1em;
+        background: currentColor;
+    }
+
+    &:before {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &:after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    &:hover {
+        transform: translateY(-50%) scale(1.1);
+        color: currentColor;
+    }
+}
+
+@media screen and (min-width: $breakpoint-small) {
+
+    .iw-block-pin {
+        display: block;
+        padding: 1em 2em;
+    }
+
+    .iw-block-pin-inner {
+
+        .wp-block-column> :first-child {
+            margin-top: 0;
+        }
+
+        .wp-block-column> :last-child {
+            margin-bottom: 0;
+        }
+
+        .wp-block-column:nth-of-type(2) {
+            display: block;
+        }
+    }
+
+    // .iw-block-pin-image {
+    //     display: block;
+    //     position: absolute;
+    //     top: 50%;
+    //     left: 0;
+    //     width: 10em;
+    //     transform: translateY(-50%) rotate(-3deg);
+
+    //     .loaded .iw-block-pin-image {
+    //         animation: popIn 0.75s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s 1;
+    //     }
+    // }
+}
+
+@keyframes popIn {
+    0% {
+        transform: translateY(100%) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(-50%) rotate(-3deg);
+    }
+}
