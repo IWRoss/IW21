@@ -492,7 +492,7 @@ abbr, acronym {
 }
 
 mark, ins {
-  background: #fff9c0;
+  background: none;
   text-decoration: none;
 }
 

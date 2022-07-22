@@ -298,6 +298,15 @@ function iw21_start_session()
 }
 add_action('init', 'iw21_start_session', 1);
 
+/**
+ * 
+ */
+function iw21_mime_types($mimes)
+{
+	$mimes['json'] = 'application/json';
+	return $mimes;
+}
+add_filter('upload_mimes', 'iw21_mime_types');
 
 /**
  * Custom template tags for this theme.
