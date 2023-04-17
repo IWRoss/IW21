@@ -170,7 +170,7 @@ function iw21_scripts()
 	 */
 	wp_enqueue_style('iw21-style', get_stylesheet_uri(), false, filemtime(get_stylesheet_directory() . '/style.css'));
 
-	wp_enqueue_script('iw21-scripts', get_template_directory_uri() . '/js/dist/bundle.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/dist/scripts.min.js'), true);
+	wp_enqueue_script('iw21-scripts', get_template_directory_uri() . '/js/dist/bundle.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/dist/bundle.js'), true);
 
 	/**
 	 * Situational scripts
@@ -186,11 +186,7 @@ function iw21_scripts()
 	/**
 	 * Custom scripts
 	 */
-	if (is_page(get_page_by_title('The A-Z of Human Performance Live Shows'))) {
-		wp_enqueue_script('iw21-signup-form', get_template_directory_uri() . '/js/dist/signup-form.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/dist/signup-form.js'), true);
-	}
-
-	if (is_page('5106')) {
+	if (is_page(get_page_by_title('The A-Z of Human Performance Live Shows')) || is_page('5106')) {
 		wp_enqueue_script('iw21-signup-form', get_template_directory_uri() . '/js/dist/signup-form.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/dist/signup-form.js'), true);
 	}
 
@@ -215,6 +211,10 @@ function iw21_scripts()
 
 	if (has_block('acf/amp-v2')) {
 		wp_enqueue_script('iw21-chartjs', 'https://cdn.jsdelivr.net/npm/chart.js');
+	}
+
+	if (has_block('acf/chat-experience')) {
+		wp_enqueue_script('iw21-chat-experience-block-reveal', get_template_directory_uri() . '/js/dist/reveal.min.js', array(), '');
 	}
 
 	/**

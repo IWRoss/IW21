@@ -4,137 +4,163 @@ body.text-iw-orange .entry-content h3,
 body.text-iw-orange .entry-content h4,
 body.text-iw-orange .entry-content h5,
 body.text-iw-orange .entry-content p {
-  color: #FF8D00;
+	color: #FF8D00;
 }
+
 body.text-iw-teal .entry-content h1,
 body.text-iw-teal .entry-content h2,
 body.text-iw-teal .entry-content h3,
 body.text-iw-teal .entry-content h4,
 body.text-iw-teal .entry-content h5,
 body.text-iw-teal .entry-content p {
-  color: #21888F;
+	color: #21888F;
 }
+
 body.text-iw-black .entry-content h1,
 body.text-iw-black .entry-content h2,
 body.text-iw-black .entry-content h3,
 body.text-iw-black .entry-content h4,
 body.text-iw-black .entry-content h5,
 body.text-iw-black .entry-content p {
-  color: #282727;
+	color: #282727;
 }
+
 body.text-iw-grey .entry-content h1,
 body.text-iw-grey .entry-content h2,
 body.text-iw-grey .entry-content h3,
 body.text-iw-grey .entry-content h4,
 body.text-iw-grey .entry-content h5,
 body.text-iw-grey .entry-content p {
-  color: #616264;
+	color: #616264;
 }
+
 body.text-iw-white .entry-content h1,
 body.text-iw-white .entry-content h2,
 body.text-iw-white .entry-content h3,
 body.text-iw-white .entry-content h4,
 body.text-iw-white .entry-content h5,
 body.text-iw-white .entry-content p {
-  color: #fff;
+	color: #fff;
 }
+
 body.text-iw-yellow .entry-content h1,
 body.text-iw-yellow .entry-content h2,
 body.text-iw-yellow .entry-content h3,
 body.text-iw-yellow .entry-content h4,
 body.text-iw-yellow .entry-content h5,
 body.text-iw-yellow .entry-content p {
-  color: #FEBD2A;
+	color: #FEBD2A;
 }
+
 body.text-playbook-green .entry-content h1,
 body.text-playbook-green .entry-content h2,
 body.text-playbook-green .entry-content h3,
 body.text-playbook-green .entry-content h4,
 body.text-playbook-green .entry-content h5,
 body.text-playbook-green .entry-content p {
-  color: #64BE5F;
+	color: #64BE5F;
 }
+
 body.text-iw-magenta .entry-content h1,
 body.text-iw-magenta .entry-content h2,
 body.text-iw-magenta .entry-content h3,
 body.text-iw-magenta .entry-content h4,
 body.text-iw-magenta .entry-content h5,
 body.text-iw-magenta .entry-content p {
-  color: #EC008C;
+	color: #EC008C;
 }
+
 body.text-iw-blue .entry-content h1,
 body.text-iw-blue .entry-content h2,
 body.text-iw-blue .entry-content h3,
 body.text-iw-blue .entry-content h4,
 body.text-iw-blue .entry-content h5,
 body.text-iw-blue .entry-content p {
-  color: #2C5E80;
+	color: #2C5E80;
 }
+
 body.text-iw-purple .entry-content h1,
 body.text-iw-purple .entry-content h2,
 body.text-iw-purple .entry-content h3,
 body.text-iw-purple .entry-content h4,
 body.text-iw-purple .entry-content h5,
 body.text-iw-purple .entry-content p {
-  color: #683C91;
+	color: #683C91;
 }
+
 body.text-iw-lightblue .entry-content h1,
 body.text-iw-lightblue .entry-content h2,
 body.text-iw-lightblue .entry-content h3,
 body.text-iw-lightblue .entry-content h4,
 body.text-iw-lightblue .entry-content h5,
 body.text-iw-lightblue .entry-content p {
-  color: #A6DAE4;
+	color: #A6DAE4;
 }
+
 body.text-iw-tint .entry-content h1,
 body.text-iw-tint .entry-content h2,
 body.text-iw-tint .entry-content h3,
 body.text-iw-tint .entry-content h4,
 body.text-iw-tint .entry-content h5,
 body.text-iw-tint .entry-content p {
-  color: #FAF9F8;
+	color: #FAF9F8;
 }
+
 body.text-iw-orange .entry-content h1,
 body.text-iw-orange .entry-content h2,
 body.text-iw-orange .entry-content h3,
 body.text-iw-orange .entry-content h4,
 body.text-iw-orange .entry-content h5,
 body.text-iw-orange .entry-content p {
-  color: #FF8D00;
+	color: #FF8D00;
 }
+
 body.bg-iw-orange {
-  background-color: #FF8D00;
+	background-color: #FF8D00;
 }
+
 body.bg-iw-teal {
-  background-color: #21888F;
+	background-color: #21888F;
 }
+
 body.bg-iw-black {
-  background-color: #282727;
+	background-color: #282727;
 }
+
 body.bg-iw-grey {
-  background-color: #616264;
+	background-color: #616264;
 }
+
 body.bg-iw-white {
-  background-color: #fff;
+	background-color: #fff;
 }
+
 body.bg-iw-yellow {
-  background-color: #FEBD2A;
+	background-color: #FEBD2A;
 }
+
 body.bg-playbook-green {
-  background-color: #64BE5F;
+	background-color: #64BE5F;
 }
+
 body.bg-iw-magenta {
-  background-color: #EC008C;
+	background-color: #EC008C;
 }
+
 body.bg-iw-blue {
-  background-color: #2C5E80;
+	background-color: #2C5E80;
 }
+
 body.bg-iw-purple {
-  background-color: #683C91;
+	background-color: #683C91;
 }
+
 body.bg-iw-lightblue {
-  background-color: #A6DAE4;
+	background-color: #A6DAE4;
 }
+
 body.bg-iw-tint {
-  background-color: #FAF9F8;
+	background-color: #FAF9F8;
 }
+
+/*# sourceMappingURL=block-bg.css.map */

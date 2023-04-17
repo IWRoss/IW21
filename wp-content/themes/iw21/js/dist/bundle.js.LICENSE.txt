@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*!
 * reveal.js 4.5.0
 * https://revealjs.com
@@ -9,3 +10,8 @@
 /*! Lity - v2.4.1 - 2020-04-26
 * http://sorgalla.com/lity/
 * Copyright (c) 2015-2020 Jan Sorgalla; Licensed MIT */
+=======
+/*! Lity - v2.2.2 - 2017-07-17
+ * http://sorgalla.com/lity/
+ * Copyright (c) 2015-2017 Jan Sorgalla; Licensed MIT */
+>>>>>>> b867d075f079ce9f98a56262252b52421cc85592

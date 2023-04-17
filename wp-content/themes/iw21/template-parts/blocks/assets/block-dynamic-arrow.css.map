@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "block-dynamic-arrow.css",
+	"sources": [
+		"../../../sass/template-parts/blocks/assets/block-dynamic-arrow.scss"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,oBAAoB,CAAC;CACjB,QAAQ,EAAE,QAAQ;CAClB,SAAS,EAAE,CAAC;CACf;;AAED,AAAA,+BAA+B;AAC/B,+BAA+B,CAAC;CAC5B,QAAQ,EAAE,QAAQ;CACrB"
+}
