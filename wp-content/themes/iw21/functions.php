@@ -170,7 +170,7 @@ function iw21_scripts()
 	 */
 	wp_enqueue_style('iw21-style', get_stylesheet_uri(), false, filemtime(get_stylesheet_directory() . '/style.css'));
 
-	wp_enqueue_script('iw21-scripts', get_template_directory_uri() . '/js/scripts.min.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/scripts.min.js'), true);
+	wp_enqueue_script('iw21-scripts', get_template_directory_uri() . '/js/dist/bundle.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/dist/scripts.min.js'), true);
 
 	/**
 	 * Situational scripts
@@ -187,15 +187,15 @@ function iw21_scripts()
 	 * Custom scripts
 	 */
 	if (is_page(get_page_by_title('The A-Z of Human Performance Live Shows'))) {
-		wp_enqueue_script('iw21-signup-form', get_template_directory_uri() . '/js/signup-form.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/signup-form.js'), true);
+		wp_enqueue_script('iw21-signup-form', get_template_directory_uri() . '/js/dist/signup-form.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/dist/signup-form.js'), true);
 	}
 
 	if (is_page('5106')) {
-		wp_enqueue_script('iw21-signup-form', get_template_directory_uri() . '/js/signup-form.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/signup-form.js'), true);
+		wp_enqueue_script('iw21-signup-form', get_template_directory_uri() . '/js/dist/signup-form.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/dist/signup-form.js'), true);
 	}
 
 	// if ( has_block('acf/modal') ) {
-	// 	wp_enqueue_script('iw21-modal-block', get_template_directory_uri() . '/js/modal-block.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/modal-block.js'), true);
+	// 	wp_enqueue_script('iw21-modal-block', get_template_directory_uri() . '/js/dist/modal-block.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/dist/modal-block.js'), true);
 	// }
 
 	if (
@@ -210,7 +210,7 @@ function iw21_scripts()
 		wp_enqueue_script('iw21-gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js');
 		wp_enqueue_script('iw21-gsap-motionpath', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/MotionPathPlugin.min.js');
 		wp_enqueue_script('iw21-gsap-scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js');
-		wp_enqueue_script('iw21-gsap-drawsvg', get_template_directory_uri() . '/js/DrawSVGPlugin.min.js', array(), '');
+		wp_enqueue_script('iw21-gsap-drawsvg', get_template_directory_uri() . '/js/dist/DrawSVGPlugin.min.js', array(), '');
 	}
 
 	if (has_block('acf/amp-v2')) {
@@ -223,7 +223,7 @@ function iw21_scripts()
 	if (is_page_template('page-templates/page-feed.php') || is_archive() || is_404() || is_search()) {
 		wp_enqueue_script('iw21-gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js');
 		wp_enqueue_script('iw21-gsap-scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js');
-		wp_enqueue_script('iw21-infinite-scroll', get_template_directory_uri() . '/js/infinite-scroll.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/infinite-scroll.js'), true);
+		wp_enqueue_script('iw21-infinite-scroll', get_template_directory_uri() . '/js/dist/infinite-scroll.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/dist/infinite-scroll.js'), true);
 
 		$localizationArgs = array(
 			'ajaxurl' => admin_url('admin-ajax.php'),
@@ -272,7 +272,7 @@ function iw21_block_editor_scripts($hook)
 		return;
 	}
 
-	wp_enqueue_script('iw21-admin', get_template_directory_uri() . '/js/admin.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/admin.js'), true);
+	wp_enqueue_script('iw21-admin', get_template_directory_uri() . '/js/dist/admin.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/dist/admin.js'), true);
 }
 add_action('admin_enqueue_scripts', 'iw21_block_editor_scripts');
 
