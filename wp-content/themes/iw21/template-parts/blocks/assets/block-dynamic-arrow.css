@@ -1,9 +1,11 @@
 .block-dynamic-arrow {
-  position: relative;
-  font-size: 0;
+	position: relative;
+	font-size: 0;
 }
 
 .block-dynamic-arrow-background,
 .block-dynamic-arrow-foreground {
-  position: absolute;
+	position: absolute;
 }
+
+/*# sourceMappingURL=block-dynamic-arrow.css.map */

@@ -1,37 +1,40 @@
 .signup--form-group {
-  margin-bottom: 1em;
+	margin-bottom: 1em;
 }
 
 .signup--form-group.group-has-columns {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  gap: 1em 0em;
-  margin-bottom: 0;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	gap: 1em 0em;
+	margin-bottom: 0;
 }
 
 @media screen and (min-width: 768px) {
-  .signup--form-group.group-has-columns {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 1em 1em;
-    grid-template-areas: ". .";
-  }
+	.signup--form-group.group-has-columns {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr;
+		gap: 1em 1em;
+		grid-template-areas: ". .";
+	}
 }
+
 .signup--form-subgroup {
-  width: 100%;
+	width: 100%;
 }
 
 .signup--checkbox {
-  display: block;
+	display: block;
 }
 
 .signup--form-subgroup .signup--checkbox {
-  display: flex;
-  height: 100%;
-  align-items: center;
+	display: flex;
+	height: 100%;
+	align-items: center;
 }
 
 .has-iw-white-color .signup--form h4 {
-  color: white;
+	color: white;
 }
+
+/*# sourceMappingURL=block-signup-form.css.map */
