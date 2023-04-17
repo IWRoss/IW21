@@ -1,0 +1,14 @@
+{
+	"version": 3,
+	"file": "block-signup-download.css",
+	"sources": [
+		"../../../sass/template-parts/blocks/assets/block-signup-download.scss",
+		"../../../sass/variables-site/_variables-site.scss",
+		"../../../sass/variables-site/_colors.scss",
+		"../../../sass/variables-site/_typography.scss",
+		"../../../sass/variables-site/_structure.scss",
+		"../../../sass/variables-site/_misc.scss"
+	],
+	"names": [],
+	"mappings": "AAEA,AAAA,yBAAyB,CAAC;CACxB,UAAU,EAAE,MAAM;CAwCnB;;AAzCD,AAGE,yBAHuB,CAGvB,SAAS,CAAC;CACR,OAAO,EAAE,IAAI;CACb,gBAAgB,EEUL,OAAO;CFTlB,MAAM,EAAE,KAAK;CACb,OAAO,EAAE,GAAG;CACZ,eAAe,EAAE,aAAa;CAC9B,WAAW,EAAE,MAAM;CAYpB;;AArBH,AAWI,yBAXqB,CAGvB,SAAS,GAQJ,CAAC,CAAC;CACH,MAAM,EAAE,CAAC;CACV;;AAbL,AAeI,yBAfqB,CAGvB,SAAS,CAYP,IAAI,CAAC;CACH,KAAK,EAAE,IAAI;CACX,SAAS,EAAE,CAAC;CACb;;AAlBL,AAuBE,yBAvBuB,CAuBvB,gBAAgB,CAAC;CACf,UAAU,EAAE,IAAI;CAKjB;;AA7BH,AA0BI,yBA1BqB,CAuBvB,gBAAgB,GAGX,CAAC,CAAC;CACH,MAAM,EAAE,CAAC;CACV;;AA5BL,AA+BE,yBA/BuB,CA+BvB,kBAAkB,CAAC;CACjB,SAAS,EAAE,OAAO;CACnB;;AAjCH,AAoCE,yBApCuB,CAoCvB,eAAe,CAAC;CACd,OAAO,EAAE,IAAI;CACb,SAAS,EAAE,MAAM;CACjB,GAAG,EAAE,GAAG;CACT"
+}

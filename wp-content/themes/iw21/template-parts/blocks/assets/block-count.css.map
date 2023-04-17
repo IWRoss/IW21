@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "block-count.css",
+	"sources": [
+		"../../../sass/template-parts/blocks/assets/block-count.scss"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,yBAAyB,CAAC;CACtB,UAAU,EAAE,IAAI;CACnB;;AACD,AAAA,0BAA0B,CAAC;CACvB,UAAU,EAAE,KAAK;CACpB;;AACD,AAAA,2BAA2B,CAAC;CACxB,UAAU,EAAE,MAAM;CACrB;;AACD,AAAA,eAAe,CAAC;CACZ,MAAM,EAAE,QAAQ;CACnB"
+}

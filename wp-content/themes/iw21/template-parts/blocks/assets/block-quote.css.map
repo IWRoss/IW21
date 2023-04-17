@@ -1,0 +1,14 @@
+{
+	"version": 3,
+	"file": "block-quote.css",
+	"sources": [
+		"../../../sass/template-parts/blocks/assets/block-quote.scss",
+		"../../../sass/variables-site/_variables-site.scss",
+		"../../../sass/variables-site/_colors.scss",
+		"../../../sass/variables-site/_typography.scss",
+		"../../../sass/variables-site/_structure.scss",
+		"../../../sass/variables-site/_misc.scss"
+	],
+	"names": [],
+	"mappings": "AAGA,AAAA,eAAe,CAAC;CACZ,WAAW,EGHC,OAAO,EAAE,UAAU;CHgBlC;;AAdD,AAGI,eAHW,AAGV,yBAAyB,CAAC;CACvB,UAAU,EAAE,IAAI;CACnB;;AALL,AAOI,eAPW,AAOV,2BAA2B,CAAC;CACzB,UAAU,EAAE,MAAM;CACrB;;AATL,AAWI,eAXW,AAWV,0BAA0B,CAAC;CACxB,UAAU,EAAE,KAAK;CACpB;;AAGL,AAAA,wBAAwB,CAAC;CACrB,WAAW,EGnBC,OAAO,EAAE,UAAU;CHoB/B,OAAO,EAAE,IAAI;CACb,WAAW,EAAE,MAAM;CACnB,UAAU,EAAE,KAAK;CACjB,SAAS,EAAE,OAAO;CAKrB;;AAHG,AAAA,2BAA2B,CAP/B,wBAAwB,CAOU;CAC1B,OAAO,EAAE,KAAK;CACjB;;AAGL,AAAA,yBAAyB,CAAC;CACtB,OAAO,EAAE,KAAK;CACd,KAAK,EAAE,GAAG;CACV,SAAS,EAAE,CAAC;CACZ,YAAY,EAAE,KAAK;CACnB,aAAa,EAAE,GAAG;CAClB,gBAAgB,EEpCO,OAAO;CFyCjC;;AAHG,AAAA,2BAA2B,CAR/B,yBAAyB,CAQS;CAC1B,MAAM,EAAE,UAAU;CACrB"
+}

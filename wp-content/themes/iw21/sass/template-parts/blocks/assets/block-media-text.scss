@@ -1,0 +1,207 @@
+@import '../../../variables-site/variables-site';
+
+.block-media-text {
+    position: relative;
+    padding: $size__margin;
+    overflow: hidden;
+
+}
+
+.block-media-text-media {
+    margin-bottom: $size__margin;
+
+    >.block-media-text-media-element {
+        width: 100%;
+    }
+}
+
+.block-media-text-text {
+    max-width: 40em;
+    margin: 0 auto;
+}
+
+.block-media-text-inner-alignleft {
+
+    &.block-media-text-style-shards .block-media-text-media {
+        clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 10% 70%);
+    }
+
+    &.block-media-text-style-shards-b .block-media-text-media {
+        clip-path: polygon(100% 19%, 20% 0%, 0% 100%, 100% 60%);
+    }
+
+    &.block-media-text-style-shards-c .block-media-text-media {
+        clip-path: polygon(20% 0%, 96% 22%, 67% 71%, 0% 100%);
+    }
+
+    &.block-media-text-style-shards-d .block-media-text-media {
+        clip-path: polygon(100% 0%, 30% 0%, 0% 100%, 100% 100%);
+    }
+
+    &.block-media-text-style-shards-e .block-media-text-media {
+        clip-path: polygon(100% 0%, 10% 15%, 0% 60%, 100% 100%);
+    }
+
+    &.block-media-text-style-shards-f .block-media-text-media {
+        clip-path: polygon(20% 0%, 96% 22%, 100% 80%, 0% 100%);
+    }
+
+    &.block-media-text-style-shards-g .block-media-text-media {
+        clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+    }
+
+    &.block-media-text-style-shards-h .block-media-text-media {
+        clip-path: polygon(0 0, 100% 16%, 75% 100%, 10% 81%);
+    }
+
+    &[class*="block-media-text-style-shards"] .shards {
+        clip-path: polygon(5% 20%, 50% 0%, 100% 93%, 30% 90%, 20% 50%);
+    }
+}
+
+.block-media-text-inner-alignright {
+
+    &.block-media-text-style-shards .block-media-text-media {
+        clip-path: polygon(80% 0%, 0% 0%, 0% 100%, 90% 70%);
+    }
+
+    &.block-media-text-style-shards-b .block-media-text-media {
+        clip-path: polygon(0% 19%, 80% 0%, 100% 100%, 0% 60%);
+    }
+
+    &.block-media-text-style-shards-c .block-media-text-media {
+        clip-path: polygon(80% 0%, 4% 22%, 33% 71%, 100% 100%);
+    }
+
+    &.block-media-text-style-shards-d .block-media-text-media {
+        clip-path: polygon(0% 0%, 70% 0%, 100% 100%, 0% 100%);
+    }
+
+    &.block-media-text-style-shards-e .block-media-text-media {
+        clip-path: polygon(0% 0%, 90% 15%, 100% 60%, 0% 100%);
+    }
+
+    &.block-media-text-style-shards-f .block-media-text-media {
+        clip-path: polygon(80% 0%, 4% 22%, 0% 80%, 100% 100%);
+    }
+
+    &.block-media-text-style-shards-g .block-media-text-media {
+        clip-path: polygon(75% 0%, 0% 0%, 25% 100%, 100% 100%);
+    }
+
+    &.block-media-text-style-shards-h .block-media-text-media {
+        clip-path: polygon(100% 0, 0% 16%, 25% 100%, 90% 81%);
+    }
+
+
+    &[class*="block-media-text-style-shards"] .shards {
+        clip-path: polygon(95% 20%, 50% 0%, 0% 93%, 70% 90%);
+    }
+
+}
+
+
+@media screen and (min-width: $breakpoint-medium) {
+
+    .block-media-text-media {
+        height: auto;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin-bottom: 0;
+
+        >.block-media-text-media-element {
+            object-fit: cover;
+            object-position: 50% 50%;
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            transform: scale(1.1);
+            transition: transform 2s cubic-bezier(.17, .67, .09, .98);
+        }
+
+    }
+
+    .block-media-text.visible .block-media-text-media>.block-media-text-media-element {
+        transform: scale(1);
+    }
+
+    .block-media-text-text {
+        max-width: 72em;
+    }
+
+    .shards {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin-bottom: 0;
+        z-index: -1;
+    }
+
+    .block-media-text-inner-alignleft {
+
+        .block-media-text-media,
+        .shards {
+            left: 50%;
+            right: 0;
+        }
+
+        .block-media-text-innerblocks {
+            padding-right: calc(50% + #{$size__margin});
+        }
+    }
+
+    .block-media-text-inner-alignright {
+
+        .block-media-text-media,
+        .shards {
+            left: 0;
+            right: 50%;
+        }
+
+        .block-media-text-innerblocks {
+            padding-left: calc(50% + #{$size__margin});
+        }
+    }
+
+}
+
+@keyframes blockMediaTextStyleShardsLeft {
+    0% {
+        transform: translate(0%, 0%) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(-1%, 0%) rotate(-2deg);
+    }
+
+    50% {
+        transform: translate(-1%, -1%) rotate(0deg);
+    }
+
+    75% {
+        transform: translate(0%, -1%) rotate(-2deg);
+    }
+}
+
+@keyframes blockMediaTextStyleShardsRight {
+    0% {
+        transform: translate(0%, 0%) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(1%, 0%) rotate(2deg);
+    }
+
+    50% {
+        transform: translate(1%, 1%) rotate(0deg);
+    }
+
+    75% {
+        transform: translate(0%, 1%) rotate(2deg);
+    }
+}
+
+[data-type="acf/media-text"] {
+    background: none !important;
+}

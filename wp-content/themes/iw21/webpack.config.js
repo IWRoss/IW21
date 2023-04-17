@@ -33,6 +33,9 @@ const config = {
       },
     ],
   },
+  externals: {
+    jquery: "jQuery",
+  },
 };
 
 // Export the config object.

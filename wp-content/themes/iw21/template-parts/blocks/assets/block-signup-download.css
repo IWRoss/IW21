@@ -1,32 +1,41 @@
 .iw-block-signup-download {
-  text-align: center;
+	text-align: center;
 }
+
 .iw-block-signup-download .download {
-  display: flex;
-  background-color: #FAF9F8;
-  margin: 1em 0;
-  padding: 1em;
-  justify-content: space-between;
-  align-items: center;
+	display: flex;
+	background-color: #FAF9F8;
+	margin: 1em 0;
+	padding: 1em;
+	justify-content: space-between;
+	align-items: center;
 }
+
 .iw-block-signup-download .download > * {
-  margin: 0;
+	margin: 0;
 }
+
 .iw-block-signup-download .download .btn {
-  width: auto;
-  flex-grow: 0;
+	width: auto;
+	flex-grow: 0;
 }
+
 .iw-block-signup-download .download-header {
-  text-align: left;
+	text-align: left;
 }
+
 .iw-block-signup-download .download-header > * {
-  margin: 0;
+	margin: 0;
 }
+
 .iw-block-signup-download .download-metadata {
-  font-size: 0.875em;
+	font-size: 0.875em;
 }
+
 .iw-block-signup-download .download-links {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 1em;
+	display: flex;
+	flex-wrap: nowrap;
+	gap: 1em;
 }
+
+/*# sourceMappingURL=block-signup-download.css.map */
