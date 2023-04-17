@@ -217,10 +217,6 @@ function iw21_scripts()
 		wp_enqueue_script('iw21-chartjs', 'https://cdn.jsdelivr.net/npm/chart.js');
 	}
 
-	if (has_block('acf/chat-experience')) {
-		wp_enqueue_script('iw21-chat-experience-block-reveal', get_template_directory_uri() . '/js/reveal.min.js', array(), '');
-	}
-
 	/**
 	 * Infinite scroll scripts
 	 */

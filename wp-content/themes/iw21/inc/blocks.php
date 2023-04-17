@@ -781,7 +781,6 @@ function iw21_add_chat_experience_block()
             'description'       => __('A custom block for a work story'),
             'render_template'   => 'template-parts/blocks/block-chat-experience.php',
             'enqueue_assets'     => function () {
-                wp_enqueue_script('iw21-chat-experience-block', get_template_directory_uri() . '/template-parts/blocks/assets/block-chat-experience.js', array(), false, true);
                 wp_enqueue_style('iw21-chat-experience-block', get_template_directory_uri() . '/template-parts/blocks/assets/block-chat-experience.css');
             },
             'category'          => 'iw-blocks',
