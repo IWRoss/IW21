@@ -288,6 +288,25 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_631f33e31c140",
+            "label": "Enable waiting list",
+            "name": "waiting_list",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Enable waiting list in case event is oversubscribed",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6079919805ba4",
             "label": "Copper Integration",
             "name": "add_leads_to_copper",
@@ -324,6 +343,44 @@
             "ui": 1,
             "ui_on_text": "Yes",
             "ui_off_text": "No"
+        },
+        {
+            "key": "field_63316f89af475",
+            "label": "Show on Slack",
+            "name": "show_on_slack",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "Show this event on Events Hub on Slack",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No"
+        },
+        {
+            "key": "field_63205c6958064",
+            "label": "Restrict signups to domain",
+            "name": "email_domain",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_608a911f7faa7",
@@ -417,5 +474,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1643279234
+    "modified": 1664185358
 }

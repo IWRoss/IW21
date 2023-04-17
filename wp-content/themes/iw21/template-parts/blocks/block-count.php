@@ -2,21 +2,19 @@
 
 [$classes, $styles] = iw21_block_styles($block);
 
+vprintf('<%s id="%s" class="iw-block iw-block-count iw-block-count-align%s %s" style="%s">%s<span class="count-up">%s</span>%s</%s>', array(
+    get_field('heading') ?: 'h1',
+    $block['id'],
+    $block['align_text'],
+    implode(' ', $classes),
+    implode(' ', $styles),
+    get_field('prefix') ? sprintf('<span class="prefix">%s</span>', get_field('prefix')) : '',
+    get_field('count'),
+    get_field('suffix') ? sprintf('<span class="suffix">%s</span>', get_field('suffix')) : '',
+    get_field('heading') ?: 'h1',
+));
+
 ?>
-
-
-<h1 id="<?php echo $block['id']; ?>" class="iw-block iw-block-count iw-block-count-align<?php echo $block['align_text']; ?> <?php echo implode(' ', $classes); ?>" style="<?php echo implode(' ', $styles); ?>">
-    <?php
-
-    printf(
-        '%s<span class="count-up">%s</span>%s',
-        get_field('prefix'),
-        get_field('count'),
-        get_field('suffix'),
-    );
-
-    ?>
-</h1>
 
 <script>
     ScrollTrigger.create({

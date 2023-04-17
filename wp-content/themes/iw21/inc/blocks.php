@@ -468,6 +468,23 @@ function iw21_add_custom_blocks()
             )
         ));
 
+        // Register block for shards
+        acf_register_block_type(array(
+            'name'              => 'shard',
+            'title'             => __('Shard'),
+            'description'       => __('Descriptive Text'),
+            'render_template'   => 'template-parts/blocks/block-shard.php',
+            'category'          => 'iw-blocks',
+            'enqueue_style'     => get_template_directory_uri() . '/template-parts/blocks/assets/block-shard.css',
+            'icon'              => array(
+                'background' => '#ff8d00',
+                'foreground' => '#ffffff',
+                'src'        => 'play',
+            ),
+            'mode'              => 'preview',
+        ));
+
+
         // Register block for gradient text
         acf_register_block_type(array(
             'name'              => 'pin',
@@ -511,6 +528,29 @@ function iw21_add_custom_blocks()
                 'align' => false,
                 'color' => array(
                     'text'      => true
+                ),
+                'mode' => false,
+            )
+        ));
+
+        // Register block for the team page
+        acf_register_block_type(array(
+            'name'              => 'team',
+            'title'             => __('Team Members'),
+            'description'       => __('Descriptive Text'),
+            'render_template'   => 'template-parts/blocks/block-team.php',
+            'category'          => 'iw-blocks',
+            'enqueue_style'     => get_template_directory_uri() . '/template-parts/blocks/assets/block-team.css',
+            'icon'              => array(
+                'background' => '#ff8d00',
+                'foreground' => '#ffffff',
+                'src'        => 'groups',
+            ),
+            'mode'              => 'preview',
+            'align'             => 'full',
+            'supports'          => array(
+                'color' => array(
+                    'gradients'      => true
                 ),
                 'mode' => false,
             )

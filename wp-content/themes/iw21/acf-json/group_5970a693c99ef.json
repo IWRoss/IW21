@@ -6,6 +6,7 @@
             "key": "field_620d1ed93d56f",
             "label": "Subtitle",
             "name": "subtitle",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -25,6 +26,7 @@
             "key": "field_5970a70293a35",
             "label": "Company",
             "name": "company",
+            "aria-label": "",
             "type": "text",
             "instructions": "If this post has a company tied to it, enter the company here to display it next to the title.\r\n <strong>Note:<\/strong> This will not appear in the title on posts with Event or Insight templates.",
             "required": 0,
@@ -44,6 +46,7 @@
             "key": "field_5970b198eab65",
             "label": "Span",
             "name": "span",
+            "aria-label": "",
             "type": "select",
             "instructions": "If you'd like this post to span multiple columns in the feed to increase its prominence, you can set this here.",
             "required": 0,
@@ -70,6 +73,7 @@
             "key": "field_606f10266a96e",
             "label": "Hide Header",
             "name": "hide_header",
+            "aria-label": "",
             "type": "true_false",
             "instructions": "",
             "required": 0,
@@ -100,10 +104,17 @@
                 "operator": "==",
                 "value": "post"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
         ]
     ],
     "menu_order": 0,
-    "position": "side",
+    "position": "normal",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "field",
@@ -111,5 +122,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1645027048
+    "modified": 1674205524
 }

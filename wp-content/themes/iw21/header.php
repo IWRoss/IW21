@@ -67,7 +67,7 @@
 										<tspan x="0" y="0">LONDON </tspan>
 									</a>
 									<tspan x="61.5" y="0">|</tspan>
-									<a xlink:href="https://interactiveworkshops.com/new-york-new-york/" target="_blank" class="site-logo-sub-link">
+									<a xlink:href="https://interactiveworkshops.com/interactive-workshops-growing-fast-in-new-york/" target="_blank" class="site-logo-sub-link">
 										<tspan x="72.2" y="0"> NEW YORK</tspan>
 									</a>
 								</text>

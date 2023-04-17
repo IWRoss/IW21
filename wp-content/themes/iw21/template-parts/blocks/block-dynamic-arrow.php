@@ -116,13 +116,12 @@ $block_unique_id = uniqid();
 
 $block_content = get_field(get_field('variant'));
 
-
 /**
  * If height dynamically set, perform adjustments
  */
-$arrow_type['height'] = $block_content['height'] ?: $arrow_type['height'];
+$arrow_type['height'] = $block_content['height'] ?? $arrow_type['height'];
 
-$arrow_type['path'] = $arrow_type['path'] ?: $block_content['path'];
+$arrow_type['path'] = $arrow_type['path'] ?? $block_content['path'];
 
 $arrow_type['path'] = $block_content['height']
     ? vsprintf($arrow_type['path'], [$block_content['height']])
@@ -167,7 +166,7 @@ if ($block_content['height'] && !empty($arrow_type['image']['background'])) {
          * Background: Image Element
          */
         if (!empty($arrow_type['image']['background'])) : ?>
-            <image <?php echo $arrow_type['image']['mask'] ? 'clip-path="url(#mask_' . $block_unique_id . ')"' : ''; ?> width="<?php echo $arrow_type['image']['background']['width']; ?>" height="<?php echo $arrow_type['image']['background']['height']; ?>" x="<?php echo $arrow_type['image']['background']['x']; ?>" y="<?php echo $arrow_type['image']['background']['y']; ?>" preserveAspectRatio="xMidYMid slice" xlink:href="<?php echo $block_content['background']; ?>" />
+            <image <?php echo ($arrow_type['image']['mask'] ?? false) ? 'clip-path="url(#mask_' . $block_unique_id . ')"' : ''; ?> width="<?php echo $arrow_type['image']['background']['width']; ?>" height="<?php echo $arrow_type['image']['background']['height']; ?>" x="<?php echo $arrow_type['image']['background']['x']; ?>" y="<?php echo $arrow_type['image']['background']['y']; ?>" preserveAspectRatio="xMidYMid slice" xlink:href="<?php echo $block_content['background']; ?>" />
         <?php
         endif;
 
@@ -214,7 +213,7 @@ if ($block_content['height'] && !empty($arrow_type['image']['background'])) {
          * Foreground: Image Element
          */
         if (!empty($arrow_type['image']['foreground'])) : ?>
-            <image <?php echo $arrow_type['image']['mask'] ? 'clip-path="url(#mask_' . $block_unique_id . ')"' : ''; ?> width="<?php echo $arrow_type['image']['foreground']['width']; ?>" height="<?php echo $arrow_type['image']['foreground']['height']; ?>" x="<?php echo $arrow_type['image']['foreground']['x']; ?>" y="<?php echo $arrow_type['image']['foreground']['y']; ?>" preserveAspectRatio="xMidYMid slice" xlink:href="<?php echo $block_content['foreground']; ?>" />
+            <image <?php echo ($arrow_type['image']['mask'] ?? false) ? 'clip-path="url(#mask_' . $block_unique_id . ')"' : ''; ?> width="<?php echo $arrow_type['image']['foreground']['width']; ?>" height="<?php echo $arrow_type['image']['foreground']['height']; ?>" x="<?php echo $arrow_type['image']['foreground']['x']; ?>" y="<?php echo $arrow_type['image']['foreground']['y']; ?>" preserveAspectRatio="xMidYMid slice" xlink:href="<?php echo $block_content['foreground']; ?>" />
         <?php
         endif;
 

@@ -11,6 +11,10 @@
   var $root = $("html, body");
 
   $("a[href*=#]").click(function (e) {
+    if (this.href.indexOf(location.hostname) === -1) {
+      return;
+    }
+
     e.preventDefault();
 
     if (!$.attr(this, "rel")) {

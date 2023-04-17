@@ -30,6 +30,18 @@ $slides = [
         "action" => "down",
       ],
     ],
+    "incorrect" => [
+      "content" => [
+        [
+          "type" => "h3",
+          "text" => "We did something different",
+        ],
+        [
+          "type" => "p",
+          "text" => "When a client comes to us with what seems like an impossible ask, it’s our job to work out what it would take to make it a reality. We never turn down a project without having had a discussion with the client first.",
+        ]
+      ],
+    ]
   ],
   [
     "text" => [
@@ -56,6 +68,18 @@ $slides = [
         "action" => "right",
       ],
     ],
+    "incorrect" => [
+      "content" => [
+        [
+          "type" => "h3",
+          "text" => "We did something different",
+        ],
+        [
+          "type" => "p",
+          "text" => "In any project, there’s always something that can be done before the parameters are set in stone. The client expressed the need for speed. We knew we could make a minimum viable product (MVP) and build upon those foundations.",
+        ]
+      ],
+    ]
   ],
   [
     "text" => [
@@ -90,6 +114,18 @@ $slides = [
         "action" => "right",
       ],
     ],
+    "incorrect" => [
+      "content" => [
+        [
+          "type" => "h3",
+          "text" => "We did something different",
+        ],
+        [
+          "type" => "p",
+          "text" => "The last thing a busy person wants is to sit through an unnecessarily granular workshop. We want our participants to feel that we value their time. One of the ways we can achieve that is by not taking up too much of it.",
+        ]
+      ],
+    ]
   ],
 ];
 
@@ -99,7 +135,7 @@ $slides = [
 <div class="block-chat-experience alignfull">
   <div class="reveal block-chat-experience-reveal">
     <div class="slides">
-      <?php foreach ($slides as $slide) : ?>
+      <?php foreach ($slides as $key => $slide) : ?>
         <section>
           <section>
             <div class="block-chat">
@@ -108,11 +144,20 @@ $slides = [
               </div>
             </div>
           </section>
-          <section>Vertical Slide 2</section>
+          <section>
+            <div class="slide-content">
+              <?php foreach ($slide['incorrect']['content'] as $content) : ?>
+                <?php printf('<%s>%s</%s>', $content['type'], $content['text'], $content['type']); ?>
+              <?php endforeach; ?>
+              <button class="btn next-button">See what we did next</button>
+            </div>
+          </section>
         </section>
       <?php endforeach; ?>
       <section>
-        <h1>Done</h1>
+        <div class="slide-content">
+          <h2>That’s it!</h2>
+        </div>
       </section>
     </div>
 

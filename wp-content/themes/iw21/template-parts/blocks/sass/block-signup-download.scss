@@ -35,4 +35,10 @@
     font-size: 0.875em;
   }
 
+
+  .download-links {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1em;
+  }
 }

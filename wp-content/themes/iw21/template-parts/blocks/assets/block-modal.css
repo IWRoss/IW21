@@ -42,7 +42,7 @@
     text-align: right;
   }
   .block-modal .block-modal-button-align,
-.block-modal .block-modal-button-aligncenter {
+  .block-modal .block-modal-button-aligncenter {
     text-align: center;
   }
 }

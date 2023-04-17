@@ -89,15 +89,12 @@
     transform: scale(1.1);
     transition: transform 2s cubic-bezier(0.17, 0.67, 0.09, 0.98);
   }
-
   .block-media-text.visible .block-media-text-media > .block-media-text-media-element {
     transform: scale(1);
   }
-
   .block-media-text-text {
     max-width: 72em;
   }
-
   .shards {
     position: absolute;
     top: 0;
@@ -105,18 +102,16 @@
     margin-bottom: 0;
     z-index: -1;
   }
-
   .block-media-text-inner-alignleft .block-media-text-media,
-.block-media-text-inner-alignleft .shards {
+  .block-media-text-inner-alignleft .shards {
     left: 50%;
     right: 0;
   }
   .block-media-text-inner-alignleft .block-media-text-innerblocks {
     padding-right: calc(50% + 40px);
   }
-
   .block-media-text-inner-alignright .block-media-text-media,
-.block-media-text-inner-alignright .shards {
+  .block-media-text-inner-alignright .shards {
     left: 0;
     right: 50%;
   }

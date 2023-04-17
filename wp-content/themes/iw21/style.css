@@ -302,11 +302,11 @@ textarea {
 
 @media all and (min-width: 1280px) {
   body,
-button,
-input,
-select,
-optgroup,
-textarea {
+  button,
+  input,
+  select,
+  optgroup,
+  textarea {
     font-size: 18px;
     font-size: 1.125rem;
   }
@@ -367,19 +367,15 @@ h5 {
   h1 {
     font-size: 3em;
   }
-
   h2 {
     font-size: 2.25em;
   }
-
   h3 {
     font-size: 1.875em;
   }
-
   h4 {
     font-size: 1.5em;
   }
-
   h5 {
     font-size: 1.25em;
   }
@@ -388,7 +384,6 @@ h5 {
   h1 {
     font-size: 4em;
   }
-
   h2 {
     font-size: 2.5em;
   }
@@ -397,11 +392,9 @@ h5 {
   h1.short-title {
     font-size: 5em;
   }
-
   h1.site-tagline {
     font-size: 7.5vw;
   }
-
   h2 {
     font-size: 3em;
   }
@@ -509,14 +502,12 @@ html {
 
 *,
 *:before,
-*:after {
-  /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+*:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
   box-sizing: inherit;
 }
 
 body {
-  background: #fff;
-  /* Fallback for when there is no custom background color defined. */
+  background: #fff; /* Fallback for when there is no custom background color defined. */
 }
 
 blockquote {
@@ -609,10 +600,8 @@ ol {
 }
 .entry-content ol > li:before,
 .entry-path ol > li:before {
-  content: counter(li);
-  /* Use the counter as content */
-  counter-increment: li;
-  /* Increment the counter by 1 */
+  content: counter(li); /* Use the counter as content */
+  counter-increment: li; /* Increment the counter by 1 */
   /* Position and style the number */
   position: absolute;
   top: -4px;
@@ -662,15 +651,12 @@ dd {
   }
 }
 img {
-  height: auto;
-  /* Make sure images are scaled correctly. */
-  max-width: 100%;
-  /* Adhere to container width. */
+  height: auto; /* Make sure images are scaled correctly. */
+  max-width: 100%; /* Adhere to container width. */
 }
 
 figure {
-  margin: 1em 0;
-  /* Extra wide images within figure tags don't overflow the content area. */
+  margin: 1em 0; /* Extra wide images within figure tags don't overflow the content area. */
 }
 
 table {
@@ -1591,7 +1577,6 @@ a:hover, a:active {
   .experiment-megamenu .site-logo {
     z-index: 101;
   }
-
   .main-navigation {
     position: relative;
     z-index: 1;
@@ -1815,7 +1800,7 @@ a:hover, a:active {
     background-size: 3em;
   }
   .main-navigation .menu-featured-section .menu-featured-item-title,
-.main-navigation .menu-featured-section .menu-featured-item-meta {
+  .main-navigation .menu-featured-section .menu-featured-item-meta {
     display: inline;
     text-transform: uppercase;
     padding: 0.25em 0.4em 0.3em;
@@ -1842,7 +1827,6 @@ a:hover, a:active {
     opacity: 1;
     transform: translateY(0);
   }
-
   .has-hero-image .main-navigation:not(.we-have-scrolled) .nav-menu .menu-link {
     color: white;
   }
@@ -1935,11 +1919,11 @@ a:hover, a:active {
 
 @media screen and (min-width: 1024px) {
   .comment-navigation .nav-next a,
-.comment-navigation .nav-previous a,
-.posts-navigation .nav-next a,
-.posts-navigation .nav-previous a,
-.post-navigation .nav-next a,
-.post-navigation .nav-previous a {
+  .comment-navigation .nav-previous a,
+  .posts-navigation .nav-next a,
+  .posts-navigation .nav-previous a,
+  .post-navigation .nav-next a,
+  .post-navigation .nav-previous a {
     padding: 0.5em 1em;
   }
 }
@@ -2317,8 +2301,7 @@ a:hover, a:active {
   height: 1px;
   width: 1px;
   overflow: hidden;
-  word-wrap: normal !important;
-  /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+  word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
 }
 .screen-reader-text:focus {
   background-color: #f1f1f1;
@@ -2337,8 +2320,7 @@ a:hover, a:active {
   text-decoration: none;
   top: 5px;
   width: auto;
-  z-index: 100000;
-  /* Above WP toolbar. */
+  z-index: 100000; /* Above WP toolbar. */
 }
 
 /* Do not show the outline on the skip link target. */
@@ -2489,7 +2471,6 @@ a:hover, a:active {
     width: 960px;
     left: 0;
   }
-
   .alignfull > .wp-block-group__inner-container > .wp-block-group {
     max-width: 800px;
     margin: 0 auto;
@@ -2628,18 +2609,16 @@ a:hover, a:active {
     opacity: 0;
     transform: translateY(-100%);
   }
-
   .site-header:hover .we-have-scrolled .site-logo {
     opacity: 1;
     transform: translateY(0);
   }
-
   .has-hero-image .we-have-scrolled .site-logo:hover svg polygon,
-.no-header .we-have-scrolled .site-logo:hover svg polygon {
+  .no-header .we-have-scrolled .site-logo:hover svg polygon {
     stroke: #282727;
   }
   .has-hero-image .we-have-scrolled .site-logo:hover svg text,
-.no-header .we-have-scrolled .site-logo:hover svg text {
+  .no-header .we-have-scrolled .site-logo:hover svg text {
     fill: #282727;
   }
 }
@@ -2664,7 +2643,7 @@ a:hover, a:active {
     max-width: 290px;
   }
   .site-logo .site-logo-text,
-.site-logo .site-logo-tagline-long {
+  .site-logo .site-logo-tagline-long {
     opacity: 1;
   }
   .site-logo .site-logo-tagline-short {
@@ -2801,32 +2780,29 @@ a:hover, a:active {
   .call-to-action .btn {
     padding: 0.5em 2em;
   }
-
   .call-to-action--single,
-.call-to-action--more,
-.call-to-action--contact {
+  .call-to-action--more,
+  .call-to-action--contact {
     padding: 80px 40px;
   }
-
   .call-to-action--more,
-.call-to-action--contact {
+  .call-to-action--contact {
     width: 50%;
     float: left;
   }
 }
 @media screen and (min-width: 1024px) {
   .call-to-action--single,
-.call-to-action--more,
-.call-to-action--contact {
+  .call-to-action--more,
+  .call-to-action--contact {
     padding: 120px 40px;
   }
-
   .call-to-action:hover .call-to-action--more,
-.call-to-action:hover .call-to-action--contact {
+  .call-to-action:hover .call-to-action--contact {
     width: 43%;
   }
   .call-to-action:hover .call-to-action--more:hover,
-.call-to-action:hover .call-to-action--contact:hover {
+  .call-to-action:hover .call-to-action--contact:hover {
     width: 57%;
   }
 }
@@ -3063,15 +3039,14 @@ a:hover, a:active {
 
 @media all and (min-width: 768px) {
   .archive-description,
-.page-template-page-home .entry-content,
-.post-template-path .entry-content,
-.work-template-path .entry-content,
-.page-template-page-feed .entry-header,
-.post-template-path .entry-header,
-.work-template-path .entry-header {
+  .page-template-page-home .entry-content,
+  .post-template-path .entry-content,
+  .work-template-path .entry-content,
+  .page-template-page-feed .entry-header,
+  .post-template-path .entry-header,
+  .work-template-path .entry-header {
     width: 50%;
   }
-
   .error-404 {
     margin: 0 auto 2em;
   }
@@ -3986,17 +3961,15 @@ a:hover, a:active {
 
 @media all and (min-width: 512px) {
   .masonry-grid,
-.feed {
+  .feed {
     display: flex;
     flex-wrap: wrap;
     justify-content: stretch;
   }
-
   .grid-item {
     width: 45%;
     flex-grow: 1;
   }
-
   .grid-item--width2 {
     width: 100%;
     flex-grow: 2;
@@ -4004,16 +3977,14 @@ a:hover, a:active {
 }
 @media all and (min-width: 1024px) {
   .masonry-grid,
-.feed {
+  .feed {
     display: flex;
     flex-wrap: wrap;
     justify-content: stretch;
   }
-
   .grid-item {
     width: 20%;
   }
-
   .grid-item--width2 {
     width: 50%;
   }
@@ -4465,7 +4436,7 @@ a:hover, a:active {
     background-color: #e6e6e6;
   }
   .post-template-single-event .event-details dt,
-.post-template-single-event .event-details dd {
+  .post-template-single-event .event-details dd {
     display: block;
     margin: 0;
   }
@@ -4640,7 +4611,6 @@ a:hover, a:active {
   .iw-modal--content.team-modal--content {
     padding: 340px 40px 40px;
   }
-
   .team-modal--img {
     height: 300px;
   }
@@ -4649,12 +4619,10 @@ a:hover, a:active {
   .page-template-page-team .team-member--img {
     height: 270px;
   }
-
   .iw-modal--content.team-modal--content {
     margin-left: 50%;
     padding: 40px;
   }
-
   .team-modal--img {
     bottom: 0;
     right: 50%;
@@ -4688,8 +4656,7 @@ a:hover, a:active {
 --------------------------------------------------------------*/
 /* Globally hidden elements when Infinite Scroll is supported and in use. */
 .infinite-scroll .posts-navigation,
-.infinite-scroll.neverending .site-footer {
-  /* Theme Footer (when set to scrolling) */
+.infinite-scroll.neverending .site-footer { /* Theme Footer (when set to scrolling) */
   display: none;
 }
 
@@ -4745,6 +4712,10 @@ object {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.wp-embed-aspect-1-1 .video-wrapper {
+  padding-bottom: 100%;
 }
 
 .bg-video {
@@ -5723,8 +5694,8 @@ object {
 }
 @media screen and (max-width: 640px) {
   .gdpr.gdpr-general-confirmation .gdpr-wrapper .gdpr-content .gdpr-tabs li a,
-.gdpr.gdpr-general-confirmation .gdpr-wrapper .gdpr-content .gdpr-tabs li button, .gdpr.gdpr-privacy-preferences .gdpr-wrapper .gdpr-content .gdpr-tabs li a,
-.gdpr.gdpr-privacy-preferences .gdpr-wrapper .gdpr-content .gdpr-tabs li button {
+  .gdpr.gdpr-general-confirmation .gdpr-wrapper .gdpr-content .gdpr-tabs li button, .gdpr.gdpr-privacy-preferences .gdpr-wrapper .gdpr-content .gdpr-tabs li a,
+  .gdpr.gdpr-privacy-preferences .gdpr-wrapper .gdpr-content .gdpr-tabs li button {
     padding: 15px;
     line-height: 1;
   }
@@ -5761,8 +5732,8 @@ object {
 }
 @media screen and (max-width: 640px) {
   .gdpr.gdpr-general-confirmation .gdpr-wrapper .gdpr-content .gdpr-tabs li a.gdpr-active:after,
-.gdpr.gdpr-general-confirmation .gdpr-wrapper .gdpr-content .gdpr-tabs li button.gdpr-active:after, .gdpr.gdpr-privacy-preferences .gdpr-wrapper .gdpr-content .gdpr-tabs li a.gdpr-active:after,
-.gdpr.gdpr-privacy-preferences .gdpr-wrapper .gdpr-content .gdpr-tabs li button.gdpr-active:after {
+  .gdpr.gdpr-general-confirmation .gdpr-wrapper .gdpr-content .gdpr-tabs li button.gdpr-active:after, .gdpr.gdpr-privacy-preferences .gdpr-wrapper .gdpr-content .gdpr-tabs li a.gdpr-active:after,
+  .gdpr.gdpr-privacy-preferences .gdpr-wrapper .gdpr-content .gdpr-tabs li button.gdpr-active:after {
     display: none;
   }
 }
@@ -6380,18 +6351,17 @@ object {
 
 @media screen and (min-width: 768px) {
   .iw-block-cs-horizontal-item,
-.iw-block-timeline-item {
+  .iw-block-timeline-item {
     padding: 2em 1em;
   }
 }
 @media screen and (min-width: 1280px) {
   .iw-block-cs-horizontal-inner,
-.iw-block-timeline-inner {
+  .iw-block-timeline-inner {
     width: var(--desktop-width);
   }
-
   .iw-block-cs-horizontal-item,
-.iw-block-timeline-item {
+  .iw-block-timeline-item {
     width: 40vw;
   }
 }

@@ -536,30 +536,25 @@ html.reveal-full-page {
     bottom: 0;
     left: 0;
   }
-
   .reveal .controls[data-controls-layout=edges] .navigate-down, .reveal .controls[data-controls-layout=edges] .navigate-left, .reveal .controls[data-controls-layout=edges] .navigate-right, .reveal .controls[data-controls-layout=edges] .navigate-up {
     bottom: auto;
     right: auto;
   }
-
   .reveal .controls[data-controls-layout=edges] .navigate-left {
     top: 50%;
     left: 0.8em;
     margin-top: -1.8em;
   }
-
   .reveal .controls[data-controls-layout=edges] .navigate-right {
     top: 50%;
     right: 0.8em;
     margin-top: -1.8em;
   }
-
   .reveal .controls[data-controls-layout=edges] .navigate-up {
     top: 0.8em;
     left: 50%;
     margin-left: -1.8em;
   }
-
   .reveal .controls[data-controls-layout=edges] .navigate-down {
     bottom: -0.3em;
     left: 50%;
@@ -1600,7 +1595,6 @@ html.reveal-full-page {
     max-height: 70vh;
     overflow: visible;
   }
-
   .reveal.show-notes .speaker-notes {
     top: 100%;
     left: 0;
@@ -1614,12 +1608,10 @@ html.reveal-full-page {
     max-height: 60%;
     max-height: 60vh;
   }
-
   .reveal.show-notes .speaker-notes {
     top: 100%;
     height: 40vh;
   }
-
   .reveal .speaker-notes {
     font-size: 14px;
   }
@@ -1780,7 +1772,6 @@ html.print-pdf .aria-status {
     height: auto;
     overflow: visible;
   }
-
   html:not(.print-pdf) body {
     background: #fff;
     font-size: 20pt;
@@ -1792,16 +1783,13 @@ html.print-pdf .aria-status {
     overflow: visible;
     float: none !important;
   }
-
   html:not(.print-pdf) .controls, html:not(.print-pdf) .fork-reveal, html:not(.print-pdf) .nestedarrow, html:not(.print-pdf) .reveal .backgrounds, html:not(.print-pdf) .reveal .progress, html:not(.print-pdf) .reveal .slide-number, html:not(.print-pdf) .share-reveal, html:not(.print-pdf) .state-background {
     display: none !important;
   }
-
   html:not(.print-pdf) body, html:not(.print-pdf) li, html:not(.print-pdf) p, html:not(.print-pdf) td {
     font-size: 20pt !important;
     color: #000;
   }
-
   html:not(.print-pdf) h1, html:not(.print-pdf) h2, html:not(.print-pdf) h3, html:not(.print-pdf) h4, html:not(.print-pdf) h5, html:not(.print-pdf) h6 {
     color: #000 !important;
     height: auto;
@@ -1809,39 +1797,31 @@ html.print-pdf .aria-status {
     text-align: left;
     letter-spacing: normal;
   }
-
   html:not(.print-pdf) h1 {
     font-size: 28pt !important;
   }
-
   html:not(.print-pdf) h2 {
     font-size: 24pt !important;
   }
-
   html:not(.print-pdf) h3 {
     font-size: 22pt !important;
   }
-
   html:not(.print-pdf) h4 {
     font-size: 22pt !important;
     font-variant: small-caps;
   }
-
   html:not(.print-pdf) h5 {
     font-size: 21pt !important;
   }
-
   html:not(.print-pdf) h6 {
     font-size: 20pt !important;
     font-style: italic;
   }
-
   html:not(.print-pdf) a:link, html:not(.print-pdf) a:visited {
     color: #000 !important;
     font-weight: 700;
     text-decoration: underline;
   }
-
   html:not(.print-pdf) div, html:not(.print-pdf) ol, html:not(.print-pdf) p, html:not(.print-pdf) ul {
     visibility: visible;
     position: static;
@@ -1852,20 +1832,16 @@ html.print-pdf .aria-status {
     margin: 0;
     text-align: left !important;
   }
-
   html:not(.print-pdf) .reveal pre, html:not(.print-pdf) .reveal table {
     margin-left: 0;
     margin-right: 0;
   }
-
   html:not(.print-pdf) .reveal pre code {
     padding: 20px;
   }
-
   html:not(.print-pdf) .reveal blockquote {
     margin: 20px 0;
   }
-
   html:not(.print-pdf) .reveal .slides {
     position: static !important;
     width: auto !important;
@@ -1883,7 +1859,6 @@ html.print-pdf .aria-status {
     perspective: none;
     perspective-origin: 50% 50%;
   }
-
   html:not(.print-pdf) .reveal .slides section {
     visibility: visible !important;
     position: static !important;
@@ -1903,21 +1878,17 @@ html.print-pdf .aria-status {
     transform: none !important;
     transition: none !important;
   }
-
   html:not(.print-pdf) .reveal .slides section.stack {
     padding: 0 !important;
   }
-
   html:not(.print-pdf) .reveal section:last-of-type {
     page-break-after: avoid !important;
   }
-
   html:not(.print-pdf) .reveal section .fragment {
     opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;
   }
-
   html:not(.print-pdf) .reveal section img {
     display: block;
     margin: 15px 0;
@@ -1925,11 +1896,9 @@ html.print-pdf .aria-status {
     border: 1px solid #666;
     box-shadow: none;
   }
-
   html:not(.print-pdf) .reveal section small {
     font-size: 0.8em;
   }
-
   html:not(.print-pdf) .reveal .hljs {
     max-height: 100%;
     white-space: pre-wrap;
@@ -1937,11 +1906,9 @@ html.print-pdf .aria-status {
     word-break: break-word;
     font-size: 15pt;
   }
-
   html:not(.print-pdf) .reveal .hljs .hljs-ln-numbers {
     white-space: nowrap;
   }
-
   html:not(.print-pdf) .reveal .hljs td {
     font-size: inherit !important;
     color: inherit !important;
@@ -2146,4 +2113,20 @@ html.print-pdf .aria-status {
     transform: scale(1);
     opacity: 1;
   }
+}
+.slide-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 30em;
+  width: 100%;
+  margin: 0 auto;
+}
+.slide-content > :first-child {
+  margin-top: 0;
+}
+.slide-content > :last-child {
+  margin-bottom: 0;
 }

@@ -10,7 +10,7 @@
   right: 0;
   padding: 1em;
   z-index: 100;
-  font-size: 0.75em;
+  font-size: 0.875em;
 }
 .wp-admin .iw-block-pin {
   position: static;
@@ -83,7 +83,6 @@
     display: block;
     padding: 1em 2em;
   }
-
   .iw-block-pin-inner .wp-block-column > :first-child {
     margin-top: 0;
   }

@@ -24,13 +24,12 @@ img.block-icon-icon {
     display: flex;
     align-items: flex-start;
   }
-  .block-icon-inner.block-icon-aligncenter {
+  .block-icon-aligncenter .block-icon-inner {
     align-items: center;
   }
-  .block-icon-inner.block-icon-alignbottom {
+  .block-icon-alignbottom .block-icon-inner {
     align-items: flex-end;
   }
-
   img.block-icon-icon {
     width: 100%;
     margin: 0;
@@ -39,12 +38,10 @@ img.block-icon-icon {
   .acf-block-preview img.block-icon-icon {
     max-width: 5em;
   }
-
   .block-icon-text {
     margin-left: 1.25em;
     flex-grow: 1;
   }
-
   .block-icon-innerblocks > :first-child {
     margin-top: 0;
   }

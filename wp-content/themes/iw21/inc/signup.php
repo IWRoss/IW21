@@ -35,7 +35,7 @@ function iw21_handle_submission()
    */
   wp_safe_redirect(
     !empty($_POST['download'])
-      ? sprintf('%s?dlid=%s', $redirect_url, urlencode($_POST['download']))
+      ? sprintf('%s?dlid=%s', $redirect_url, rawurlencode($_POST['download']))
       : $redirect_url
   );
   exit;

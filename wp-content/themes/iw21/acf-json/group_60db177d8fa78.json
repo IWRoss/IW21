@@ -3,6 +3,30 @@
     "title": "Block – Count-Up",
     "fields": [
         {
+            "key": "field_6346869e82045",
+            "label": "Heading",
+            "name": "heading",
+            "type": "button_group",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "h1": "h1",
+                "h2": "h2",
+                "h3": "h3",
+                "h4": "h4"
+            },
+            "allow_null": 0,
+            "default_value": "h1",
+            "layout": "horizontal",
+            "return_format": "value"
+        },
+        {
             "key": "field_60db1791a40e3",
             "label": "Prefix",
             "name": "prefix",
@@ -27,7 +51,7 @@
             "name": "count",
             "type": "number",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "33.33",
@@ -79,5 +103,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1624971204
+    "show_in_rest": 0,
+    "modified": 1665566413
 }

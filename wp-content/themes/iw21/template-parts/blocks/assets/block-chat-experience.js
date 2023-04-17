@@ -1,5 +1,7 @@
 (function () {
-  let chatExperience = new Reveal(get(".block-chat-experience-reveal"), {
+  const chatExperienceElement = get(".block-chat-experience-reveal");
+
+  let chatExperience = new Reveal(chatExperienceElement, {
     embedded: true,
     controls: false,
     keyboard: true,
@@ -9,9 +11,25 @@
     center: false,
   });
 
-  chatExperience.initialize().then(() => {
-    printScript(slides[0].text).then(() => {
-      printResponses(slides[0].responses);
+  window.addEventListener("scroll", (event) => {
+    if (
+      !isScrolledIntoView(chatExperienceElement) ||
+      chatExperience.isReady()
+    ) {
+      return false;
+    }
+
+    chatExperience.initialize().then(() => {
+      printScript(slides[0].text).then(() => {
+        printResponses(slides[0].responses);
+      });
+
+      chatExperience
+        .getRevealElement()
+        .querySelectorAll(".next-button")
+        .forEach((el) =>
+          el.addEventListener("click", () => chatExperience.next())
+        );
     });
   });
 
@@ -99,5 +117,16 @@
 
   function getDelay(str) {
     return str.split(" ").length * 80 + 300;
+  }
+
+  function isScrolledIntoView(el) {
+    const rect = el.getBoundingClientRect();
+    const elemTop = rect.top;
+    const elemBottom = rect.bottom;
+
+    // Partially visible elements return true:
+    const isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+
+    return isVisible;
   }
 })();

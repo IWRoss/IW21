@@ -41,7 +41,7 @@ function work_post_type()
 		'label'                 => __('Work', 'text_domain'),
 		'description'           => __('Used for any portfolio items', 'text_domain'),
 		'labels'                => $labels,
-		'supports'              => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'custom-fields', 'page-attributes',),
+		'supports'              => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'custom-fields', 'page-attributes', 'revisions'),
 		'taxonomies'            => array('category', 'post_tag'),
 		'hierarchical'          => false,
 		'public'                => true,

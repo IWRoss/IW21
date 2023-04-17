@@ -29,11 +29,11 @@ img.block-icon-icon {
         display: flex;
         align-items: flex-start;
 
-        &.block-icon-aligncenter {
+        .block-icon-aligncenter & {
             align-items:center;
         }
 
-        &.block-icon-alignbottom {
+        .block-icon-alignbottom & {
             align-items:flex-end;
         }
     }

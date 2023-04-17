@@ -444,6 +444,10 @@ this},r._applyDataApi=function(){var e={};t("[data-match-height], [data-mh]").ea
   var $root = $("html, body");
 
   $("a[href*=\\#]").on("click", function (e) {
+    if ($.attr(this, "href").indexOf(location.href) === -1) {
+      return;
+    }
+
     e.preventDefault();
 
     if (!$.attr(this, "rel") || $.attr(this, "rel") === "noopener noreferrer") {

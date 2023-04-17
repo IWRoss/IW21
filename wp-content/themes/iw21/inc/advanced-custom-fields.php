@@ -122,3 +122,16 @@ function iw21_replace_menu_items_with_icons($items, $args)
     return $items;
 }
 add_filter('wp_nav_menu_objects', 'iw21_replace_menu_items_with_icons', 10, 2);
+
+/**
+ * 
+ */
+add_filter(
+    'acf/pre_save_block',
+    function ($attributes) {
+        if (empty($attributes['id'])) {
+            $attributes['id'] = 'acf-block-' . uniqid();
+        }
+        return $attributes;
+    }
+);

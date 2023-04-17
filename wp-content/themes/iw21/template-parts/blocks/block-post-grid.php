@@ -15,6 +15,8 @@ global $post;
 
 $post_grid_posts = get_field('posts');
 
+$post_grid_post_gif = get_field('post_gif');
+
 $classes[] = 'alignfull';
 ?>
 

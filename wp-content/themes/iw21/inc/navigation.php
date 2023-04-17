@@ -26,8 +26,8 @@ class IW_Menu_Walker extends Walker_Nav_Menu
 
 class IW_Megamenu_Walker extends Walker_Nav_Menu
 {
-    
-    function start_el(&$output, $item, $depth = 0, $args = [], $id = 0) 
+
+    function start_el(&$output, $item, $depth = 0, $args = [], $id = 0)
     {
         $children_count = 0;
 
@@ -51,7 +51,7 @@ class IW_Megamenu_Walker extends Walker_Nav_Menu
         $output .= "<li class='" .  implode(" ", $item->classes) . "'>";
 
         if ($item->url && $item->url != '#') {
-            $output .= '<a class="menu-link" href="' . $item->url . '">';
+            $output .= sprintf('<a class="menu-link" href="%s"%s>', $item->url, $item->target ? sprintf(' target="%s"', $item->target) : '');
         } else {
             $output .= '<span class="menu-link menu-link-no-url">';
         }
@@ -76,18 +76,18 @@ class IW_Megamenu_Walker extends Walker_Nav_Menu
     }
 
     function end_el(&$output, $item, $depth = 0, $args = null)
-    {   
-        
+    {
+
         $custom_field = get_field('featured', $item->ID);
-        
+
         if ($custom_field) {
             $output .= sprintf(
-                '<div class="menu-featured-section" data-layout="%d">%s</div>', 
-                count($custom_field), 
-                array_reduce($custom_field, function($string, $featured_post) {
-                    
+                '<div class="menu-featured-section" data-layout="%d">%s</div>',
+                count($custom_field),
+                array_reduce($custom_field, function ($string, $featured_post) {
+
                     global $post;
-                    
+
                     ob_start();
 
                     $post = get_post($featured_post->ID, OBJECT);

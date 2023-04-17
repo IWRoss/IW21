@@ -59,7 +59,7 @@ function iw21_feed_item_html_link_tag_attributes()
         $attributes .= ' target="_blank"';
     }
 
-    if ($oembed = get_field('video')) {
+    if ($oembed = get_field('video', $post)) {
         // use preg_match to find iframe src
         preg_match('/src="(.+?)"/', $oembed, $matches);
 

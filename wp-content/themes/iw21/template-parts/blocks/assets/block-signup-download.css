@@ -25,3 +25,8 @@
 .iw-block-signup-download .download-metadata {
   font-size: 0.875em;
 }
+.iw-block-signup-download .download-links {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1em;
+}

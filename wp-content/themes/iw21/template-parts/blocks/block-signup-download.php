@@ -1,6 +1,6 @@
 <?php
 
-$dlid = !empty($_GET['dlid']) ? iw21_decrypt(urldecode($_GET['dlid']), IW_PASSPHRASE) : false;
+$dlid = !empty($_GET['dlid']) ? iw21_decrypt($_GET['dlid'], IW_PASSPHRASE) : false;
 
 ?>
 
@@ -22,18 +22,26 @@ $dlid = !empty($_GET['dlid']) ? iw21_decrypt(urldecode($_GET['dlid']), IW_PASSPH
           <h5 class="download-title">
             <a href="<?php echo $download->guid; ?>" class="download-link" download><?php echo $download->post_title; ?></a>
           </h5>
-          <div class="download-metadata">
-            <span class="download-extension"><?php echo pathinfo($download->guid)['extension']; ?></span>
-          </div>
         </div>
         <a href="<?php echo $download->guid; ?>" class="btn btn-xsmall" download>Download</a>
       </div>
+
+      <div class="download-links">
+        <?php if ($download->post_parent) : ?>
+          <a href="<?php the_permalink($download->post_parent); ?>" class="btn">Return to Case Study</a>
+        <?php endif; ?>
+        <a href="<?php echo get_home_url(); ?>" class="btn">Return to Home</a>
+      </div>
+
 
     <?php else : ?>
 
       <p>We had an issue finding your download. Please <a href="mailto:web@interactiveworkshops.com" target="_blank">contact us</a> quoting reference <?php echo urlencode($_GET['dlid']); ?> and we’ll help you out.</p>
 
+      <a href="<?php echo get_home_url(); ?>" class="btn">Return to Home</a>
+
     <?php endif; ?>
+
 
   </div>
 <?php endif; ?>
