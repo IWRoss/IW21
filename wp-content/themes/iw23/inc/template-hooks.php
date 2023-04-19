@@ -20,7 +20,7 @@ function iw21_feed_item_html_outer_tag_attributes($template_args = false)
         $attributes .= sprintf(' style="background-image: url(%s)"', $preview);
     }
 
-    if ($template_args['thumbnail']) {
+    if (isset($template_args['thumbnail'])) {
         $attributes .= sprintf(' style="background-image: url(%s)"', $template_args['thumbnail']);
     }
 
@@ -57,7 +57,7 @@ function iw21_feed_item_html_link_tag_attributes($template_args = false)
         $post_link = $has_link;
     }
 
-    if ($template_args['link']) {
+    if (isset($template_args['link'])) {
         $post_link = $template_args['link'];
     }
 

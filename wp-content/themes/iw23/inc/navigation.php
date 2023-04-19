@@ -46,6 +46,10 @@ class IW_Megamenu_Walker extends Walker_Nav_Menu
             $children_count = array_count_values($menu_item_parents)[$item->ID]; // Get number of children menu item has.
         }
 
+        if (!is_array($item->classes)) {
+            $item->classes = [];
+        }
+
         $item->classes[] = $children_count <= 10 ? ($children_count <= 6 ? ($children_count <= 3 ? 'menu-scale-large' : 'menu-scale-medium') : 'menu-scale-small') : 'menu-scale-xsmall';
 
         $output .= "<li class='" .  implode(" ", $item->classes) . "'>";
