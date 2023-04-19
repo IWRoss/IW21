@@ -1,0 +1,67 @@
+.iw-block-cs-skills {
+	overflow: hidden;
+	position: relative;
+	z-index: 1;
+}
+
+.cs-skills-inner {
+	position: absolute;
+	top: 30%;
+	left: 0;
+	right: 0;
+	bottom: 20%;
+	display: flex;
+	align-items: center;
+	background-color: #F1F1F2;
+	z-index: 3;
+	padding: 2em;
+}
+
+.cs-skills-graphic {
+	position: relative;
+	margin-left: 1.5rem;
+	width: calc(150% - 1.5rem);
+	z-index: 5;
+}
+
+@media screen and (min-width: 1024px) {
+	.cs-skills-graphic {
+		width: calc(100% - 1.5rem);
+	}
+}
+
+.cs-skills--list {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 2vw;
+	columns: 2;
+}
+
+@media screen and (min-width: 1024px) {
+	.cs-skills--list {
+		font-size: 1.25vw;
+		padding: 0 30% 0 10%;
+	}
+}
+
+.cs-skills--list-item {
+	opacity: 0.3;
+	filter: grayscale(1);
+	margin-bottom: 0.4em;
+}
+
+.cs-skills--list-item.skill-deployed {
+	opacity: 1;
+	filter: none;
+}
+
+.cs-skills--list-item--skill-icon {
+	display: inline-block;
+	width: 2.5em;
+	margin-right: 0.5em;
+	vertical-align: -50%;
+}
+
+/*# sourceMappingURL=block-cs-skills.css.map */

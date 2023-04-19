@@ -1,0 +1,17 @@
+.iw-block-count-alignleft {
+	text-align: left;
+}
+
+.iw-block-count-alignright {
+	text-align: right;
+}
+
+.iw-block-count-aligncenter {
+	text-align: center;
+}
+
+.iw-block-count {
+	margin: 0.25em 0;
+}
+
+/*# sourceMappingURL=block-count.css.map */

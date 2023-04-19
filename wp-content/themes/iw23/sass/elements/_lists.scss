@@ -1,0 +1,115 @@
+ul, ol {
+	margin: 1.5em 0;
+}
+
+ul {
+	list-style: disc;
+}
+
+ol {
+	list-style: decimal;
+}
+
+.entry-content ul,
+.entry-path ul,
+.entry-content ol,
+.entry-path ol {
+	list-style: none;
+
+	li {
+		margin-bottom: 0.2em;
+	}
+}
+
+li:before {
+	.entry-content ul.is-style-default > & ,
+	.entry-path ul.is-style-default > &,
+	.work-template-case-study .entry-section--the_results ul>& {
+		content: '//';
+		display: inline-block;
+		width: 2em;
+		margin-left: -2em;
+		font-weight: 500;
+		color: $color__text-highlight;
+	}
+
+	.entry-content .industries-list > &,
+	.entry-path .industries-list > & {
+		display: none;
+	}
+
+	.path-item-orange ul > & {
+		color: white;
+	}
+}
+
+.entry-content ol,
+.entry-path ol {
+	counter-reset: li;
+	margin-left: 0;
+	padding-left: 0;
+
+	> li {
+		position: relative;
+		margin: 0 0 1em;
+		padding-left: 3em;
+	}
+
+	> li:before {
+		content:counter(li); /* Use the counter as content */
+		counter-increment:li; /* Increment the counter by 1 */
+		/* Position and style the number */
+		position:absolute;
+		top: -4px;
+		left: 0;
+		width: 2em;
+		margin-right: 8px;
+		padding: 4px;
+		color: #fff;
+		background: $color__text-highlight;
+		text-align:center;
+		font-family: $font__heading;
+	}
+}
+
+.industries-list {
+    padding-left: 0;
+    list-style: none;
+	text-align: center;
+
+	.industries-list-item {
+	    display: inline-block;
+		margin: 0 0.2em 0.4em;
+	}
+}
+
+li > ol {
+	margin-bottom: 0;
+	margin-left: 1.5em;
+}
+
+dt {
+	font-weight: 500;
+}
+
+dd {
+	margin: 0 1.5em 0.5em;
+}
+
+.is-style-checkbox {
+	li {
+		margin-bottom: 1em;
+	}
+
+	li::before {
+		top: .25em;
+	}
+}
+
+@media (min-width: 600px) {
+	.is-style-checkbox {
+		li::before {
+			top: .25em;
+		}
+	}
+}

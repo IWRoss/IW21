@@ -1,0 +1,43 @@
+@import '../../../variables-site/variables-site';
+
+
+.iw-block-quote {
+    font-family: $font__heading;
+
+    &.iw-block-quote-alignleft {
+        text-align: left;
+    } 
+
+    &.iw-block-quote-aligncenter {
+        text-align: center;
+    } 
+
+    &.iw-block-quote-alignright {
+        text-align: right;
+    } 
+}
+
+.iw-block-quote-citation {
+    font-family: $font__heading;
+    display: flex;
+    align-items: center;
+    margin-top: .75em;
+    font-size: 1.125em;
+
+    .iw-block-quote-aligncenter & {
+        display: block;
+    }
+}
+
+.iw-block-quote-thumbnail {
+    display: block;
+    width: 3em;
+    flex-grow: 0;
+    margin-right: .75em;
+    border-radius: 50%;
+    background-color: $color__background-screen;
+
+    .iw-block-quote-aligncenter & {
+        margin: 0 auto 1em;
+    }
+}

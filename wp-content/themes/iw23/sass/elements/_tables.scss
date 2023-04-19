@@ -1,0 +1,25 @@
+table {
+	margin: 0 0 1.5em;
+	width: 100%;
+}
+
+.entry-content {
+	table {
+		@include font-size(1);
+	}
+
+	thead {
+		text-align: left;
+		border-bottom: 1px solid lighten($color__text-main, 50%);
+	}
+
+	tfoot {
+		border-top: 1px solid lighten($color__text-main, 50%);
+		font-weight: 500;
+	}
+
+	th, td {
+		padding-top: 0.3em;
+		padding-bottom: 0.3em;
+	}
+}

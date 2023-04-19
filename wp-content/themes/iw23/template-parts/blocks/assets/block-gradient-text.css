@@ -1,0 +1,15 @@
+.block-gradient-text {
+	font-family: 'Flama', sans-serif;
+	-webkit-background-clip: text !important;
+	-webkit-text-fill-color: transparent;
+	line-height: 1;
+	overflow: visible;
+	padding-bottom: .25em;
+	margin: 0;
+}
+
+:root .wp-block[data-type="acf/gradient-text"] {
+	background: none !important;
+}
+
+/*# sourceMappingURL=block-gradient-text.css.map */

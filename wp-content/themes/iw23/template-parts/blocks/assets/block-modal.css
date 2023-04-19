@@ -1,0 +1,53 @@
+.block-modal a {
+	font-family: "Flama", sans-serif;
+}
+
+.block-modal .btn {
+	display: inline-block;
+	width: auto;
+	padding-left: 2em;
+	padding-right: 2em;
+	font-size: 0.75em;
+}
+
+.block-modal .link {
+	padding-left: 1em;
+	padding-right: 1em;
+	color: currentColor;
+	text-decoration: none;
+}
+
+.block-modal .link:hover {
+	text-decoration: underline;
+}
+
+.has-iw-white-color .iw-modal {
+	color: #282727;
+}
+
+.is-preview .iw-modal:after {
+	content: attr(id);
+	font-size: 0.75em;
+}
+
+:root [data-type="acf/modal"] {
+	background: none !important;
+}
+
+@media screen and (min-width: 768px) {
+	.block-modal .btn {
+		font-size: 1em;
+	}
+	.block-modal .block-modal-button-alignleft {
+		text-align: left;
+	}
+	.block-modal .block-modal-button-alignright {
+		text-align: right;
+	}
+	.block-modal .block-modal-button-align,
+	.block-modal .block-modal-button-aligncenter {
+		text-align: center;
+	}
+}
+
+/*# sourceMappingURL=block-modal.css.map */

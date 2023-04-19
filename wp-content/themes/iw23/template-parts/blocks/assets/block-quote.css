@@ -1,0 +1,42 @@
+.iw-block-quote {
+	font-family: "Flama", sans-serif;
+}
+
+.iw-block-quote.iw-block-quote-alignleft {
+	text-align: left;
+}
+
+.iw-block-quote.iw-block-quote-aligncenter {
+	text-align: center;
+}
+
+.iw-block-quote.iw-block-quote-alignright {
+	text-align: right;
+}
+
+.iw-block-quote-citation {
+	font-family: "Flama", sans-serif;
+	display: flex;
+	align-items: center;
+	margin-top: .75em;
+	font-size: 1.125em;
+}
+
+.iw-block-quote-aligncenter .iw-block-quote-citation {
+	display: block;
+}
+
+.iw-block-quote-thumbnail {
+	display: block;
+	width: 3em;
+	flex-grow: 0;
+	margin-right: .75em;
+	border-radius: 50%;
+	background-color: #f1f1f1;
+}
+
+.iw-block-quote-aligncenter .iw-block-quote-thumbnail {
+	margin: 0 auto 1em;
+}
+
+/*# sourceMappingURL=block-quote.css.map */

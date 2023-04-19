@@ -1,0 +1,34 @@
+a {
+	color: $color__link;
+
+	&:hover,
+	&:active {
+		color: $color__link-hover;
+	}
+	&:focus {
+		outline: thin dotted;
+	}
+	&:hover,
+	&:active {
+		outline: 0;
+	}
+}
+
+.tag-cloud-link {
+	font-family: $font__heading;
+}
+
+.page-nav {
+	margin: 1em 0;
+}
+
+.back-button {
+	text-decoration: none;
+	text-transform: uppercase;
+
+	&:before {
+		content: '\2190';
+		display: inline-block;
+		margin-right: 0.5em;
+	}
+}

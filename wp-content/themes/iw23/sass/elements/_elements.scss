@@ -1,0 +1,107 @@
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+	box-sizing: inherit;
+}
+
+body {
+	background: $color__background-body; /* Fallback for when there is no custom background color defined. */
+}
+
+// blockquote {
+// 	font-family: $font__heading;
+// 	font-weight: 500;
+// 	font-size: 1.25em;
+// 	background-color: $color__text-highlight;
+// 	color: white;
+// 	padding: 1em;
+// 	position: relative;
+// 	margin: $size__margin 0 $size__margin * 1.25;
+
+// 	> :first-child {
+// 		margin-top: 0;
+// 	}
+
+// 	> :last-child {
+// 		margin-bottom: 0;
+// 	}
+
+// 	&:after {
+// 		content: "";
+// 		position: absolute;
+// 		top: 100%;
+// 		right: $size__margin;
+// 		border-top: $size__margin / 4 solid $color__text-highlight;
+// 		border-left: $size__margin / 4 solid $color__text-highlight;
+// 		border-right: $size__margin / 4 solid transparent;
+// 		border-bottom: $size__margin / 4 solid transparent;
+// 	}
+
+// 	&:nth-of-type(even):after {
+// 		right: auto;
+// 		left: $size__margin;
+// 		border-left: $size__margin / 4 solid transparent;
+// 		border-right: $size__margin / 4 solid $color__text-highlight;
+// 	}
+// }
+
+blockquote {
+	border: 0.25em solid $color-iwteal;
+	color: $color-iwteal;
+	padding: 1em;
+	border-radius: 1em;
+	position: relative;
+	font-size: 1.25em;
+	margin: $size__margin 0 $size__margin * 1.25;
+
+	> :first-child {
+		margin-top: 0;
+	}
+
+	> :last-child {
+		margin-bottom: 0;
+	}
+
+	&:after {
+		content: "";
+		display: block;
+		right: 2em;
+		top: 100%;
+		width: 2em;
+		height: 2em;
+		background-repeat: no-repeat;
+		background-size: contain;
+		position: absolute;
+		background-image: url("data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 65.88'%3E%3Cpath d='M80,0,17.07,62.93A10,10,0,0,1,0,55.86V0H10V55.86L65.86,0Z' style='fill:%23#{str-replace(#{$color-iwteal}, '#', '')}' /%3E%3Cpolygon points='10 0 10 55.86 65.86 0 10 0' style='fill:%23fff'/%3E%3C/svg%3E");
+		transform: translateY(0);
+	}
+}
+
+
+hr {
+	background-color: $color__background-hr;
+	border: 0;
+	height: 1px;
+	margin-bottom: 1.5em;
+}
+
+@import "lists";
+
+img {
+	height: auto; /* Make sure images are scaled correctly. */
+	max-width: 100%; /* Adhere to container width. */
+}
+
+figure {
+	margin: 1em 0; /* Extra wide images within figure tags don't overflow the content area. */
+}
+
+@import "tables";
+
+@import "backgrounds";
+
+@import "logo";

@@ -1,0 +1,16 @@
+{
+	"version": 3,
+	"file": "landing-pages.css",
+	"sources": [
+		"sass/landing-pages.scss",
+		"sass/variables-site/_variables-site.scss",
+		"sass/variables-site/_colors.scss",
+		"sass/variables-site/_typography.scss",
+		"sass/variables-site/_structure.scss",
+		"sass/variables-site/_misc.scss",
+		"sass/mixins/_mixins-master.scss",
+		"sass/modules/_landing-pages.scss"
+	],
+	"names": [],
+	"mappings": "AAGA;;gEAEgE;AOLhE,AAAA,yBAAyB,CAAC;CACtB,eAAe,EAAE,IAAI;CAKxB;;AAND,AAGI,yBAHqB,AAGpB,MAAM,CAAC;CACJ,eAAe,EAAE,IAAI;CACxB;;AAGL,AAAA,uBAAuB,CAAC;CACpB,UAAU,EAAE,CAAC;CAChB;;AAED,AAAA,2BAA2B,CAAC;CACxB,aAAa,EAAE,CAAC;CACnB;;AAED,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,MAAM;CAEhC,AAAA,oBAAoB,CAAC,YAAY,CAAC;EAC9B,OAAO,EAAE,eAAe;EAC3B"
+}

@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "block-podcast.css",
+	"sources": [
+		"../../../sass/template-parts/blocks/assets/block-podcast.scss"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,WAAW,CAAC;CACV,OAAO,EAAE,KAAK;CACd,MAAM,EAAE,MAAM;CACd,KAAK,EAAE,IAAI;CACX,UAAU,EAAE,MAAM;CACnB"
+}

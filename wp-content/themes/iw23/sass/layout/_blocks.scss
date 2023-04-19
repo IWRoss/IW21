@@ -1,0 +1,317 @@
+.wp-block-coblocks-hero .has-background-image {
+
+    .wp-block-coblocks-hero__content h1,
+    .wp-block-coblocks-hero__content h2,
+    .wp-block-coblocks-hero__content h3,
+    .wp-block-coblocks-hero__content h4,
+    .wp-block-coblocks-hero__content h5,
+    .wp-block-coblocks-hero__content p {
+        color: white;
+    }
+
+    svg {
+        fill: white;
+        color: white;
+    }
+}
+
+.wp-block-coblocks-row.is-equal-height-columns .wp-block-coblocks-column__inner {
+    height: 100%;
+}
+
+
+.block-header {
+    background-color: white;
+    background-position: center;
+    padding: 9em $size__margin 0;
+    position: relative;
+    z-index: 0;
+    margin-bottom: $size__margin;
+    position: relative;
+    background-size: cover;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+
+
+    &:before {
+        content: '';
+        display: block;
+        background-color: rgba(black, 0.5);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    .site-tagline {
+        font-weight: normal;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: .25em .5em .25em;
+        overflow: hidden;
+        white-space: nowrap;
+
+        .bold {
+            font-weight: 500;
+        }
+
+        span {
+            max-width: 50vw;
+            color: white;
+        }
+
+        span[data-swap] {
+            overflow: hidden;
+        }
+
+        .fixed {
+            color: $color__text-highlight;
+        }
+    }
+}
+
+@media screen and (min-width: $breakpoint-medium) {
+    .block-header {
+        padding: 6em $size__margin 0;
+    }
+}
+
+
+.tagline,
+.header-content {
+    width: 100%;
+    position: relative;
+    z-index: 3;
+}
+
+.header-content {
+    margin-bottom: 3em;
+}
+
+
+@media screen and (min-width: $breakpoint-medium) {
+    .header-content {
+        margin: 0 auto 2em;
+        max-width: 50em;
+        padding: 1em;
+
+        &> :first-child {
+            margin-top: 0;
+        }
+
+        &> :last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.block-feed {
+    margin-top: 1em;
+}
+
+.block-feed .feed:not(.masonry-grid) .grid-item {
+    width: 100%;
+    margin-bottom: $size__margin / 2;
+}
+
+// .block-feed .post-type-work {
+//     font-size: 1.375rem;
+// }
+
+.linkedin-banner {
+    padding: 4em 1em;
+    background-image: url('imgs/linkedin-banner.jpg');
+    background-position: center;
+    background-size: cover;
+    position: relative;
+
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        background-color: rgba(black, 0.5);
+    }
+
+    .linkedin-banner-inner {
+        max-width: 30em;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+        z-index: 5;
+        color: white;
+
+        &> :first-child {
+            margin-top: 0;
+        }
+
+        &> :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .linkedin-icon {
+        display: inline-block;
+        height: 1.5em;
+        vertical-align: -25%;
+        margin-right: 0.5em;
+        filter: brightness(0) invert(1);
+    }
+}
+
+.wp-block-media-text__media img {
+    margin-bottom: $size__margin;
+}
+
+@media screen and (min-width: $breakpoint-medium) {
+    .wp-block-media-text__media img {
+        margin-bottom: 0;
+    }
+}
+
+.block-modal {
+    // max-width: 20em;
+    // margin: 0 auto;
+}
+
+.dynamic-message {
+    text-align: center;
+}
+
+
+.block-dynamic-arrow {
+    // font-size: 0;
+
+    svg {
+        max-width: 100%;
+    }
+}
+
+.iw-block-timeline,
+.iw-block-cs-horizontal {
+    overflow: hidden;
+    margin-top: $size__margin;
+}
+
+.iw-block-timeline-inner,
+.iw-block-cs-horizontal-inner {
+    display: flex;
+    width: var(--mobile-width);
+    margin-top: $size__margin;
+    padding-top: 2em;
+    justify-content: center;
+    align-items: flex-start;
+
+    &.valign-top {
+        align-items: flex-start;
+    }
+    &.valign-center {
+        align-items: center;
+    }
+    &.valign-bottom {
+        align-items: flex-end;
+    }
+}
+
+.iw-block-timeline-inner {
+    border-top: 0.5em solid $color__text-highlight;
+}
+
+.iw-block-timeline-item,
+.iw-block-cs-horizontal-item {
+    width: 50vw;
+    // transform: translateX(-50%);
+    // flex-grow: 0;
+    padding: 2em .5em;
+}
+
+.iw-block-timeline-item:after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translate(-50%, -37.5%);
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    border: 0.5em solid $color__text-highlight;
+    background: white;
+}
+
+.iw-block-cs-horizontal-item-inner,
+.iw-block-timeline-item-inner {
+    padding: $size__margin / 2;
+    text-align: center;
+    height: 100%;
+    position: relative;
+
+    h4 {
+        margin-top: 0;
+    }
+
+    > :first-child {
+        margin-top: 0;
+    }
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+.iw-block-timeline-item-inner {
+    background: #EEEEEE;
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-bottom: 1.75em solid #EEEEEE;
+        border-left: 1.75em solid transparent;
+        border-right: 1.75em solid transparent;
+    }
+
+}
+
+.iw-block-timeline-item-icon {
+    width: 6em;
+    max-width: 50%;
+    margin-bottom: 0.5em;
+}
+
+@media screen and (min-width: $breakpoint-small) {
+
+    .iw-block-cs-horizontal-item,
+    .iw-block-timeline-item {
+        padding: 2em 1em;
+    }
+}
+
+@media screen and (min-width: $breakpoint-large) {
+
+    .iw-block-cs-horizontal-inner,
+    .iw-block-timeline-inner {
+        width: var(--desktop-width);
+    }
+
+    .iw-block-cs-horizontal-item,
+    .iw-block-timeline-item {
+        width: 40vw;
+    }
+}

@@ -1,0 +1,90 @@
+.iw-block-post-grid {
+	padding: 1em;
+}
+
+.iw-block-post-grid-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(1, 1fr);
+	gap: 1em 1em;
+}
+
+.iw-block-post-grid-post {
+	background-color: grey;
+	position: relative;
+	overflow: hidden;
+}
+
+.iw-block-post-grid-post-title {
+	position: relative;
+	margin: 0;
+	color: white;
+	transform: translateY(300%);
+	transition: all .5s ease;
+	z-index: 1;
+}
+
+.iw-block-post-grid-post-link {
+	position: relative;
+	display: flex;
+	padding: 20vw 40px 40px;
+	height: 100%;
+	align-items: flex-end;
+	text-decoration: none;
+	z-index: 5;
+}
+
+.iw-block-post-grid-post-link:hover .iw-block-post-grid-post-title {
+	transform: translateY(0);
+}
+
+.iw-block-post-grid-post-link:before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.5) 100%);
+	z-index: 0;
+	opacity: 0;
+	transition: all 0.3s linear;
+}
+
+.iw-block-post-grid-post-link:hover:before {
+	opacity: 1;
+}
+
+.iw-block-post-grid-post-link:after {
+	display: block;
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transform-origin: top left;
+	transform: translateX(-100%) rotate(60deg);
+	background-color: #FF8D00;
+	z-index: 0;
+	transition: all 1s ease;
+}
+
+.iw-block-post-grid-post-link:hover:after {
+	transform: translateX(0) rotate(60deg);
+}
+
+.iw-block-post-grid-post-background {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100%;
+	object-fit: cover;
+	object-position: center;
+	z-index: 0;
+	transform: translate(-50%, -50%);
+}
+
+/*# sourceMappingURL=block-post-grid.css.map */

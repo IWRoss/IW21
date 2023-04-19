@@ -1,0 +1,322 @@
+{
+    "key": "group_5fcf6a7ba99f7",
+    "title": "Feed Builder",
+    "fields": [
+        {
+            "key": "field_6023b952f3d4a",
+            "label": "Feed Builder",
+            "name": "feed_builder",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_6023b97432ff5": {
+                    "key": "layout_6023b97432ff5",
+                    "name": "post_type",
+                    "label": "Post Type",
+                    "display": "table",
+                    "sub_fields": [
+                        {
+                            "key": "field_6023ba29f3d4b",
+                            "label": "Include",
+                            "name": "post_type",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "post": "Posts",
+                                "work": "Work",
+                                "page": "Pages"
+                            },
+                            "default_value": [],
+                            "allow_null": 0,
+                            "multiple": 1,
+                            "ui": 1,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": "1"
+                },
+                "layout_6023bd39f3d4c": {
+                    "key": "layout_6023bd39f3d4c",
+                    "name": "category",
+                    "label": "Category(s)",
+                    "display": "table",
+                    "sub_fields": [
+                        {
+                            "key": "field_6023bd53f3d4d",
+                            "label": "Include",
+                            "name": "category",
+                            "type": "taxonomy",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "taxonomy": "category",
+                            "field_type": "checkbox",
+                            "add_term": 1,
+                            "save_terms": 0,
+                            "load_terms": 0,
+                            "return_format": "id",
+                            "multiple": 0,
+                            "allow_null": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": "1"
+                },
+                "layout_6023bdb5f3d4e": {
+                    "key": "layout_6023bdb5f3d4e",
+                    "name": "post_tag",
+                    "label": "Tag(s)",
+                    "display": "table",
+                    "sub_fields": [
+                        {
+                            "key": "field_6023bdb5f3d4f",
+                            "label": "Include",
+                            "name": "post_tag",
+                            "type": "taxonomy",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "taxonomy": "post_tag",
+                            "field_type": "checkbox",
+                            "add_term": 1,
+                            "save_terms": 0,
+                            "load_terms": 0,
+                            "return_format": "id",
+                            "multiple": 0,
+                            "allow_null": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": "1"
+                },
+                "layout_6023bee4f3d50": {
+                    "key": "layout_6023bee4f3d50",
+                    "name": "template",
+                    "label": "Template(s)",
+                    "display": "table",
+                    "sub_fields": [
+                        {
+                            "key": "field_6023bee4f3d51",
+                            "label": "Include",
+                            "name": "template",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "page-templates\/case-study.php": "Case Study Template",
+                                "page-templates\/single-custom.php": "Custom Template",
+                                "page-templates\/single-event.php": "Event Template",
+                                "page-templates\/page-feed.php": "Feed Template",
+                                "page-templates\/page-home.php": "Home Template",
+                                "page-templates\/infographic.php": "Infographic Template",
+                                "page-templates\/single-insight.php": "Insight Template",
+                                "page-templates\/page-noheader.php": "No Header Template",
+                                "page-templates\/work-quote.php": "Quote Template",
+                                "page-templates\/page-search.php": "Search Template",
+                                "page-templates\/story.php": "Story Template",
+                                "page-templates\/path.php": "Storyboard Template",
+                                "page-templates\/page-team.php": "Team Template",
+                                "page-templates\/single-thought.php": "Thought Template",
+                                "page-templates\/video.php": "Video Template"
+                            },
+                            "default_value": [],
+                            "allow_null": 0,
+                            "multiple": 1,
+                            "ui": 1,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": "1"
+                },
+                "layout_6023c242f9259": {
+                    "key": "layout_6023c242f9259",
+                    "name": "selection",
+                    "label": "Selection",
+                    "display": "table",
+                    "sub_fields": [
+                        {
+                            "key": "field_6023c24ef925a",
+                            "label": "Include",
+                            "name": "selection",
+                            "type": "post_object",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": "",
+                            "taxonomy": "",
+                            "allow_null": 0,
+                            "multiple": 1,
+                            "return_format": "id",
+                            "ui": 1
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_6023c1bbf9256": {
+                    "key": "layout_6023c1bbf9256",
+                    "name": "length",
+                    "label": "Length",
+                    "display": "table",
+                    "sub_fields": [
+                        {
+                            "key": "field_6023c1cff9257",
+                            "label": "Length",
+                            "name": "length",
+                            "type": "number",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": 8,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "min": "",
+                            "max": "",
+                            "step": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": "1"
+                },
+                "layout_621ca1341b5dc": {
+                    "key": "layout_621ca1341b5dc",
+                    "name": "order",
+                    "label": "Order",
+                    "display": "table",
+                    "sub_fields": [
+                        {
+                            "key": "field_621ca1341b5dd",
+                            "label": "Order",
+                            "name": "order",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "ASC": "Ascending",
+                                "DESC": "Descending"
+                            },
+                            "default_value": "ASC",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": "1"
+                },
+                "layout_603664b1010f9": {
+                    "key": "layout_603664b1010f9",
+                    "name": "group_by_category",
+                    "label": "Group by category",
+                    "display": "table",
+                    "sub_fields": [
+                        {
+                            "key": "field_603664bd010fb",
+                            "label": "Information",
+                            "name": "",
+                            "type": "message",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "This rule will group the results by category and then sort by date.",
+                            "new_lines": "wpautop",
+                            "esc_html": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": "1"
+                }
+            },
+            "button_label": "Add Rule",
+            "min": 1,
+            "max": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/feed"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates\/page-feed.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1646043532
+}

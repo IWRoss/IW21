@@ -1,0 +1,164 @@
+$palette_a: #2C5E80;
+$palette_b: #D8127D;
+$palette_c: $color__text-highlight;
+
+.single-report .site-main {
+    padding: 0;
+}
+
+.marketing-dashboard {
+    font-family: $font__heading;
+    font-weight: 300;
+    padding: 2em;
+
+    &.marketing-dashboard-last-week {
+        background-color: #404040;
+    }
+
+    &.marketing-dashboard-this-week {
+        background-color: #F1F2F2;
+    }
+}
+
+.dashboard-content {
+    display: grid;
+    gap: 1em;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content min-content min-content;
+
+    .marketing-dashboard-last-week & {
+        grid-template-areas: "a c"
+            "a d"
+            "b e";
+    }
+
+    .marketing-dashboard-this-week & {
+        grid-template-areas: "a c"
+            "b c"
+            "b d";
+    }
+}
+
+.dashboard-card {
+    border: 0.25em solid white;
+    border-radius: 1em;
+    padding: 2em;
+    color: white;
+}
+
+.dashboard-title,
+.dashboard-card-title {
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-top: 0;
+}
+
+.dashboard-card-title {
+    color: white;
+}
+
+.dashboard-card-content {
+    font-size: 1.125em;
+
+    li {
+        &:before {
+            content: '\2713';
+            display: inline-block;
+            width: 2em;
+            margin-left: -2em;
+            transform: scale(1.25);
+        }
+    }
+}
+
+.dashboard-delivered-this-week {
+    grid-area: a;
+    background-color: $palette_a;
+}
+
+.dashboard-next-event-signups {
+    grid-area: b;
+    background-color: $palette_a;
+}
+
+.dashboard-new-leads {
+    grid-area: c;
+    background-color: $palette_c;
+}
+
+.dashboard-web-data {
+    grid-area: d;
+    background-color: $palette_b;
+}
+
+.dashboard-web-stalker-of-the-week {
+    grid-area: e;
+    background-color: $palette_b;
+}
+
+.dashboard-key-deliverables {
+    grid-area: a;
+    background-color: $palette_a;
+}
+
+.dashboard-web-features-launching {
+    grid-area: b;
+    background-color: $palette_b;
+}
+
+.dashboard-key-actions {
+    grid-area: c;
+    background-color: $palette_c;
+}
+
+.dashboard-action-completion-rate {
+    grid-area: d;
+    background-color: $palette_c;
+}
+
+.dashboard-columns {
+    display: flex;
+    justify-content: stretch;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.dashboard-column {
+    width: 100%;
+
+    &.dashboard-column-thin {
+        width: 50%;
+    }
+}
+
+.dashboard-number {
+    font-size: 3em;
+    line-height: 1;
+
+    .dashboard-columns .dashboard-columns & {
+        margin-right: 0.125em;
+    }
+}
+
+.dashboard-number-label {
+    font-size: 0.75em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.dashboard-number-increase {
+    font-size: 1.5em;
+    color: $palette_c;
+}
+
+.dashboard-web-stalker-image {
+    border-radius: 50%;
+    background: white;
+    max-width: 80%;
+}
+
+.dashboard-icon {
+    width: 0.75em;
+    height: 0.75em;
+    display: inline-block;
+}

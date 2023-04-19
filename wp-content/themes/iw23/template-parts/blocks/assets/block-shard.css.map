@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "block-shard.css",
+	"sources": [
+		"../../../sass/template-parts/blocks/assets/block-shard.scss"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,oBAAoB,CAAC;CACnB,QAAQ,EAAE,MAAM;CAChB,SAAS,EAAE,CAAC;CACb"
+}
