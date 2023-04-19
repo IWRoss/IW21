@@ -353,7 +353,7 @@ require get_template_directory() . '/inc/infinite-scroll.php';
 /**
  * Load Shortcodes file.
  */
-require get_template_directory() . '/inc/shortcodes.php';
+// require get_template_directory() . '/inc/shortcodes.php';
 
 /**
  * Load SEO file.
