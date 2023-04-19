@@ -14,12 +14,12 @@
 
 	<?php if (!get_field('hide_header')) : ?>
 		<header class="entry-header">
-			<?php iw21_render_post_title(); ?>
+			<?php iw23_render_post_title(); ?>
 		</header><!-- .entry-header -->
 
 		<?php if (get_post_type() === 'post') : ?>
 			<div class="entry-meta">
-				<?php iw21_posted_on(); ?>
+				<?php iw23_posted_on(); ?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	<?php endif; ?>
@@ -61,7 +61,7 @@
 	</div>
 
 	<footer class="entry-footer">
-		<?php do_action('iw21_content_footer'); ?>
+		<?php do_action('iw23_content_footer'); ?>
 	</footer><!-- .entry-footer -->
 
 </article><!-- #post-<?php the_ID(); ?> -->

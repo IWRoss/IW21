@@ -3,7 +3,7 @@
 /**
  * Set experiments
  */
-function iw21_experiments()
+function iw23_experiments()
 {
 
     if (!session_id()) {
@@ -32,12 +32,12 @@ function iw21_experiments()
         $_SESSION[$flag] = isset($_SESSION[$flag]) ? $_SESSION[$flag] : $bool;
     }
 }
-add_action('init', 'iw21_experiments', 10);
+add_action('init', 'iw23_experiments', 10);
 
 /**
  * Get experiments
  */
-function iw21_get_experiments()
+function iw23_get_experiments()
 {
 
     if (!isset($_SESSION) || !is_array($_SESSION)) {
@@ -54,25 +54,25 @@ function iw21_get_experiments()
 /**
  * 
  */
-function iw21_add_experiments_to_body_class($classes)
+function iw23_add_experiments_to_body_class($classes)
 {
-    $experiments = iw21_get_experiments();
+    $experiments = iw23_get_experiments();
 
     return array_merge($classes, is_array($experiments) ? array_map(function ($value) {
         return str_replace('_', '-', $value);
     }, $experiments) : []);
 }
-add_filter('body_class', 'iw21_add_experiments_to_body_class');
+add_filter('body_class', 'iw23_add_experiments_to_body_class');
 
 /**
  * 
  */
-function iw21_convert_block_color_fields_to_block_colors($post_id, $a_post, $update)
+function iw23_convert_block_color_fields_to_block_colors($post_id, $a_post, $update)
 {
     /**
      * Reject requests to other requests
      */
-    // if (strpos($_SERVER["REQUEST_URI"], '/iw21_convert_block_color_fields_to_block_colors') === false) {
+    // if (strpos($_SERVER["REQUEST_URI"], '/iw23_convert_block_color_fields_to_block_colors') === false) {
     //     return false;
     // }
 
@@ -121,27 +121,27 @@ function iw21_convert_block_color_fields_to_block_colors($post_id, $a_post, $upd
     }, explode("\n", $a_post->post_content));
 
     // unhook this function so it doesn't loop infinitely
-    remove_action('save_post', 'iw21_convert_block_color_fields_to_block_colors');
+    remove_action('save_post', 'iw23_convert_block_color_fields_to_block_colors');
 
     // update the post, which calls save_post again
     wp_update_post(array('ID' => $post_id, 'post_content' => implode("\n", $blocks)));
 
     // re-hook this function
-    add_action('save_post', 'iw21_convert_block_color_fields_to_block_colors', 10, 3);
+    add_action('save_post', 'iw23_convert_block_color_fields_to_block_colors', 10, 3);
 }
-// add_action('save_post', 'iw21_convert_block_color_fields_to_block_colors', 10, 3);
+// add_action('save_post', 'iw23_convert_block_color_fields_to_block_colors', 10, 3);
 
 
 /**
  * 
  */
-function iw21_update_all_posts_with_block_colors()
+function iw23_update_all_posts_with_block_colors()
 {
 
     /**
      * Reject requests to other requests
      */
-    if (strpos($_SERVER["REQUEST_URI"], '/iw21_update_all_posts_with_block_colors') === false) {
+    if (strpos($_SERVER["REQUEST_URI"], '/iw23_update_all_posts_with_block_colors') === false) {
         return false;
     }
 
@@ -203,4 +203,4 @@ function iw21_update_all_posts_with_block_colors()
         wp_update_post(array('ID' => $a_post->ID, 'post_content' => implode("\n", $blocks)));
     }
 }
-add_action('parse_request', 'iw21_update_all_posts_with_block_colors');
+add_action('parse_request', 'iw23_update_all_posts_with_block_colors');

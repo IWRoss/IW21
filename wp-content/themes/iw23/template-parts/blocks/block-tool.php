@@ -3,7 +3,7 @@
 /**
  * Get block styling
  */
-[$classes, $inline_styles] = iw21_block_colors(
+[$classes, $inline_styles] = iw23_block_colors(
     get_field('text_color'),
     get_field('background_color')
 );

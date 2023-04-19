@@ -1,6 +1,6 @@
 <?php
 
-[$classes, $styles] = iw21_block_styles($block);
+[$classes, $styles] = iw23_block_styles($block);
 
 ?>
 
@@ -12,4 +12,4 @@
 
 </div>
 
-<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id']); ?>
+<?php if ($animation = get_field('animation')) iw23_setup_animations($animation, $block['id']); ?>

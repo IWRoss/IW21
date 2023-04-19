@@ -11,7 +11,7 @@
 /**
  * Prints HTML with meta information for the current post-date/time and author.
  */
-function iw21_posted_on()
+function iw23_posted_on()
 {
 	$image = get_field('author_image', 'user_' . get_the_author_meta('ID'));
 
@@ -48,7 +48,7 @@ function iw21_posted_on()
 /**
  * Prints HTML with meta information for the current author.
  */
-function iw21_posted_by()
+function iw23_posted_by()
 {
 
 	$image = get_field('author_image', 'user_' . get_the_author_meta('ID'));
@@ -66,7 +66,7 @@ function iw21_posted_by()
 /**
  * Prints HTML with meta information for the categories, tags and comments.
  */
-function iw21_entry_footer()
+function iw23_entry_footer()
 {
 	// Hide category and tag text for pages.
 	if ('post' === get_post_type()) {
@@ -109,7 +109,7 @@ function iw21_entry_footer()
 /**
  * Get the post company and return;
  */
-function iw21_post_company()
+function iw23_post_company()
 {
 
 	global $post;
@@ -121,7 +121,7 @@ function iw21_post_company()
 	return false;
 }
 
-function iw21_media_tag($media, $class = 'iw21-mixed-media', $style = '')
+function iw23_media_tag($media, $class = 'iw21-mixed-media', $style = '')
 {
 	if (!is_array($media) || !array_key_exists('type', $media)) {
 		return;
@@ -142,7 +142,7 @@ function iw21_media_tag($media, $class = 'iw21-mixed-media', $style = '')
 	echo $element;
 }
 
-function iw21_link_tag($link_meta, $classes = [], $inline_styles = [], $modal = false)
+function iw23_link_tag($link_meta, $classes = [], $inline_styles = [], $modal = false)
 {
 
 	if (!is_array($link_meta) || !array_key_exists('url', $link_meta)) {
@@ -180,7 +180,7 @@ function iw21_link_tag($link_meta, $classes = [], $inline_styles = [], $modal = 
 /**
  * 
  */
-function iw21_back_button()
+function iw23_back_button()
 {
 	$http_referer = $_SERVER['HTTP_REFERER'] ?? '';
 

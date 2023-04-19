@@ -3,7 +3,7 @@
 /**
  * 
  */
-function iw21_handle_submission()
+function iw23_handle_submission()
 {
 
   /**
@@ -16,7 +16,7 @@ function iw21_handle_submission()
   /**
    * Process signup
    */
-  $signup = iw21_process_signup($_POST);
+  $signup = iw23_process_signup($_POST);
 
   /**
    * Get default redirect URL
@@ -40,13 +40,13 @@ function iw21_handle_submission()
   );
   exit;
 }
-add_action('parse_request', 'iw21_handle_submission');
+add_action('parse_request', 'iw23_handle_submission');
 
 
 /**
  * 
  */
-function iw21_process_signup($postdata)
+function iw23_process_signup($postdata)
 {
 
   /**
@@ -58,29 +58,29 @@ function iw21_process_signup($postdata)
     /**
      * 1a. Check if postdata exists
      */
-    $postdata = iw21_validate_submission($postdata); // 👍
+    $postdata = iw23_validate_submission($postdata); // 👍
 
     /**
      * 1b. Get download
      */
-    $download = iw21_get_post($postdata['download'], 'media', false); // 👍
+    $download = iw23_get_post($postdata['download'], 'media', false); // 👍
 
     /**
      * 1c. Get location
      */
-    $location = iw21_get_post($postdata['location'], 'page'); // 👍
+    $location = iw23_get_post($postdata['location'], 'page'); // 👍
 
     /**
      * 1d. Notify Slack of the success
      */
-    iw21_send_success_notification(array_merge($postdata, array(
+    iw23_send_success_notification(array_merge($postdata, array(
       'location_title' => $location->post_title
     ))); // 👍
 
   } catch (Exception $e) {
 
     // Returns false
-    return iw21_send_error_notification($e, $postdata); // 👍
+    return iw23_send_error_notification($e, $postdata); // 👍
 
   }
 
@@ -89,11 +89,11 @@ function iw21_process_signup($postdata)
    * —————————————————————
    */
   try {
-    iw21_add_lead_to_copper(array_merge($postdata, array(
+    iw23_add_lead_to_copper(array_merge($postdata, array(
       'location_title' => $location->post_title
     ))); // 👍
   } catch (Exception $e) {
-    iw21_send_error_notification($e, $postdata); // 👍
+    iw23_send_error_notification($e, $postdata); // 👍
   }
 
   /**
@@ -101,9 +101,9 @@ function iw21_process_signup($postdata)
    * ————————————————————————
    */
   try {
-    iw21_add_lead_to_mailchimp($postdata); // 👍
+    iw23_add_lead_to_mailchimp($postdata); // 👍
   } catch (Exception $e) {
-    iw21_send_error_notification($e, $postdata); // 👍
+    iw23_send_error_notification($e, $postdata); // 👍
   }
 
   /**
@@ -111,9 +111,9 @@ function iw21_process_signup($postdata)
    * ——————————————————————————
    */
   try {
-    iw21_add_lead_to_spreadsheet($postdata, $download, $location); // 👍
+    iw23_add_lead_to_spreadsheet($postdata, $download, $location); // 👍
   } catch (Exception $e) {
-    iw21_send_error_notification($e, $postdata); // 👍
+    iw23_send_error_notification($e, $postdata); // 👍
   }
 
   /**
@@ -126,7 +126,7 @@ function iw21_process_signup($postdata)
 /**
  * 
  */
-function iw21_validate_submission($payload)
+function iw23_validate_submission($payload)
 {
 
   if (empty($payload)) {
@@ -149,14 +149,14 @@ function iw21_validate_submission($payload)
     return false;
   }
 
-  $location = iw21_decrypt($payload['location'], IW_PASSPHRASE);
+  $location = iw23_decrypt($payload['location'], IW_PASSPHRASE);
 
   if (!get_post($location)) {
     throw new Exception('No location found');
     return false;
   }
 
-  $download = get_post(iw21_decrypt($payload['download'], IW_PASSPHRASE))->ID ?? false;
+  $download = get_post(iw23_decrypt($payload['download'], IW_PASSPHRASE))->ID ?? false;
 
   return array(
     'email'             => $payload['email'],
@@ -171,7 +171,7 @@ function iw21_validate_submission($payload)
 /**
  * 
  */
-function iw21_get_post($post_id, $post_type = 'post', $strict = true)
+function iw23_get_post($post_id, $post_type = 'post', $strict = true)
 {
 
   $the_post = get_post($post_id);

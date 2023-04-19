@@ -9,12 +9,12 @@
 /**
  * Add HTML attributes to feed item outer tags
  */
-function iw21_feed_item_html_outer_tag_attributes($template_args = false)
+function iw23_feed_item_html_outer_tag_attributes($template_args = false)
 {
 
     global $post;
 
-    $attributes = sprintf('class="grid-item feed-item %s"', iw21_get_the_post_classes_string());
+    $attributes = sprintf('class="grid-item feed-item %s"', iw23_get_the_post_classes_string());
 
     if ($preview = get_field('preview', $post->ID)) {
         $attributes .= sprintf(' style="background-image: url(%s)"', $preview);
@@ -40,13 +40,13 @@ function iw21_feed_item_html_outer_tag_attributes($template_args = false)
 
     echo $attributes;
 }
-add_action('iw21_feed_item_html_outer_tag_attributes', 'iw21_feed_item_html_outer_tag_attributes', 10);
-add_action('iw21_menu_featured_item_html_outer_tag_attributes', 'iw21_feed_item_html_outer_tag_attributes', 10);
+add_action('iw23_feed_item_html_outer_tag_attributes', 'iw23_feed_item_html_outer_tag_attributes', 10);
+add_action('iw23_menu_featured_item_html_outer_tag_attributes', 'iw23_feed_item_html_outer_tag_attributes', 10);
 
 /**
  * Add HTML attributes to feed item link tags
  */
-function iw21_feed_item_html_link_tag_attributes($template_args = false)
+function iw23_feed_item_html_link_tag_attributes($template_args = false)
 {
 
     global $post;
@@ -78,13 +78,13 @@ function iw21_feed_item_html_link_tag_attributes($template_args = false)
 
     echo $attributes;
 }
-add_action('iw21_feed_item_html_link_tag_attributes', 'iw21_feed_item_html_link_tag_attributes', 10);
-add_action('iw21_menu_featured_item_html_link_tag_attributes', 'iw21_feed_item_html_link_tag_attributes', 10);
+add_action('iw23_feed_item_html_link_tag_attributes', 'iw23_feed_item_html_link_tag_attributes', 10);
+add_action('iw23_menu_featured_item_html_link_tag_attributes', 'iw23_feed_item_html_link_tag_attributes', 10);
 
 /**
  * Add author image to feed item if exists
  */
-function iw21_author_image()
+function iw23_author_image()
 {
 
     global $post;
@@ -105,12 +105,12 @@ function iw21_author_image()
         echo sprintf('<img src="%s" alt="Author" class="author-image">', $user_author_image);
     }
 }
-add_action('iw21_author_image', 'iw21_author_image', 10);
+add_action('iw23_author_image', 'iw23_author_image', 10);
 
 /**
  * Add overlay to feed item if exists
  */
-function iw21_feed_overlay()
+function iw23_feed_overlay()
 {
 
     global $post;
@@ -119,12 +119,12 @@ function iw21_feed_overlay()
         echo sprintf('<div class="sketch-overlay" style="background-image:url(\'%s\')"></div>', $overlay['url']);
     }
 }
-add_action('iw21_feed_overlay', 'iw21_feed_overlay', 10);
+add_action('iw23_feed_overlay', 'iw23_feed_overlay', 10);
 
 /**
  * Add overlay to feed item if exists
  */
-function iw21_post_icon()
+function iw23_post_icon()
 {
 
     global $post;
@@ -136,12 +136,12 @@ function iw21_post_icon()
         echo sprintf('<div class="post-icon post-icon-%s"><span class="outcome">%s</span><img src="%s/imgs/feed-icons/%s.svg" class=""></div>', $outcomes[0]->slug, $outcomes[0]->name, get_template_directory_uri(), $outcomes[0]->slug);
     }
 }
-add_action('iw21_post_icon', 'iw21_post_icon', 10);
+add_action('iw23_post_icon', 'iw23_post_icon', 10);
 
 /**
  * Create a team member image with modal link
  */
-function iw21_team_member_image($member)
+function iw23_team_member_image($member)
 {
 
     // Image
@@ -168,12 +168,12 @@ function iw21_team_member_image($member)
         $link
     );
 }
-add_action('iw21_team_member_image', 'iw21_team_member_image', 10);
+add_action('iw23_team_member_image', 'iw23_team_member_image', 10);
 
 /**
  * 
  */
-function iw21_sharing_links()
+function iw23_sharing_links()
 {
 
     global $post;
@@ -184,12 +184,12 @@ function iw21_sharing_links()
 
     get_template_part('template-parts/post/element', 'sharing-links');
 }
-add_action('iw21_content_footer', 'iw21_sharing_links', 10);
+add_action('iw23_content_footer', 'iw23_sharing_links', 10);
 
 /**
  * 
  */
-function iw21_oembed_video()
+function iw23_oembed_video()
 {
 
     global $post;
@@ -198,12 +198,12 @@ function iw21_oembed_video()
         echo sprintf('<div class="video-wrapper">%s</div>', $oembed);
     endif;
 }
-add_action('iw21_after_content', 'iw21_oembed_video', 10);
+add_action('iw23_after_content', 'iw23_oembed_video', 10);
 
 /**
  * 
  */
-function iw21_footer_scripts()
+function iw23_footer_scripts()
 {
 
     global $post;
@@ -212,12 +212,12 @@ function iw21_footer_scripts()
         echo sprintf('<div class="video-wrapper">%s</div>', $oembed);
     endif;
 }
-add_action('iw21_after_footer', 'iw21_footer_scripts', 10);
+add_action('iw23_after_footer', 'iw23_footer_scripts', 10);
 
 /**
  * 
  */
-function iw21_connect_rsvps_on_form_submit($request)
+function iw23_connect_rsvps_on_form_submit($request)
 {
 
     // Get the params from the request
@@ -301,7 +301,7 @@ function iw21_connect_rsvps_on_form_submit($request)
 add_action('rest_api_init', function () {
     register_rest_route('rsvps/v1', 'add/', array(
         'methods' => 'POST',
-        'callback' => 'iw21_connect_rsvps_on_form_submit',
+        'callback' => 'iw23_connect_rsvps_on_form_submit',
         'permission_callback' => '__return_true'
     ));
 });
@@ -309,7 +309,7 @@ add_action('rest_api_init', function () {
 /**
  * 
  */
-function iw21_add_email_to_event_with_link($request)
+function iw23_add_email_to_event_with_link($request)
 {
 
     if (strpos($_SERVER["REQUEST_URI"], '/event-signup') === false) {
@@ -355,9 +355,9 @@ function iw21_add_email_to_event_with_link($request)
     wp_redirect(get_permalink(get_page_by_title('You\'re signed up!')));
     exit;
 }
-add_action('parse_request', 'iw21_add_email_to_event_with_link');
+add_action('parse_request', 'iw23_add_email_to_event_with_link');
 
-// function iw21_add_email_to_event_with_link($request)
+// function iw23_add_email_to_event_with_link($request)
 // {
 
 //     if (! isset($_GET['event']) || !isset($_GET['email'])) {
@@ -399,7 +399,7 @@ add_action('parse_request', 'iw21_add_email_to_event_with_link');
 // add_action('rest_api_init', function () {
 //     register_rest_route('rsvps/v1', 'single/', array(
 //         'methods' => 'GET',
-//         'callback' => 'iw21_add_email_to_event_with_link',
+//         'callback' => 'iw23_add_email_to_event_with_link',
 //         'permission_callback' => '__return_true'
 //     ));
 // });

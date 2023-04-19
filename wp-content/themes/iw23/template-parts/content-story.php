@@ -13,13 +13,13 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php if (!get_field('hide_header')) : ?>
 		<header class="entry-header">
-			<?php iw21_render_post_title(); ?>
+			<?php iw23_render_post_title(); ?>
 		</header><!-- .entry-header -->
 	<?php endif; ?>
 
 	<?php if ('post' === get_post_type()) : ?>
 		<div class="entry-meta">
-			<?php iw21_posted_by(); ?>
+			<?php iw23_posted_by(); ?>
 		</div><!-- .entry-meta -->
 	<?php endif; ?>
 
@@ -48,7 +48,7 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php do_action('iw21_content_footer'); ?>
+		<?php do_action('iw23_content_footer'); ?>
 	</footer><!-- .entry-footer -->
 
 </article><!-- #post-<?php the_ID(); ?> -->

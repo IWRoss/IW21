@@ -65,7 +65,7 @@ add_action('init', 'work_post_type', 0);
 /**
  * Add industry taxonomy
  */
-function iw21_register_work_taxonomies()
+function iw23_register_work_taxonomies()
 {
 
 	register_taxonomy('industry', array('post', 'work'), array(
@@ -163,15 +163,15 @@ function iw21_register_work_taxonomies()
 		'show_tagcloud'              => false,
 	));
 }
-add_action('init', 'iw21_register_work_taxonomies', 0);
+add_action('init', 'iw23_register_work_taxonomies', 0);
 
 /**
  * Style custom columns
  */
-function iw21_company_column_width()
+function iw23_company_column_width()
 {
 	echo '<style type="text/css">';
 	echo '.column-company { width: 100px !important; }';
 	echo '</style>';
 }
-add_action('admin_head', 'iw21_company_column_width');
+add_action('admin_head', 'iw23_company_column_width');

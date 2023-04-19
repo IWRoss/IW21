@@ -17,7 +17,7 @@ $align_content = $block['align_content'];
 <div id="<?php echo $block['id']; ?>" class="block-icon block-icon-align<?php echo $align_content ?: 'top'; ?>">
 
     <div class="block-icon-inner">
-        <?php iw21_media_tag(get_field('icon'), 'block-icon-icon', sprintf('width:%dem;', get_field('width') / 5 ?: 5)); ?>
+        <?php iw23_media_tag(get_field('icon'), 'block-icon-icon', sprintf('width:%dem;', get_field('width') / 5 ?: 5)); ?>
 
         <div class="block-icon-text">
             <div class="block-icon-innerblocks">
@@ -28,4 +28,4 @@ $align_content = $block['align_content'];
 
 </div>
 
-<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id'], '.block-icon-inner'); ?>
+<?php if ($animation = get_field('animation')) iw23_setup_animations($animation, $block['id'], '.block-icon-inner'); ?>

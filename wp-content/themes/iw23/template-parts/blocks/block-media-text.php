@@ -4,17 +4,17 @@ $alignment = get_field('alignment') ? get_field('alignment') : 'left';
 
 $design = get_field('style') ? get_field('style') : 'basic';
 
-$class = iw21_block_color_class($block);
+$class = iw23_block_color_class($block);
 $style = !empty($block['style']['color']['gradient']) ? sprintf('background: %s;', $block['style']['color']['gradient']) : '';
 
-// echo '<pre>', print_r(iw21_block_styles($block)), '</pre>';
+// echo '<pre>', print_r(iw23_block_styles($block)), '</pre>';
 $classes = array(
     sprintf('block-media-text-style-%s', get_field('style') ? get_field('style') : 'basic'),
     sprintf('align%s', $block['align']),
     sprintf('block-media-text-inner-align%s', get_field('alignment') ? get_field('alignment') : 'left')
 );
 
-[$block_classes, $block_styles] = iw21_block_styles($block);
+[$block_classes, $block_styles] = iw23_block_styles($block);
 
 ?>
 
@@ -26,7 +26,7 @@ $classes = array(
 
         $media = get_field('media');
 
-        iw21_media_tag($media, 'block-media-text-media-element');
+        iw23_media_tag($media, 'block-media-text-media-element');
         ?>
     </div>
 
@@ -42,4 +42,4 @@ $classes = array(
 
 </div>
 
-<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id']); ?>
+<?php if ($animation = get_field('animation')) iw23_setup_animations($animation, $block['id']); ?>

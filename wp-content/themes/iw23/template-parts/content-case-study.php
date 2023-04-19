@@ -31,7 +31,7 @@ $fields = array(
 				<?php echo get_the_term_list($post->ID, 'industry', 'Industry: <ul class="industry-list"><li class="industry">', ',</li><li>', '</li></ul>'); ?>
 			</div>
 
-			<?php iw21_render_post_title($fields['headline']); ?>
+			<?php iw23_render_post_title($fields['headline']); ?>
 		</header><!-- .entry-header -->
 
 	<?php endif; ?>
@@ -173,6 +173,6 @@ $fields = array(
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php do_action('iw21_content_footer'); ?>
+		<?php do_action('iw23_content_footer'); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

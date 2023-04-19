@@ -1,7 +1,7 @@
 <?php
 
 // Register Custom Post Type
-function iw21_report_post_type()
+function iw23_report_post_type()
 {
 
     $labels = array(
@@ -55,5 +55,4 @@ function iw21_report_post_type()
     );
     register_post_type('report', $args);
 }
-add_action('init', 'iw21_report_post_type', 0);
-
+add_action('init', 'iw23_report_post_type', 0);

@@ -37,9 +37,9 @@
 		<?php
 
 		if (is_front_page()) :
-			iw21_parallax_background('dotted');
+			iw23_parallax_background('dotted');
 		else :
-			iw21_parallax_background('dotted', false);
+			iw23_parallax_background('dotted', false);
 		endif;
 
 		?>

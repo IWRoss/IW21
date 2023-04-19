@@ -5,7 +5,7 @@
 // $class = $block['gradient'] ? sprintf('has-%s-gradient-background', $block['gradient']) : '';
 // $style = $block['style']['color']['gradient'] ? sprintf('background: %s;', $block['style']['color']['gradient']) : '';
 
-[$classes, $styles] = iw21_block_styles($block);
+[$classes, $styles] = iw23_block_styles($block);
 
 ?>
 
@@ -13,4 +13,4 @@
     <?php echo get_field('content'); ?>
 </h1>
 
-<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id']); ?>
+<?php if ($animation = get_field('animation')) iw23_setup_animations($animation, $block['id']); ?>

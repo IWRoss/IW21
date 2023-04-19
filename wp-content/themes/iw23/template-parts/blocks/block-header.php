@@ -1,6 +1,6 @@
 <?php
 
-$taglines = iw21_render_dynamic_text_array(get_field('tagline'), 'w');
+$taglines = iw23_render_dynamic_text_array(get_field('tagline'), 'w');
 
 $banner_image = get_field('banner_image');
 
@@ -33,4 +33,4 @@ $banner_image = get_field('banner_image');
     <?php endif; ?>
 </div>
 
-<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id']); ?>
+<?php if ($animation = get_field('animation')) iw23_setup_animations($animation, $block['id']); ?>

@@ -3,7 +3,7 @@
 /**
  * Custom function for POST requests
  */
-function iw21_post_request($url, $data, $headers = array(), $type = 'POST', $encode_to_json = true)
+function iw23_post_request($url, $data, $headers = array(), $type = 'POST', $encode_to_json = true)
 {
 
     $payload = $encode_to_json ? json_encode($data) : $data;
@@ -30,27 +30,27 @@ function iw21_post_request($url, $data, $headers = array(), $type = 'POST', $enc
 /**
  * Wrapper function for PUT requests
  */
-function iw21_put_request($url, $data, $headers = array())
+function iw23_put_request($url, $data, $headers = array())
 {
-    return iw21_post_request($url, $data, $headers, 'PUT');
+    return iw23_post_request($url, $data, $headers, 'PUT');
 }
 
 /**
  * 
  */
-function iw21_send_error_notification(Exception $e, $data = array())
+function iw23_send_error_notification(Exception $e, $data = array())
 {
     // Message
     $message = sprintf('There was an error on the Interactive Workshops site: `%s`%c```%s```', $e->getMessage(), 10, json_encode($data, JSON_PRETTY_PRINT));
 
     // Send Slack notification
-    return iw21_send_slack_notification($message, 'error');
+    return iw23_send_slack_notification($message, 'error');
 }
 
 /**
  * 
  */
-function iw21_send_success_notification($data = array())
+function iw23_send_success_notification($data = array())
 {
     // Message
     $message = vsprintf('*There was a new signup on %s*%c%c> Name: %s %s%c> Organisation: %s%c> Email: %s', array(
@@ -66,16 +66,16 @@ function iw21_send_success_notification($data = array())
     ));
 
     // Send Slack notification
-    return iw21_send_slack_notification($message, 'success');
+    return iw23_send_slack_notification($message, 'success');
 }
 
 /**
  * 
  */
-function iw21_send_slack_notification($message, $status = 'error')
+function iw23_send_slack_notification($message, $status = 'error')
 {
 
-    $request = iw21_post_request(
+    $request = iw23_post_request(
         get_field(sprintf('signup_slack_%s_hook', $status), 'option'),
         array('text' => $message)
     );
@@ -86,7 +86,7 @@ function iw21_send_slack_notification($message, $status = 'error')
 /**
  * 
  */
-function iw21_add_lead_to_copper($postdata)
+function iw23_add_lead_to_copper($postdata)
 {
 
     /**
@@ -108,7 +108,7 @@ function iw21_add_lead_to_copper($postdata)
     /**
      * We'll use these headers for all the requests
      */
-    $headers = iw21_prepare_headers(array(
+    $headers = iw23_prepare_headers(array(
         'X-PW-AccessToken'  => $copper_api_key,
         'X-PW-Application'  => 'developer_api',
         'X-PW-UserEmail'    => $copper_email,
@@ -120,7 +120,7 @@ function iw21_add_lead_to_copper($postdata)
      * If the person exists already, we want to update their tags and quit
      */
 
-    $person = iw21_post_request(
+    $person = iw23_post_request(
         'https://api.prosperworks.com/developer_api/v1/people/fetch_by_email',
         array(
             'email' => $postdata['email']
@@ -135,7 +135,7 @@ function iw21_add_lead_to_copper($postdata)
             : array_merge($person['tags'], $add_tags);
 
         // Update person
-        return iw21_put_request(
+        return iw23_put_request(
             sprintf('https://api.prosperworks.com/developer_api/v1/people/%s', $person['id']),
             array(
                 'tags' => $add_tags
@@ -151,7 +151,7 @@ function iw21_add_lead_to_copper($postdata)
      * to overwrite their tags
      */
 
-    $leads = iw21_post_request(
+    $leads = iw23_post_request(
         'https://api.prosperworks.com/developer_api/v1/leads/search',
         array(
             'page_size' => 25,
@@ -196,7 +196,7 @@ function iw21_add_lead_to_copper($postdata)
     /**
      * Let's UPSERT
      */
-    return iw21_put_request(
+    return iw23_put_request(
         'https://api.prosperworks.com/developer_api/v1/leads/upsert',
         array(
             'properties'    => array(
@@ -220,11 +220,11 @@ function iw21_add_lead_to_copper($postdata)
 /**
  * 
  */
-function iw21_add_lead_to_mailchimp($postdata)
+function iw23_add_lead_to_mailchimp($postdata)
 {
 
     // Add lead to mailchimp
-    return iw21_post_request(
+    return iw23_post_request(
         sprintf('https://us5.api.mailchimp.com/3.0/lists/%s/members/', get_field('signup_mailchimp_list_id', 'option')),
         array(
             'email_address' => $postdata['email'],
@@ -234,7 +234,7 @@ function iw21_add_lead_to_mailchimp($postdata)
                 'LNAME' => $postdata['last_name'],
             )
         ),
-        iw21_prepare_headers(array(
+        iw23_prepare_headers(array(
             'Authorization' => sprintf('apikey %s', get_field('signup_mailchimp_api', 'option'))
         ))
     );
@@ -243,7 +243,7 @@ function iw21_add_lead_to_mailchimp($postdata)
 /**
  * 
  */
-function iw21_add_lead_to_spreadsheet($postdata, $download)
+function iw23_add_lead_to_spreadsheet($postdata, $download)
 {
 
     $data = array(
@@ -251,7 +251,7 @@ function iw21_add_lead_to_spreadsheet($postdata, $download)
         'download'      => $download->post_title
     );
 
-    return iw21_post_request(
+    return iw23_post_request(
         get_field('signup_update_spreadsheet_hook', 'option'),
         $data
     );
@@ -261,7 +261,7 @@ function iw21_add_lead_to_spreadsheet($postdata, $download)
  * Very basic function to convert a key-value array 
  * to an array of headers for cURL
  */
-function iw21_prepare_headers($headers)
+function iw23_prepare_headers($headers)
 {
 
     return array_map(function ($k, $v) {

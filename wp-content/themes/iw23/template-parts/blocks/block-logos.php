@@ -57,4 +57,4 @@ $logos = get_field('logos');
     })(jQuery)
 </script>
 
-<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id']); ?>
+<?php if ($animation = get_field('animation')) iw23_setup_animations($animation, $block['id']); ?>

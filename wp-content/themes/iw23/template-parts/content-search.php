@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template part for displaying results in search pages
  *
@@ -13,10 +14,10 @@
 	<header class="entry-header">
 		<h3 class="entry-title"><?php the_title(); ?></h3>
 
-		<?php if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php iw21_posted_on(); ?>
-		</div><!-- .entry-meta -->
+		<?php if ('post' === get_post_type()) : ?>
+			<div class="entry-meta">
+				<?php iw23_posted_on(); ?>
+			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 

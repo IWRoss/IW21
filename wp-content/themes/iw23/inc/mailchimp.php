@@ -1,6 +1,7 @@
 <?php
 
-function iw21_mailchimp_html_form( $id ) { ?>
+function iw23_mailchimp_html_form($id)
+{ ?>
 
     <!-- Begin MailChimp Signup Form -->
     <div id="mc_embed_signup">

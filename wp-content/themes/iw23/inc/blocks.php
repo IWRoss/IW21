@@ -1,6 +1,6 @@
 <?php
 
-function iw21_block_category($categories, $post)
+function iw23_block_category($categories, $post)
 {
     return array_merge(
         $categories,
@@ -12,12 +12,12 @@ function iw21_block_category($categories, $post)
         )
     );
 }
-add_filter('block_categories', 'iw21_block_category', 10, 2);
+add_filter('block_categories', 'iw23_block_category', 10, 2);
 
 /**
  * Add ACF Blocks
  */
-function iw21_add_custom_blocks()
+function iw23_add_custom_blocks()
 {
 
     // check function exists.
@@ -576,12 +576,12 @@ function iw21_add_custom_blocks()
         ));
     }
 }
-add_action('acf/init', 'iw21_add_custom_blocks');
+add_action('acf/init', 'iw23_add_custom_blocks');
 
 /**
  * 
  */
-function iw21_add_case_study_blocks()
+function iw23_add_case_study_blocks()
 {
     acf_register_block_type(array(
         'name'              => 'cs-header',
@@ -678,12 +678,12 @@ function iw21_add_case_study_blocks()
         )
     ));
 }
-add_action('acf/init', 'iw21_add_case_study_blocks');
+add_action('acf/init', 'iw23_add_case_study_blocks');
 
 /**
  * 
  */
-function iw21_add_signup_blocks()
+function iw23_add_signup_blocks()
 {
 
     acf_register_block_type(array(
@@ -722,12 +722,12 @@ function iw21_add_signup_blocks()
         )
     ));
 }
-add_action('acf/init', 'iw21_add_signup_blocks');
+add_action('acf/init', 'iw23_add_signup_blocks');
 
 /**
  * 
  */
-function iw21_add_body_classes_for_blocks_in_content($classes)
+function iw23_add_body_classes_for_blocks_in_content($classes)
 {
 
     global $post;
@@ -750,13 +750,13 @@ function iw21_add_body_classes_for_blocks_in_content($classes)
 
     return $classes;
 }
-add_filter('body_class', 'iw21_add_body_classes_for_blocks_in_content');
+add_filter('body_class', 'iw23_add_body_classes_for_blocks_in_content');
 
 
 /**
  * Add ACF Blocks
  */
-function iw21_add_landing_page_blocks()
+function iw23_add_landing_page_blocks()
 {
 
     // check function exists.
@@ -782,12 +782,12 @@ function iw21_add_landing_page_blocks()
         ));
     }
 }
-add_action('acf/init', 'iw21_add_landing_page_blocks');
+add_action('acf/init', 'iw23_add_landing_page_blocks');
 
 /**
  * Add ACF Blocks
  */
-function iw21_add_chat_experience_block()
+function iw23_add_chat_experience_block()
 {
 
     // check function exists.
@@ -815,12 +815,12 @@ function iw21_add_chat_experience_block()
         ));
     }
 }
-add_action('acf/init', 'iw21_add_chat_experience_block');
+add_action('acf/init', 'iw23_add_chat_experience_block');
 
 /**
  * 
  */
-function iw21_setup_block_classes($block, $is_preview)
+function iw23_setup_block_classes($block, $is_preview)
 {
     $classes = [
         $is_preview ? 'is-preview' : 'is-frontend', // is-preview
@@ -833,7 +833,7 @@ function iw21_setup_block_classes($block, $is_preview)
 /**
  * 
  */
-function iw21_setup_animations($animation, $block_id, $inner_el = "")
+function iw23_setup_animations($animation, $block_id, $inner_el = "")
 {
     $animations = [
         'fade-in' => 'opacity: 0',

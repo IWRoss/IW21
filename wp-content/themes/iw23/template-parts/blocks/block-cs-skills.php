@@ -83,4 +83,4 @@ $skills_deployed = array_map(function ($term) {
         }, 0);
 </script>
 
-<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id']); ?>
+<?php if ($animation = get_field('animation')) iw23_setup_animations($animation, $block['id']); ?>

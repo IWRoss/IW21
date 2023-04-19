@@ -203,9 +203,9 @@ if ($block_content['height'] && !empty($arrow_type['image']['background'])) {
          */
         echo !empty($arrow_type['static_elements']['foreground'])
             ? vsprintf($arrow_type['static_elements']['foreground'], [
-                iw21_multiline_text_to_tspans($block_content['text']),
-                iw21_multiline_text_to_tspans($block_content['text_2']),
-                iw21_multiline_text_to_tspans($block_content['text_3']),
+                iw23_multiline_text_to_tspans($block_content['text']),
+                iw23_multiline_text_to_tspans($block_content['text_2']),
+                iw23_multiline_text_to_tspans($block_content['text_3']),
             ])
             : '';
 
@@ -281,4 +281,4 @@ if ($block_content['height'] && !empty($arrow_type['image']['background'])) {
     </script>
 </div>
 
-<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id']); ?>
+<?php if ($animation = get_field('animation')) iw23_setup_animations($animation, $block['id']); ?>

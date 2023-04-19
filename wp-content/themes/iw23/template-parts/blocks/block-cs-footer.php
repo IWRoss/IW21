@@ -14,7 +14,7 @@ global $post;
 /**
  * Determine the block classes.
  */
-$classes = iw21_setup_block_classes($block, $is_preview);
+$classes = iw23_setup_block_classes($block, $is_preview);
 
 /*------- Start Template Part: -------*/ ?>
 
@@ -66,4 +66,4 @@ $classes = iw21_setup_block_classes($block, $is_preview);
   })();
 </script>
 
-<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id'], '.cs-footer-inner'); ?>
+<?php if ($animation = get_field('animation')) iw23_setup_animations($animation, $block['id'], '.cs-footer-inner'); ?>

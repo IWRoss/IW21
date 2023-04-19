@@ -9,7 +9,8 @@
 /**
  * Add Company column and reorder columns
  */
-function iw21_set_custom_edit_work_columns($columns) {
+function iw23_set_custom_edit_work_columns($columns)
+{
     $new_columns = array();
 
     foreach ($columns as $key => $title) {
@@ -24,13 +25,14 @@ function iw21_set_custom_edit_work_columns($columns) {
 
     return $new_columns;
 }
-add_filter('manage_posts_columns', 'iw21_set_custom_edit_work_columns');
-add_filter('manage_pages_columns', 'iw21_set_custom_edit_work_columns');
+add_filter('manage_posts_columns', 'iw23_set_custom_edit_work_columns');
+add_filter('manage_pages_columns', 'iw23_set_custom_edit_work_columns');
 
 /**
  * Add custom column contents
  */
-function iw21_custom_work_column($column, $post_id) {
+function iw23_custom_work_column($column, $post_id)
+{
 
     if ($column == 'template') {
 
@@ -40,14 +42,13 @@ function iw21_custom_work_column($column, $post_id) {
 
         echo isset($templates[$the_template]) ? str_replace(' Template', '', $templates[$the_template]) : '&mdash;';
     }
-
 }
-add_action('manage_posts_custom_column', 'iw21_custom_work_column', 10, 2);
+add_action('manage_posts_custom_column', 'iw23_custom_work_column', 10, 2);
 
 /**
  * Enqueue supplemental block editor styles.
  */
-function iw21_block_editor_styles()
+function iw23_block_editor_styles()
 {
 
     $css_dependencies = array();
@@ -58,4 +59,4 @@ function iw21_block_editor_styles()
     wp_enqueue_style('iw21-block-editor-styles', get_theme_file_uri('/common.css'), $css_dependencies, wp_get_theme()->get('Version'), 'all');
 }
 
-add_action('enqueue_block_editor_assets', 'iw21_block_editor_styles', 1, 1);
+add_action('enqueue_block_editor_assets', 'iw23_block_editor_styles', 1, 1);

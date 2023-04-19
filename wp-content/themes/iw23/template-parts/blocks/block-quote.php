@@ -3,7 +3,7 @@
 /**
  * Get block styling
  */
-[$classes, $inline_styles] = iw21_block_colors(
+[$classes, $inline_styles] = iw23_block_colors(
     get_field('text_color'),
     get_field('background_color')
 );
@@ -23,7 +23,7 @@ $align_text = $block['align_text'];
         /**
          * Quote image
          */
-        iw21_media_tag(get_field('image'), 'iw-block-quote-thumbnail');
+        iw23_media_tag(get_field('image'), 'iw-block-quote-thumbnail');
 
         /**
          * Quote citation
@@ -34,4 +34,4 @@ $align_text = $block['align_text'];
 
 </figure>
 
-<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id']); ?>
+<?php if ($animation = get_field('animation')) iw23_setup_animations($animation, $block['id']); ?>

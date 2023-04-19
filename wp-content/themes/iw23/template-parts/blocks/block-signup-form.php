@@ -55,10 +55,10 @@ if (!$is_preview) : ?>
     </div><!-- […]--form-group -->
 
     <?php if ($download) : ?>
-      <input type="hidden" name="download" value="<?php echo iw21_encrypt($download->ID, IW_PASSPHRASE); ?>" required />
+      <input type="hidden" name="download" value="<?php echo iw23_encrypt($download->ID, IW_PASSPHRASE); ?>" required />
     <?php endif; ?>
 
-    <input type="hidden" name="location" value="<?php echo iw21_encrypt($post->ID, IW_PASSPHRASE); ?>" required>
+    <input type="hidden" name="location" value="<?php echo iw23_encrypt($post->ID, IW_PASSPHRASE); ?>" required>
 
     <input type="hidden" id="token" name="token">
 

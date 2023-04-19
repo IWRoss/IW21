@@ -1,11 +1,11 @@
 <?php
 
-if (iw21_array_key_exists('results', $_GET)) {
+if (iw23_array_key_exists('results', $_GET)) {
 
-    $polylines = iw21_get_amp_polyline_points($_GET['results']);
+    $polylines = iw23_get_amp_polyline_points($_GET['results']);
 
     $circles = array_map(function ($v) {
-        return iw21_get_amp_circle_elements($v);
+        return iw23_get_amp_circle_elements($v);
     }, $polylines);
 }
 
@@ -42,4 +42,4 @@ $image = get_field('image');
 
 </div>
 
-<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id']); ?>
+<?php if ($animation = get_field('animation')) iw23_setup_animations($animation, $block['id']); ?>

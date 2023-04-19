@@ -12,7 +12,7 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function iw21_body_classes($classes)
+function iw23_body_classes($classes)
 {
 	// Adds a class of hfeed to non-singular pages.
 	if (!is_singular()) {
@@ -21,27 +21,27 @@ function iw21_body_classes($classes)
 
 	return $classes;
 }
-add_filter('body_class', 'iw21_body_classes');
+add_filter('body_class', 'iw23_body_classes');
 
 /**
  * Add a pingback url auto-discovery header for singularly identifiable articles.
  */
-function iw21_pingback_header()
+function iw23_pingback_header()
 {
 	if (is_singular() && pings_open()) {
 		echo '<link rel="pingback" href="', esc_url(get_bloginfo('pingback_url')), '">';
 	}
 }
-add_action('wp_head', 'iw21_pingback_header');
+add_action('wp_head', 'iw23_pingback_header');
 
 /**
  * Change length of excerpt to 30
  */
-function iw21_excerpt_length($length)
+function iw23_excerpt_length($length)
 {
 	return 30;
 }
-add_filter('excerpt_length', 'iw21_excerpt_length', 999);
+add_filter('excerpt_length', 'iw23_excerpt_length', 999);
 
 /**
  * Change document title separator
@@ -53,7 +53,7 @@ add_filter('document_title_separator', function ($sep) {
 /**
  * 
  */
-function iw21_sprintf($string, $replacements)
+function iw23_sprintf($string, $replacements)
 {
 	return str_replace(array_keys($replacements), array_values($replacements), $string);
 }
@@ -75,7 +75,7 @@ add_filter('document_title_parts', function ($title) {
 /**
  * Return true if post/page meets conditions
  */
-function iw21_is_cta_post()
+function iw23_is_cta_post()
 {
 
 	global $post;
@@ -105,7 +105,7 @@ function iw21_is_cta_post()
 /**
  * Turn string with line breaks into options dynamo.min.js can use
  */
-function iw21_render_dynamic_text_array($string, $target)
+function iw23_render_dynamic_text_array($string, $target)
 {
 
 	$string_parts = explode(PHP_EOL, $string);
@@ -127,7 +127,7 @@ function iw21_render_dynamic_text_array($string, $target)
 /**
  * Render html element for the parallax background
  */
-function iw21_parallax_background($type = 'squares', $full = true)
+function iw23_parallax_background($type = 'squares', $full = true)
 {
 
 	$classes = array(
@@ -146,7 +146,7 @@ function iw21_parallax_background($type = 'squares', $full = true)
 /**
  * Retrieve array of post classes
  */
-function iw21_get_the_post_classes()
+function iw23_get_the_post_classes()
 {
 	global $post;
 
@@ -210,12 +210,12 @@ function iw21_get_the_post_classes()
 /**
  * Turn array of post classes into string
  */
-function iw21_get_the_post_classes_string()
+function iw23_get_the_post_classes_string()
 {
-	return implode(' ', iw21_get_the_post_classes());
+	return implode(' ', iw23_get_the_post_classes());
 }
 
-function iw21_get_the_title()
+function iw23_get_the_title()
 {
 	global $post;
 
@@ -234,12 +234,12 @@ function iw21_get_the_title()
 /**
  * Add company title to post name and include class for post length
  */
-function iw21_render_post_title($title = false)
+function iw23_render_post_title($title = false)
 {
 	global $post;
 
 	if (!$title) {
-		$title = iw21_get_the_title();
+		$title = iw23_get_the_title();
 	}
 
 	$longest_word = array_reduce(str_word_count(strip_tags($title), 1), function ($v, $p) {
@@ -264,7 +264,7 @@ function iw21_render_post_title($title = false)
 /**
  * Get a nice name version of the template
  */
-function iw21_template_nice_name($id = null)
+function iw23_template_nice_name($id = null)
 {
 	if ($id) {
 		$template = get_page_template_slug($id);
@@ -278,7 +278,7 @@ function iw21_template_nice_name($id = null)
 /**
  * Intepret ACF fields to create query arguments for feed
  */
-function iw21_get_query_options($paged = false)
+function iw23_get_query_options($paged = false)
 {
 	global $post;
 
@@ -344,7 +344,7 @@ function iw21_get_query_options($paged = false)
 /**
  * Floating action button
  */
-function iw21_floating_action_button($title)
+function iw23_floating_action_button($title)
 {
 	// Disable
 	return;
@@ -369,18 +369,18 @@ function hardyware_format_image_background_css($image)
 /**
  * Remove website field from comments
  */
-function iw21_disable_comment_url($fields)
+function iw23_disable_comment_url($fields)
 {
 	unset($fields['url']);
 	return $fields;
 }
-add_filter('comment_form_default_fields', 'iw21_disable_comment_url');
+add_filter('comment_form_default_fields', 'iw23_disable_comment_url');
 
 
 /**
  * Change email address based on a response
  */
-function iw21_redirect_contact_form($to, $postdata, $post_id)
+function iw23_redirect_contact_form($to, $postdata, $post_id)
 {
 
 	if (in_array('Playbook', $postdata['field-id-like-more-information-on']['value'])) {
@@ -389,10 +389,10 @@ function iw21_redirect_contact_form($to, $postdata, $post_id)
 
 	return $to;
 }
-add_filter('coblocks_form_email_to', 'iw21_redirect_contact_form', 10, 3);
+add_filter('coblocks_form_email_to', 'iw23_redirect_contact_form', 10, 3);
 
 
-function iw21_custom_disable_author_page()
+function iw23_custom_disable_author_page()
 {
 	global $wp_query;
 
@@ -403,9 +403,9 @@ function iw21_custom_disable_author_page()
 		exit;
 	}
 }
-// add_action('template_redirect', 'iw21_custom_disable_author_page');
+// add_action('template_redirect', 'iw23_custom_disable_author_page');
 
-function iw21_body_class($classes)
+function iw23_body_class($classes)
 {
 	$include = array(
 		// browsers/devices (https://codex.wordpress.org/Global_Variables)
@@ -472,9 +472,9 @@ function iw21_body_class($classes)
 	return $classes;
 }
 
-add_filter('body_class', 'iw21_body_class');
+add_filter('body_class', 'iw23_body_class');
 
-function iw21_preloader()
+function iw23_preloader()
 {
 ?>
 
@@ -487,10 +487,10 @@ function iw21_preloader()
 
 <?php
 }
-add_action('wp_footer', 'iw21_preloader');
+add_action('wp_footer', 'iw23_preloader');
 
 
-function iw21_update_form_element_with_javascript()
+function iw23_update_form_element_with_javascript()
 {
 	global $post;
 
@@ -530,10 +530,10 @@ function iw21_update_form_element_with_javascript()
 
 	printf('<script>jQuery(document).on("ready", function(){%s});</script>', $script_content);
 }
-add_action('wp_footer', 'iw21_update_form_element_with_javascript');
+add_action('wp_footer', 'iw23_update_form_element_with_javascript');
 
 
-function iw21_load_template_field_choices($field)
+function iw23_load_template_field_choices($field)
 {
 
 	// reset choices
@@ -558,9 +558,9 @@ function iw21_load_template_field_choices($field)
 	return $field;
 }
 
-add_filter('acf/load_field/name=template', 'iw21_load_template_field_choices');
+add_filter('acf/load_field/name=template', 'iw23_load_template_field_choices');
 
-function iw21_build_args_from_query_builder($field)
+function iw23_build_args_from_query_builder($field)
 {
 
 	$args = array(
@@ -616,13 +616,13 @@ function iw21_build_args_from_query_builder($field)
 	return $args;
 }
 
-function iw21_edit_posts_orderby($orderby_statement)
+function iw23_edit_posts_orderby($orderby_statement)
 {
 	$orderby_statement = " term_taxonomy_id DESC, post_date DESC ";
 	return $orderby_statement;
 }
 
-function iw21_search_for_key($match, $search_key, $array)
+function iw23_search_for_key($match, $search_key, $array)
 {
 	foreach ($array as $key => $val) {
 		if ($val[$search_key] === $match) {
@@ -632,7 +632,7 @@ function iw21_search_for_key($match, $search_key, $array)
 	return null;
 }
 
-function iw21_block_colors($color_field, $background_field)
+function iw23_block_colors($color_field, $background_field)
 {
 
 	$classes = [];
@@ -659,7 +659,7 @@ function iw21_block_colors($color_field, $background_field)
 	return [$classes, $inline_styles];
 }
 
-function iw21_multiline_text_to_tspans($original_text)
+function iw23_multiline_text_to_tspans($original_text)
 {
 
 	if (!strstr($original_text, PHP_EOL)) return $original_text;
@@ -678,15 +678,15 @@ function iw21_multiline_text_to_tspans($original_text)
 	return $text_string;
 }
 
-function iw21_convert_hex_to_rgb_color_array($hex)
+function iw23_convert_hex_to_rgb_color_array($hex)
 {
 	return sscanf($hex, "#%02x%02x%02x");
 }
 
-function iw21_hex_to_rgba($hex, $alpha = 1)
+function iw23_hex_to_rgba($hex, $alpha = 1)
 {
 
-	$rgb_array = iw21_convert_hex_to_rgb_color_array($hex);
+	$rgb_array = iw23_convert_hex_to_rgb_color_array($hex);
 
 	return sprintf('rgba(%d,%d,%d,%.2f)', $rgb_array[0], $rgb_array[1], $rgb_array[2], $alpha);
 }
@@ -694,7 +694,7 @@ function iw21_hex_to_rgba($hex, $alpha = 1)
 /**
  * 
  */
-function iw21_create_gradient_string($color_stops)
+function iw23_create_gradient_string($color_stops)
 {
 
 	$color_stops = array_map(function ($value) {
@@ -710,7 +710,7 @@ function iw21_create_gradient_string($color_stops)
 /**
  * 
  */
-function iw21_block_color_class($block)
+function iw23_block_color_class($block)
 {
 
 	if (!empty($block['backgroundColor'])) {
@@ -727,7 +727,7 @@ function iw21_block_color_class($block)
 /**
  * 
  */
-function iw21_block_styles($block)
+function iw23_block_styles($block)
 {
 
 	$classes = [];
@@ -763,13 +763,13 @@ function iw21_block_styles($block)
 /**
  * 
  */
-function iw21_get_amp_polyline_points($base64_encoded_results)
+function iw23_get_amp_polyline_points($base64_encoded_results)
 {
 
 	try {
 
 		$results = array_map(function ($v) {
-			return implode(' ', iw21_convert_scores_to_coordinates($v, 25));
+			return implode(' ', iw23_convert_scores_to_coordinates($v, 25));
 		}, json_decode(
 			base64_decode($base64_encoded_results),
 			true
@@ -784,7 +784,7 @@ function iw21_get_amp_polyline_points($base64_encoded_results)
 /**
  * 
  */
-function iw21_convert_scores_to_coordinates($scores, $offset)
+function iw23_convert_scores_to_coordinates($scores, $offset)
 {
 
 	$points = array_map(function ($k, $v) use ($offset) {
@@ -851,7 +851,7 @@ function iw21_convert_scores_to_coordinates($scores, $offset)
 /**
  * 
  */
-function iw21_get_amp_circle_elements($polyline_points)
+function iw23_get_amp_circle_elements($polyline_points)
 {
 
 	$points = explode(' ', $polyline_points);
@@ -898,7 +898,7 @@ function webtoffee_custom_selected_pages($html, $slug)
 /**
  * 
  */
-function iw21_array_key_exists($key, $array)
+function iw23_array_key_exists($key, $array)
 {
 	if (!is_array($array)) {
 		return false;
@@ -914,7 +914,7 @@ function iw21_array_key_exists($key, $array)
 /**
  * 
  */
-function iw21_encrypt($message_to_encrypt, $secret_key, $method = 'aes128')
+function iw23_encrypt($message_to_encrypt, $secret_key, $method = 'aes128')
 {
 
 	$nonce_size = openssl_cipher_iv_length($method);
@@ -929,7 +929,7 @@ function iw21_encrypt($message_to_encrypt, $secret_key, $method = 'aes128')
 /**
  * 
  */
-function iw21_decrypt($encrypted_data, $secret_key, $method = 'aes128')
+function iw23_decrypt($encrypted_data, $secret_key, $method = 'aes128')
 {
 
 	$encrypted_data = base64_decode($encrypted_data, true);
@@ -946,7 +946,7 @@ function iw21_decrypt($encrypted_data, $secret_key, $method = 'aes128')
 /**
  * 
  */
-function iw21_dump($variable)
+function iw23_dump($variable)
 {
 	echo '<pre>', print_r($variable, true), '</pre>';
 }
@@ -954,7 +954,7 @@ function iw21_dump($variable)
 /**
  * 
  */
-function iw21_dump_and_die($variable)
+function iw23_dump_and_die($variable)
 {
 	iw_dump($variable);
 	die();
@@ -963,7 +963,7 @@ function iw21_dump_and_die($variable)
 /**
  * 
  */
-function iw21_get_template_part($slug, $name = null, $args = array(), $echo = true)
+function iw23_get_template_part($slug, $name = null, $args = array(), $echo = true)
 {
 
 	if ($echo) {

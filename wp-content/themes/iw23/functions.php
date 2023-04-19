@@ -8,7 +8,7 @@
  * @package Interactive_Workshops_2021
  */
 
-if (!function_exists('iw21_setup')) :
+if (!function_exists('iw23_setup')) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -16,7 +16,7 @@ if (!function_exists('iw21_setup')) :
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function iw21_setup()
+	function iw23_setup()
 	{
 		/*
 	 * Make theme available for translation.
@@ -141,7 +141,7 @@ if (!function_exists('iw21_setup')) :
 		}
 	}
 endif;
-add_action('after_setup_theme', 'iw21_setup');
+add_action('after_setup_theme', 'iw23_setup');
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -150,16 +150,16 @@ add_action('after_setup_theme', 'iw21_setup');
  *
  * @global int $content_width
  */
-function iw21_content_width()
+function iw23_content_width()
 {
-	$GLOBALS['content_width'] = apply_filters('iw21_content_width', 640);
+	$GLOBALS['content_width'] = apply_filters('iw23_content_width', 640);
 }
-add_action('after_setup_theme', 'iw21_content_width', 0);
+add_action('after_setup_theme', 'iw23_content_width', 0);
 
 /**
  * Enqueue scripts and styles.
  */
-function iw21_scripts()
+function iw23_scripts()
 {
 
 	global $post;
@@ -238,7 +238,7 @@ function iw21_scripts()
 
 		if (is_page_template('page-templates/page-feed.php')) {
 			$localizationArgs['id'] = $post->ID;
-			$localizationArgs['options'] = iw21_build_args_from_query_builder(get_field('feed_builder'));
+			$localizationArgs['options'] = iw23_build_args_from_query_builder(get_field('feed_builder'));
 		}
 
 		if (is_archive() || is_search()) {
@@ -256,9 +256,9 @@ function iw21_scripts()
 		wp_localize_script('iw21-infinite-scroll', 'iw21Scroll', $localizationArgs);
 	}
 }
-add_action('wp_enqueue_scripts', 'iw21_scripts');
+add_action('wp_enqueue_scripts', 'iw23_scripts');
 
-function iw21_load_external_scripts()
+function iw23_load_external_scripts()
 {
 	echo '<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">';
 	echo '<script>var templateDir = "', get_bloginfo('template_url'), '";</script>';
@@ -269,9 +269,9 @@ function iw21_load_external_scripts()
 		echo '<script>gsap.registerPlugin(ScrollTrigger, MotionPathPlugin, DrawSVGPlugin);</script>';
 	}
 }
-add_action('wp_head', 'iw21_load_external_scripts');
+add_action('wp_head', 'iw23_load_external_scripts');
 
-function iw21_block_editor_scripts($hook)
+function iw23_block_editor_scripts($hook)
 {
 	if ('post.php' != $hook) {
 		// Only applies to dashboard panel
@@ -280,35 +280,35 @@ function iw21_block_editor_scripts($hook)
 
 	wp_enqueue_script('iw21-admin', get_template_directory_uri() . '/js/dist/admin.js', array('jquery'), filemtime(get_stylesheet_directory() . '/js/dist/admin.js'), true);
 }
-add_action('admin_enqueue_scripts', 'iw21_block_editor_scripts');
+add_action('admin_enqueue_scripts', 'iw23_block_editor_scripts');
 
 
-function iw21_load_analytics()
+function iw23_load_analytics()
 {
 	echo "<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-58SSSX4');</script> <!-- End Google Tag Manager -->";
 }
-// add_action( 'wp_head', 'iw21_load_analytics' );
+// add_action( 'wp_head', 'iw23_load_analytics' );
 
 /**
  * 
  */
-function iw21_start_session()
+function iw23_start_session()
 {
 	if (!session_id()) {
 		session_start();
 	}
 }
-add_action('init', 'iw21_start_session', 1);
+add_action('init', 'iw23_start_session', 1);
 
 /**
  * 
  */
-function iw21_mime_types($mimes)
+function iw23_mime_types($mimes)
 {
 	$mimes['json'] = 'application/json';
 	return $mimes;
 }
-add_filter('upload_mimes', 'iw21_mime_types');
+add_filter('upload_mimes', 'iw23_mime_types');
 
 /**
  * Custom template tags for this theme.
@@ -353,7 +353,7 @@ require get_template_directory() . '/inc/infinite-scroll.php';
 /**
  * Load Shortcodes file.
  */
-// require get_template_directory() . '/inc/shortcodes.php';
+require get_template_directory() . '/inc/shortcodes.php';
 
 /**
  * Load SEO file.

@@ -10,10 +10,10 @@ $template = array(
     ))
 );
 
-// $class = iw21_block_color_class($block);
+// $class = iw23_block_color_class($block);
 // $style = $block['style']['color']['gradient'] ? sprintf('background: %s;', $block['style']['color']['gradient']) : '';
 
-[$classes, $styles] = iw21_block_styles($block);
+[$classes, $styles] = iw23_block_styles($block);
 
 ?>
 
@@ -32,4 +32,4 @@ $template = array(
     </div>
 </div>
 
-<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id'], '.block-client'); ?>
+<?php if ($animation = get_field('animation')) iw23_setup_animations($animation, $block['id'], '.block-client'); ?>

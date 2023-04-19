@@ -1,6 +1,6 @@
 <?php
 
-[$classes, $styles] = iw21_block_styles($block);
+[$classes, $styles] = iw23_block_styles($block);
 
 $image = get_field('image');
 

@@ -40,7 +40,7 @@ if (function_exists('acf_add_options_page')) {
 /**
  * Add labels for Flexible Content layout blocks.
  */
-function iw21_acf_flexible_content_layout_title($title, $field, $layout, $i)
+function iw23_acf_flexible_content_layout_title($title, $field, $layout, $i)
 {
 
     if ($style = get_sub_field('style')) :
@@ -57,32 +57,32 @@ function iw21_acf_flexible_content_layout_title($title, $field, $layout, $i)
 
     return $title;
 }
-add_filter('acf/fields/flexible_content/layout_title/name=path', 'iw21_acf_flexible_content_layout_title', 10, 4);
-add_filter('acf/fields/flexible_content/layout_title/name=story', 'iw21_acf_flexible_content_layout_title', 10, 4);
+add_filter('acf/fields/flexible_content/layout_title/name=path', 'iw23_acf_flexible_content_layout_title', 10, 4);
+add_filter('acf/fields/flexible_content/layout_title/name=story', 'iw23_acf_flexible_content_layout_title', 10, 4);
 
 /**
  * Add link for quote relationships
  */
-function iw21_quote_relationship_redirect()
+function iw23_quote_relationship_redirect()
 {
     if ($link_to = get_field('link_to')) {
         wp_redirect(get_permalink($link_to));
         exit;
     }
 }
-add_action('template_redirect', 'iw21_quote_relationship_redirect');
+add_action('template_redirect', 'iw23_quote_relationship_redirect');
 
 /**
  * Render posts and work in relationship field
  */
-function iw21_relationship_result($title, $post, $field, $post_id)
+function iw23_relationship_result($title, $post, $field, $post_id)
 {
 
     if ($company = get_field('company', $post->ID)) {
         $title = sprintf('%s // %s', $company, $title);
     }
 
-    $template = sprintf('<span class="acf-postmeta acf-postmeta-template">%s</span>', ucwords(iw21_template_nice_name($post->ID)));
+    $template = sprintf('<span class="acf-postmeta acf-postmeta-template">%s</span>', ucwords(iw23_template_nice_name($post->ID)));
 
     $post_type = sprintf('<span class="acf-postmeta acf-postmeta-posttype acf-postmeta-posttype-%s">%s</span>', get_post_type($post->ID), ucwords(get_post_type($post->ID)));
 
@@ -90,24 +90,24 @@ function iw21_relationship_result($title, $post, $field, $post_id)
 
     return $title;
 }
-// add_filter('acf/fields/relationship/result', 'iw21_relationship_result', 10, 4);
+// add_filter('acf/fields/relationship/result', 'iw23_relationship_result', 10, 4);
 
 /**
  * Filter drafts out from home relationship field
  */
-function iw21_home_relationship_options_filter($options, $field, $the_post)
+function iw23_home_relationship_options_filter($options, $field, $the_post)
 {
 
     $options['post_status'] = array('publish');
 
     return $options;
 }
-add_filter('acf/fields/relationship/query/name=selected_posts', 'iw21_home_relationship_options_filter', 10, 3);
+add_filter('acf/fields/relationship/query/name=selected_posts', 'iw23_home_relationship_options_filter', 10, 3);
 
 /**
  * Using FontAwesome with nav menus
  */
-function iw21_replace_menu_items_with_icons($items, $args)
+function iw23_replace_menu_items_with_icons($items, $args)
 {
 
     foreach ($items as &$item) {
@@ -121,7 +121,7 @@ function iw21_replace_menu_items_with_icons($items, $args)
 
     return $items;
 }
-add_filter('wp_nav_menu_objects', 'iw21_replace_menu_items_with_icons', 10, 2);
+add_filter('wp_nav_menu_objects', 'iw23_replace_menu_items_with_icons', 10, 2);
 
 /**
  * 

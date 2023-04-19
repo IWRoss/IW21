@@ -13,7 +13,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php if (!get_field('hide_header')) : ?>
 		<header class="entry-header">
-			<?php iw21_render_post_title(); ?>
+			<?php iw23_render_post_title(); ?>
 		</header><!-- .entry-header -->
 	<?php endif; ?>
 

@@ -30,11 +30,11 @@ $alignment = get_field('align') ? get_field('align') : 'left';
 
         $media = get_field('background');
 
-        iw21_media_tag($media, 'block-hero-background-media');
+        iw23_media_tag($media, 'block-hero-background-media');
         ?>
     </div>
 
-    <div class="block-hero-foreground" style="background:linear-gradient(to bottom, <?php echo $gradient['start'] ? iw21_hex_to_rgba($gradient['start'], 0.9) : '#FF8D02'; ?> 0%, <?php echo $gradient['end'] ? iw21_hex_to_rgba($gradient['end'], 1) : '#DE5714'; ?> 100%);">
+    <div class="block-hero-foreground" style="background:linear-gradient(to bottom, <?php echo $gradient['start'] ? iw23_hex_to_rgba($gradient['start'], 0.9) : '#FF8D02'; ?> 0%, <?php echo $gradient['end'] ? iw23_hex_to_rgba($gradient['end'], 1) : '#DE5714'; ?> 100%);">
 
     </div>
 
@@ -47,4 +47,4 @@ $alignment = get_field('align') ? get_field('align') : 'left';
 
 </div>
 
-<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id']); ?>
+<?php if ($animation = get_field('animation')) iw23_setup_animations($animation, $block['id']); ?>

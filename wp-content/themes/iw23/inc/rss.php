@@ -1,6 +1,6 @@
 <?php
 
-function iw21_process_ajax_rss_feed_get_request()
+function iw23_process_ajax_rss_feed_get_request()
 {
   // Convert payload from URL parameters into array
   parse_str($_POST['payload'], $payload);
@@ -11,7 +11,7 @@ function iw21_process_ajax_rss_feed_get_request()
   }
 
   // Get the RSS feed
-  $rss_items = iw21_get_rss_feed($payload['url']);
+  $rss_items = iw23_get_rss_feed($payload['url']);
 
   // Check if the RSS feed is valid
   if (empty($rss_items)) {
@@ -24,7 +24,7 @@ function iw21_process_ajax_rss_feed_get_request()
   foreach ($rss_items as $item) {
 
 
-    $response[] = iw21_get_template_part('template-parts/feed/feed', 'item', array(
+    $response[] = iw23_get_template_part('template-parts/feed/feed', 'item', array(
       'title' => $item->get_title(),
       'link' => $item->get_permalink(),
       'date' => $item->get_date('j F Y'),
@@ -36,13 +36,13 @@ function iw21_process_ajax_rss_feed_get_request()
   // Send the response
   wp_send_json_success($response);
 }
-add_action('wp_ajax_nopriv_process_ajax_rss_feed_get_request', 'iw21_process_ajax_rss_feed_get_request');
-add_action('wp_ajax_process_ajax_rss_feed_get_request', 'iw21_process_ajax_rss_feed_get_request');
+add_action('wp_ajax_nopriv_process_ajax_rss_feed_get_request', 'iw23_process_ajax_rss_feed_get_request');
+add_action('wp_ajax_process_ajax_rss_feed_get_request', 'iw23_process_ajax_rss_feed_get_request');
 
 /**
  * Read the RSS feed
  */
-function iw21_get_rss_feed($url)
+function iw23_get_rss_feed($url)
 {
   $rss = fetch_feed($url);
 

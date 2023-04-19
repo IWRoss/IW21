@@ -3,14 +3,14 @@
 /**
  * Get block styling
  */
-// [$classes, $inline_styles] = iw21_block_colors(
+// [$classes, $inline_styles] = iw23_block_colors(
 //     get_field('text_color'),
 //     get_field('background_color')
 // );
 
 $default = ['url' => '', 'title' => '', 'target' => '_self'];
 
-[$classes, $inline_styles] = iw21_block_styles($block);
+[$classes, $inline_styles] = iw23_block_styles($block);
 
 $link_1 = get_field('link_1') ?? $default;
 $link_2 = get_field('link_2') ?? $default;
@@ -32,7 +32,7 @@ if (get_field('create_modal')) {
 
         <?php
 
-        iw21_link_tag(
+        iw23_link_tag(
             $link_1,
             array_merge($classes, array('btn')),
             $inline_styles,
@@ -41,7 +41,7 @@ if (get_field('create_modal')) {
 
         if ($link_2) {
 
-            iw21_link_tag(
+            iw23_link_tag(
                 $link_2,
                 array('link'),
                 $inline_styles,
@@ -79,4 +79,4 @@ if (get_field('create_modal')) {
     </script>
 <?php endif; ?>
 
-<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id']); ?>
+<?php if ($animation = get_field('animation')) iw23_setup_animations($animation, $block['id']); ?>

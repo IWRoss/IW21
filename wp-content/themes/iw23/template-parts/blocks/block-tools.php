@@ -20,7 +20,7 @@ $allowed_blocks = array('acf/tool');
 /**
  * Get block styling
  */
-[$classes, $inline_styles] = iw21_block_colors(
+[$classes, $inline_styles] = iw23_block_colors(
     get_field('text_color'),
     get_field('background_color')
 );
@@ -71,4 +71,4 @@ $classes[] = 'align' . $block['align'];
     });
 </script>
 
-<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id']); ?>
+<?php if ($animation = get_field('animation')) iw23_setup_animations($animation, $block['id']); ?>

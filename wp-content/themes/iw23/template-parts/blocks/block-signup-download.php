@@ -1,6 +1,6 @@
 <?php
 
-$dlid = !empty($_GET['dlid']) ? iw21_decrypt($_GET['dlid'], IW_PASSPHRASE) : false;
+$dlid = !empty($_GET['dlid']) ? iw23_decrypt($_GET['dlid'], IW_PASSPHRASE) : false;
 
 ?>
 

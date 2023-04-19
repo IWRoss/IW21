@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template part for displaying page content in page.php
  *
@@ -10,16 +11,16 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	
+
 	<header class="entry-header">
-		<?php iw21_render_post_title(); ?>
+		<?php iw23_render_post_title(); ?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
 		<?php the_content(); ?>
 
 		<?php
-		if ( get_field( 'show_tag_cloud' ) )
+		if (get_field('show_tag_cloud'))
 			wp_tag_cloud();
 		?>
 	</div><!-- .entry-content -->
@@ -28,10 +29,10 @@
 
 	wp_reset_postdata();
 
-	// get_template_part( 'template-parts/feed/feed', '', iw21_get_query_options() );
-	get_template_part( 'template-parts/feed/feed', '', iw21_build_args_from_query_builder(get_field('feed_builder')) );
+	// get_template_part( 'template-parts/feed/feed', '', iw23_get_query_options() );
+	get_template_part('template-parts/feed/feed', '', iw23_build_args_from_query_builder(get_field('feed_builder')));
 
-	get_template_part( 'template-parts/feed/element', 'cta' );
+	get_template_part('template-parts/feed/element', 'cta');
 
 	?>
 

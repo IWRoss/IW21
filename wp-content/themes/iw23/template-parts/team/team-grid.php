@@ -8,7 +8,7 @@ $member = $args['member'];
 
 ?>
 
-<?php do_action('iw21_team_member_image', $member); ?>
+<?php do_action('iw23_team_member_image', $member); ?>
 
 <h5 class="team-member--name">
     <?php echo $member['display_name']; ?>

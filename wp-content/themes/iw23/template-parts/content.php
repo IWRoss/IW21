@@ -14,15 +14,15 @@
 
 	<?php if (!get_field('hide_header')) : ?>
 		<header class="entry-header">
-			<?php iw21_back_button(); ?>
+			<?php iw23_back_button(); ?>
 
-			<?php iw21_render_post_title(); ?>
+			<?php iw23_render_post_title(); ?>
 
 			<?php get_field('subtitle') ? printf('<h3 class="entry-subtitle">%s</h3>', get_field('subtitle')) : ''; ?>
 
 			<?php if ('post' === get_post_type()) : ?>
 				<div class="entry-meta">
-					<?php iw21_posted_on(); ?>
+					<?php iw23_posted_on(); ?>
 				</div><!-- .entry-meta -->
 			<?php endif; ?>
 		</header><!-- .entry-header -->
@@ -33,7 +33,7 @@
 	<div class="entry-content">
 		<?php
 
-		do_action('iw21_before_content');
+		do_action('iw23_before_content');
 
 		the_content(sprintf(
 			wp_kses(
@@ -53,14 +53,14 @@
 			'after'  => '</div>',
 		));
 
-		do_action('iw21_after_content');
+		do_action('iw23_after_content');
 
 		?>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php do_action('iw21_content_footer'); ?>
+		<?php do_action('iw23_content_footer'); ?>
 
-		<?php iw21_back_button(); ?>
+		<?php iw23_back_button(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

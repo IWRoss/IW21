@@ -7,7 +7,7 @@
 <div id="<?php echo $block['id']; ?>" class="iw-block iw-amp alignwide">
 
     <div class="iw-amp-element" style="background-image:url('<?php the_field('image'); ?>');">
-        <canvas id="amp-radar" data-results=<?php echo iw21_array_key_exists('results', $_GET) ? base64_decode($_GET['results']) : ''; ?> width="492" height="492"></canvas>
+        <canvas id="amp-radar" data-results=<?php echo iw23_array_key_exists('results', $_GET) ? base64_decode($_GET['results']) : ''; ?> width="492" height="492"></canvas>
     </div>
 </div>
 
@@ -117,4 +117,4 @@
     }
 </style>
 
-<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id']); ?>
+<?php if ($animation = get_field('animation')) iw23_setup_animations($animation, $block['id']); ?>

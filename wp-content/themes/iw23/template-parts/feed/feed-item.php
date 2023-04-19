@@ -8,22 +8,22 @@
 
 ?>
 
-<div <?php do_action('iw21_feed_item_html_outer_tag_attributes', $args); ?>>
-    <a <?php do_action('iw21_feed_item_html_link_tag_attributes', $args); ?> class="feed-item-link">
+<div <?php do_action('iw23_feed_item_html_outer_tag_attributes', $args); ?>>
+    <a <?php do_action('iw23_feed_item_html_link_tag_attributes', $args); ?> class="feed-item-link">
 
-        <?php do_action('iw21_post_icon'); ?>
+        <?php do_action('iw23_post_icon'); ?>
 
         <span class="feed-title">
-            <?php echo $args['title'] ?? iw21_get_the_title(); ?>
+            <?php echo $args['title'] ?? iw23_get_the_title(); ?>
         </span>
 
         <span class="feed-excerpt">
             <?php echo $args['excerpt'] ?? get_the_excerpt(); ?>
         </span>
 
-        <?php do_action('iw21_author_image'); ?>
+        <?php do_action('iw23_author_image'); ?>
 
-        <?php do_action('iw21_feed_overlay'); ?>
+        <?php do_action('iw23_feed_overlay'); ?>
 
     </a>
 </div>

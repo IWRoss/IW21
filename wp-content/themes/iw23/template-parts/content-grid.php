@@ -7,9 +7,8 @@ $featured_image_GIF = get_field('post_gif', $post->ID);
 
 <div class="iw-block-post-grid-post fade">
 
-    <?php 
-    echo iw21_media_tag($featured_image_GIF ?: $featured_image_array, 'iw-block-post-grid-post-background');
-    ;?>
+    <?php
+    echo iw23_media_tag($featured_image_GIF ?: $featured_image_array, 'iw-block-post-grid-post-background');; ?>
 
     <a href="<?php the_permalink(); ?>" class="iw-block-post-grid-post-link">
 

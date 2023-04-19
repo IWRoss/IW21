@@ -105,4 +105,4 @@ $industries = get_the_terms($post, 'industry');
     </script>
 <?php endif; ?>
 
-<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id']); ?>
+<?php if ($animation = get_field('animation')) iw23_setup_animations($animation, $block['id']); ?>

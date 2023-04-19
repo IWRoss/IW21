@@ -24,13 +24,13 @@ $args = array(
 
 // }
 
-// echo '<pre>', print_r(iw21_build_args_from_query_builder(get_field('feed_builder'))), '</pre>';
+// echo '<pre>', print_r(iw23_build_args_from_query_builder(get_field('feed_builder'))), '</pre>';
 
 $feed_builder = get_field('feed_builder');
 
 $grouped = array_search('group_by_category', array_column((array)$feed_builder, 'acf_fc_layout')) !== false;
 
-$args = iw21_build_args_from_query_builder($feed_builder);
+$args = iw23_build_args_from_query_builder($feed_builder);
 
 $masonry = get_field('masonry');
 
@@ -40,14 +40,14 @@ $masonry = get_field('masonry');
     <?php
 
     if ($grouped) {
-        add_filter('posts_orderby', 'iw21_edit_posts_orderby');
+        add_filter('posts_orderby', 'iw23_edit_posts_orderby');
     }
 
     /* Build our query */
     $feed_query = new WP_Query($args);
 
     if ($grouped) {
-        remove_filter('posts_orderby', 'iw21_edit_posts_orderby');
+        remove_filter('posts_orderby', 'iw23_edit_posts_orderby');
     }
 
     // The loop
@@ -78,4 +78,4 @@ $masonry = get_field('masonry');
     ?>
 </div>
 
-<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id']); ?>
+<?php if ($animation = get_field('animation')) iw23_setup_animations($animation, $block['id']); ?>

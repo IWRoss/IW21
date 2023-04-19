@@ -10,7 +10,7 @@ class IW_Menu_Walker extends Walker_Nav_Menu
 
         $opens_modal = get_field('opens_modal', $item->ID);
 
-        $output .= iw21_sprintf(
+        $output .= iw23_sprintf(
             '<a href="%url"%target%lity>%title</a>',
             array(
                 '%url'              => $item->url,

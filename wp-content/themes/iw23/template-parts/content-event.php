@@ -12,7 +12,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <header class="entry-header">
-        <?php iw21_render_post_title(); ?>
+        <?php iw23_render_post_title(); ?>
     </header><!-- .entry-header -->
 
     <?php if (get_field('date') && get_field('time') && get_field('location')) : ?>
@@ -84,6 +84,6 @@
     </div><!-- .entry-content -->
 
     <footer class="entry-footer">
-        <?php do_action('iw21_content_footer'); ?>
+        <?php do_action('iw23_content_footer'); ?>
     </footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

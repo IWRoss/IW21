@@ -20,4 +20,4 @@ foreach ($dynamic_messages as $message_option) {
 
 <p id="<?php echo $block['id']; ?>" class="dynamic-message"><?php echo $message; ?></p>
 
-<?php if ($animation = get_field('animation')) iw21_setup_animations($animation, $block['id']); ?>
+<?php if ($animation = get_field('animation')) iw23_setup_animations($animation, $block['id']); ?>
