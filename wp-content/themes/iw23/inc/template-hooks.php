@@ -16,10 +16,6 @@ function iw23_feed_item_html_outer_tag_attributes($template_args = false)
 
     $attributes = sprintf('class="grid-item feed-item %s"', iw23_get_the_post_classes_string());
 
-    if ($preview = get_field('preview', $post->ID)) {
-        $attributes .= sprintf(' style="background-image: url(%s)"', $preview);
-    }
-
     if (isset($template_args['thumbnail'])) {
         $attributes .= sprintf(' style="background-image: url(%s)"', $template_args['thumbnail']);
     }
@@ -30,7 +26,7 @@ function iw23_feed_item_html_outer_tag_attributes($template_args = false)
         true
     );
 
-    if ($thumb_url_array && !$preview) {
+    if ($thumb_url_array && !get_field('preview', $post->ID)) {
         $attributes .= sprintf(' style="background-image: url(%s)"', $thumb_url_array[0]);
     }
 
@@ -71,7 +67,7 @@ function iw23_feed_item_html_link_tag_attributes($template_args = false)
         // use preg_match to find iframe src
         preg_match('/src="(.+?)"/', $oembed, $matches);
 
-        $src = $matches[1];
+        $src = $matches[1] ?? "";
 
         $attributes = sprintf('href="%s" data-lity', $src);
     }
@@ -406,3 +402,18 @@ add_action('parse_request', 'iw23_add_email_to_event_with_link');
 //         'permission_callback' => '__return_true'
 //     ));
 // });
+
+/**
+ * 
+ */
+function iw23_add_video_preview_if_exists()
+{
+    global $post;
+
+    $preview = get_field('preview', $post->ID);
+
+    echo '<!-- ' . print_r($preview, true) . ' -->';
+
+    echo iw23_media_tag($preview, 'feed-item__preview');
+}
+add_action('iw23_feed_item_before_link', 'iw23_add_video_preview_if_exists');

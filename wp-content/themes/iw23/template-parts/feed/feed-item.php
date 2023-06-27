@@ -9,7 +9,12 @@
 ?>
 
 <div <?php do_action('iw23_feed_item_html_outer_tag_attributes', $args); ?>>
+
+    <?php do_action('iw23_feed_item_before_link'); ?>
+
     <a <?php do_action('iw23_feed_item_html_link_tag_attributes', $args); ?> class="feed-item-link">
+
+        <?php do_action('iw23_feed_item_before_content'); ?>
 
         <?php do_action('iw23_post_icon'); ?>
 
@@ -25,5 +30,9 @@
 
         <?php do_action('iw23_feed_overlay'); ?>
 
+        <?php do_action('iw23_feed_item_after_content'); ?>
+
     </a>
+
+    <?php do_action('iw23_feed_item_after_link'); ?>
 </div>
