@@ -14,10 +14,16 @@ $team_members = get_field('team_members');
         <div class="block-team-inner">
             <?php foreach ($team_members as $team_member) : ?>
 
+                <?php
+
+                $team_member_image = get_field('author_image', 'user_' . $team_member['ID']);
+
+                ?>
+
                 <div class="block-team-member">
 
                     <div class="block-team-member-photo">
-                        <img src="<?php echo get_field('author_image', 'user_' . $team_member['ID']); ?>" alt="<?php echo $team_member['display_name']; ?>">
+                        <img src="<?php echo $team_member_image['url']; ?>" alt="<?php echo $team_member['display_name']; ?>">
                     </div>
 
                     <div class="block-team-member-meta">

@@ -1,9 +1,0 @@
-{
-	"version": 3,
-	"file": "block-gradient-text.css",
-	"sources": [
-		"../../../sass/template-parts/blocks/assets/block-gradient-text.scss"
-	],
-	"names": [],
-	"mappings": "AAAA,AAAA,oBAAoB,CAAC;CACjB,WAAW,EAAE,mBAAmB;CAChC,uBAAuB,EAAE,eAAe;CACxC,uBAAuB,EAAE,WAAW;CACpC,WAAW,EAAE,CAAC;CACd,QAAQ,EAAE,OAAO;CACjB,cAAc,EAAE,KAAK;CACrB,MAAM,EAAE,CAAC;CACZ;;AAED,AAAA,KAAK,CAAC,SAAS,CAAA,AAAA,SAAC,CAAU,mBAAmB,AAA7B,EAA+B;CAC3C,UAAU,EAAE,eAAe;CAC9B"
-}

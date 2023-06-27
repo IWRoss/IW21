@@ -101,6 +101,9 @@ function iw23_author_image()
 
     $user_author_image = get_field('author_image', 'user_' . $user_author_id);
 
+    // Select thumbnail size from $user_author_image array
+    $user_author_image = $user_author_image['sizes']['thumbnail'];
+
     if ($user_author_image && get_the_author_meta('nickname') !== 'IW Team') {
         echo sprintf('<img src="%s" alt="Author" class="author-image">', $user_author_image);
     }

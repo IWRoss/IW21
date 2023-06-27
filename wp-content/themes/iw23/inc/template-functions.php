@@ -389,7 +389,7 @@ function iw23_redirect_contact_form($to, $postdata, $post_id)
 
 	return $to;
 }
-add_filter('coblocks_form_email_to', 'iw23_redirect_contact_form', 10, 3);
+// add_filter('coblocks_form_email_to', 'iw23_redirect_contact_form', 10, 3);
 
 
 function iw23_custom_disable_author_page()

@@ -1331,7 +1331,9 @@ input[type="radio"] {
 }
 
 input[type="checkbox"] + label,
-input[type="radio"] + label {
+input[type="checkbox"] + span,
+input[type="radio"] + label,
+input[type="radio"] + span {
 	padding: 1em 2em;
 	background-color: white;
 	border: 0.125em dashed #ddd;
@@ -1340,14 +1342,18 @@ input[type="radio"] + label {
 }
 
 input[type="checkbox"]:checked + label,
-input[type="radio"]:checked + label {
+input[type="checkbox"]:checked + span,
+input[type="radio"]:checked + label,
+input[type="radio"]:checked + span {
 	border: 0.125em solid #FF8D00;
 	background-color: #FF8D00;
 	color: white;
 }
 
 input[type="checkbox"]:checked + label:before,
-input[type="radio"]:checked + label:before {
+input[type="checkbox"]:checked + span:before,
+input[type="radio"]:checked + label:before,
+input[type="radio"]:checked + span:before {
 	content: "\2713";
 	display: inline-block;
 	margin-right: 0.5em;
@@ -1392,25 +1398,42 @@ input[type="radio"]:checked + label:before {
 	color: #771a1c;
 }
 
-.flex-form .coblocks-field.checkbox {
+.flex-form .coblocks-field.checkbox,
+.wpcf7-checkbox {
 	display: block;
 }
 
-.flex-form .coblocks-checkbox-label {
+.coblocks-checkbox-label,
+.wpcf7-list-item-label {
 	width: 100%;
 }
 
+.wpcf7-list-item {
+	margin: 0;
+}
+
 @media screen and (min-width: 1024px) {
-	.flex-form .coblocks-field.checkbox {
+	.flex-form .coblocks-field.checkbox,
+	.wpcf7-checkbox,
+	.wpcf7-radio {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		grid-gap: 0.5em;
 	}
-	.flex-form .coblocks-field.checkbox .coblocks-label {
+	.flex-form .coblocks-field.checkbox .coblocks-label,
+	.flex-form .coblocks-field.checkbox .wpcf7-list-item-label,
+	.wpcf7-checkbox .coblocks-label,
+	.wpcf7-checkbox .wpcf7-list-item-label,
+	.wpcf7-radio .coblocks-label,
+	.wpcf7-radio .wpcf7-list-item-label {
+		display: block;
 		grid-column-start: 1;
 		grid-column-end: 3;
+		height: 100%;
 	}
-	.flex-form .coblocks-field.checkbox .coblocks-checkbox-label {
+	.flex-form .coblocks-field.checkbox .coblocks-checkbox-label,
+	.wpcf7-checkbox .coblocks-checkbox-label,
+	.wpcf7-radio .coblocks-checkbox-label {
 		width: 100%;
 	}
 }
