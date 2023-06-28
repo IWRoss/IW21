@@ -20,7 +20,7 @@ $background = get_field('feature_image');
 
 <div class="iw-block iw-block-tool <?php echo implode(' ', $classes); ?>" style="<?php echo implode(' ', $inline_styles); ?>">
 
-    <img class="iw-block-tool-background" src="<?php echo is_array($background) ? $background['sizes']['large'] : ''; ?>" />
+    <img class="iw-block-tool-background" src="<?php echo is_array($background) ? $background['sizes']['large'] : ''; ?>" loading="lazy" />
 
     <div class="iw-block-tool-inner">
         <h4 class="tool-title"><?php the_field('title'); ?></h4>

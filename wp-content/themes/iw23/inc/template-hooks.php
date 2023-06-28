@@ -16,19 +16,19 @@ function iw23_feed_item_html_outer_tag_attributes($template_args = false)
 
     $attributes = sprintf('class="grid-item feed-item %s"', iw23_get_the_post_classes_string());
 
-    if (isset($template_args['thumbnail'])) {
-        $attributes .= sprintf(' style="background-image: url(%s)"', $template_args['thumbnail']);
-    }
+    // if (isset($template_args['thumbnail'])) {
+    //     $attributes .= sprintf(' style="background-image: url(%s)"', $template_args['thumbnail']);
+    // }
 
-    $thumb_url_array = wp_get_attachment_image_src(
-        get_post_thumbnail_id(),
-        'iw21-feed',
-        true
-    );
+    // $thumb_url_array = wp_get_attachment_image_src(
+    //     get_post_thumbnail_id(),
+    //     'iw21-feed',
+    //     true
+    // );
 
-    if ($thumb_url_array && !get_field('preview', $post->ID)) {
-        $attributes .= sprintf(' style="background-image: url(%s)"', $thumb_url_array[0]);
-    }
+    // if ($thumb_url_array && !get_field('preview', $post->ID)) {
+    //     $attributes .= sprintf(' style="background-image: url(%s)"', $thumb_url_array[0]);
+    // }
 
     if ($template_args) {
         $attributes .= sprintf(' data-index="%d" data-chunk="%d"', $template_args['index'], $template_args['chunk']);
