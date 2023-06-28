@@ -479,9 +479,20 @@ function iw23_preloader()
 ?>
 
 	<script type="text/javascript">
-		jQuery(window).on('load', function() {
-			jQuery('.preloader').fadeOut(250);
-			jQuery('body').addClass('loaded');
+		// jQuery(window).on('load', function() {
+		// 	jQuery('.preloader').fadeOut(250);
+		// 	jQuery('body').addClass('loaded');
+		// });
+
+
+		window.addEventListener('load', function() {
+			document.querySelector('body').classList.add('loaded');
+
+			document.querySelector('.preloader').classList.add('fadeOut');
+
+			setTimeout(function() {
+				document.querySelector('.preloader').style.display = 'none';
+			}, 250);
 		});
 	</script>
 

@@ -517,6 +517,15 @@
     justify-content: center;
 }
 
+.preloader {
+    opacity: 1;
+    transition: opacity 0.25s linear;
+}
+
+.preloader.fadeOut {
+    opacity: 0;
+}
+
 .lines-logo {
     width: 2em;
     animation: spin-it-to-win-it 1s infinite;
