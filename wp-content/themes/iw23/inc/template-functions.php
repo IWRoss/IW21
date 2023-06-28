@@ -484,15 +484,58 @@ function iw23_preloader()
 		// 	jQuery('body').addClass('loaded');
 		// });
 
+		// Create Promises for each event
+		const allImagesLoadedPromise = new Promise(resolve => {
+			document.addEventListener('allImagesLoaded', resolve);
+		});
 
-		window.addEventListener('load', function() {
-			document.querySelector('body').classList.add('loaded');
+		const allVideosLoadedPromise = new Promise(resolve => {
+			document.addEventListener('allVideosLoaded', resolve);
+		});
 
-			document.querySelector('.preloader').classList.add('fadeOut');
+		// Use Promise.all() to wait for both promises to resolve
+		Promise.all([allImagesLoadedPromise, allVideosLoadedPromise])
+			.then(() => {
+				document.querySelector('body').classList.add('loaded');
 
-			setTimeout(function() {
-				document.querySelector('.preloader').style.display = 'none';
-			}, 250);
+				document.querySelector('.preloader').classList.add('fadeOut');
+
+				setTimeout(function() {
+					document.querySelector('.preloader').style.display = 'none';
+				}, 250);
+			});
+
+		/**
+		 * Create an event listener to see if all images without an
+		 * attribute of loading="lazy" have loaded.
+		 * */
+		const images = document.querySelectorAll('img:not([loading="lazy"])');
+
+		images.forEach(image => {
+			image.addEventListener('load', () => {
+				// Check images array to see if each image has loaded
+				if (images.length !== Array.from(images).filter(image => image.complete).length) {
+					return;
+				}
+
+				document.dispatchEvent(new Event('allImagesLoaded'));
+			});
+		});
+
+		/**
+		 * Create an event listener to see if all videos have loaded.
+		 */
+		const videos = document.querySelectorAll('video');
+
+		videos.forEach(video => {
+			video.addEventListener('loadeddata', () => {
+				// Check videos array to see if each video has loaded
+				if (videos.length !== Array.from(videos).filter(video => video.readyState >= 3).length) {
+					return;
+				}
+
+				document.dispatchEvent(new Event('allVideosLoaded'));
+			});
 		});
 	</script>
 
