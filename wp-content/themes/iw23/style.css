@@ -6722,13 +6722,14 @@ object {
 .block-header:before {
 	content: '';
 	display: block;
-	background-color: rgba(0, 0, 0, 0.5);
 	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	z-index: 1;
+	background-size: 2px;
+	background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='a' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 2'%3E%3Cg style='fill: none; opacity: .65;'%3E%3Crect width='1' height='1' style='fill: %231D1D1B;'/%3E%3C/g%3E%3Cg style='fill: none; opacity: .5;'%3E%3Crect y='1' width='1' height='1' style='fill: %231D1D1B;'/%3E%3C/g%3E%3Cg style='fill: none; opacity: .65;'%3E%3Crect x='1' y='1' width='1' height='1' style='fill: %231D1D1B;'/%3E%3C/g%3E%3Cg style='fill: none; opacity: .5;'%3E%3Crect x='1' width='1' height='1' style='fill: %231D1D1B;'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 .block-header .site-tagline {

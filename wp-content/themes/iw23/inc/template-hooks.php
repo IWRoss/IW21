@@ -406,14 +406,28 @@ add_action('parse_request', 'iw23_add_email_to_event_with_link');
 /**
  * 
  */
+function iw23_add_featured_image_if_exists()
+{
+    global $post;
+
+    // Get featured image
+    $featured_image = acf_get_attachment(get_post_thumbnail_id());
+
+    echo iw23_media_tag($featured_image, 'feed-item__preview', '', 'iw21-feed', true);
+}
+add_action('iw23_feed_item_before_link', 'iw23_add_featured_image_if_exists');
+add_action('iw23_menu_featured_item_before_link', 'iw23_add_featured_image_if_exists');
+
+/**
+ * 
+ */
 function iw23_add_video_preview_if_exists()
 {
     global $post;
 
     $preview = get_field('preview', $post->ID);
 
-    echo '<!-- ' . print_r($preview, true) . ' -->';
-
     echo iw23_media_tag($preview, 'feed-item__preview');
 }
 add_action('iw23_feed_item_before_link', 'iw23_add_video_preview_if_exists');
+add_action('iw23_menu_featured_item_before_link', 'iw23_add_video_preview_if_exists');

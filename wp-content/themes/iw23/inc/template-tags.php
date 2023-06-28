@@ -121,7 +121,7 @@ function iw23_post_company()
 	return false;
 }
 
-function iw23_media_tag($media, $class = 'iw21-mixed-media', $style = '')
+function iw23_media_tag($media, $class = 'iw21-mixed-media', $style = '', $size = 'full', $lazy = false)
 {
 	if (!is_array($media) || !array_key_exists('type', $media)) {
 		return;
@@ -129,7 +129,10 @@ function iw23_media_tag($media, $class = 'iw21-mixed-media', $style = '')
 
 	switch ($media['type']):
 		case 'image':
-			$element = sprintf('<img src="%s" class="%s" style="%s"/>', $media['url'], $class, $style);
+
+			$media = wp_get_attachment_image_src($media['id'], $size);
+
+			$element = sprintf('<img src="%s" class="%s" style="%s" %s/>', $media[0], $class, $style, $lazy ? 'loading="lazy"' : '');
 			break;
 		case 'video':
 			$element = sprintf('<video playsinline autoplay muted loop class="%s" style="%s"><source src="%s" type="video/mp4"></video>', $class, $style, $media['url']);
