@@ -56,14 +56,15 @@ if (!$is_preview) : ?>
       </label><!-- […]--field-label -->
     </div><!-- […]--form-group -->
 
-    <?php if ($consent === "assumed") : ?>
+    <?php if (!$consent || $consent === "assumed") : ?>
       <input type="hidden" id="<?php printf('%s--marketing', $block['id']); ?>" name="marketing" value="yes" required />
     <?php else : ?>
       <h4 style="margin-bottom:.5em;">Keep me posted</h4>
-      <p>We’d love to email you the next time we have an event, webinar, or other info you might be interested in. Check the box below if you’re interested!</p>
+
+      <?php echo wpautop(get_field('consent_text')) ?: "<p>We’d love to email you the next time we have an event, webinar, or other info you might be interested in. Check the box below if you’re interested!</p>"; ?>
 
       <div class="signup--form-group">
-        <input type="checkbox" id="<?php printf('%s--marketing', $block['id']); ?>" name="marketing" value="yes">
+        <input type="checkbox" id="<?php printf('%s--marketing', $block['id']); ?>" name="marketing" value="yes" <?php echo $consent === "opt_out" ? "checked" : ""; ?>>
         <label for="<?php printf('%s--marketing', $block['id']); ?>" class="signup--checkbox">
           Yes please, send me updates
         </label><!-- […]--field-label -->

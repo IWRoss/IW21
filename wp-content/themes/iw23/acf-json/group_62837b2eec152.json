@@ -73,6 +73,35 @@
             "multiple": 0,
             "return_format": "object",
             "ui": 1
+        },
+        {
+            "key": "field_64c8d3af7f2e6",
+            "label": "Consent Text",
+            "name": "consent_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64c8cc7798389",
+                        "operator": "!=",
+                        "value": "assumed"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "We’d love to email you the next time we have an event, webinar, or other info you might be interested in. Check the box below if you’re interested!",
+            "maxlength": "",
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
         }
     ],
     "location": [
@@ -93,5 +122,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1690881462
+    "modified": 1690883041
 }
