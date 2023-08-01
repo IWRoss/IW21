@@ -8,6 +8,8 @@ global $post;
 
 $download = get_field('download');
 
+$consent = get_field('consent');
+
 if (!$is_preview) : ?>
 
   <form action="<?php echo site_url('/signup'); ?>" class="signup--form" method="POST">
@@ -54,6 +56,21 @@ if (!$is_preview) : ?>
       </label><!-- […]--field-label -->
     </div><!-- […]--form-group -->
 
+    <?php if ($consent === "assumed") : ?>
+      <input type="hidden" id="<?php printf('%s--marketing', $block['id']); ?>" name="marketing" value="yes" required />
+    <?php else : ?>
+      <h4 style="margin-bottom:.5em;">Keep me posted</h4>
+      <p>We’d love to email you the next time we have an event, webinar, or other info you might be interested in. Check the box below if you’re interested!</p>
+
+      <div class="signup--form-group">
+        <input type="checkbox" id="<?php printf('%s--marketing', $block['id']); ?>" name="marketing" value="yes">
+        <label for="<?php printf('%s--marketing', $block['id']); ?>" class="signup--checkbox">
+          Yes please, send me updates
+        </label><!-- […]--field-label -->
+      </div><!-- […]--form-group -->
+    <?php endif; ?>
+
+
     <?php if ($download) : ?>
       <input type="hidden" name="download" value="<?php echo iw23_encrypt($download->ID, IW_PASSPHRASE); ?>" required />
     <?php endif; ?>
@@ -62,7 +79,7 @@ if (!$is_preview) : ?>
 
     <input type="hidden" id="token" name="token">
 
-    <input type="submit" value="Sign me up" />
+    <input type="submit" value="<?php echo get_field('button_text') ?: "Sign me up"; ?>" />
   </form>
 
   <script>

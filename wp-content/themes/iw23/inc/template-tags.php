@@ -41,7 +41,7 @@ function iw23_posted_on()
 		'<span class="author-role">' . esc_html(get_field('role', 'user_' . get_the_author_meta('ID'))) . '</span>'
 	);
 
-	echo '<img src="' . $image . '" class="author-image" /><span class="byline"> ' . $byline . '</span><span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
+	echo '<img src="' . $image['sizes']['thumbnail'] . '" class="author-image" /><span class="byline"> ' . $byline . '</span><span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
 
 }
 

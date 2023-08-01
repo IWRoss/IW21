@@ -223,6 +223,10 @@ function iw23_add_lead_to_copper($postdata)
 function iw23_add_lead_to_mailchimp($postdata)
 {
 
+    if (!$postdata['marketing']) {
+        return false;
+    }
+
     // Add lead to mailchimp
     return iw23_post_request(
         sprintf('https://us5.api.mailchimp.com/3.0/lists/%s/members/', get_field('signup_mailchimp_list_id', 'option')),

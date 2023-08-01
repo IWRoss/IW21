@@ -479,64 +479,91 @@ function iw23_preloader()
 ?>
 
 	<script type="text/javascript">
-		// jQuery(window).on('load', function() {
-		// 	jQuery('.preloader').fadeOut(250);
-		// 	jQuery('body').addClass('loaded');
+		setTimeout(function() {
+			jQuery('.preloader').fadeOut(250);
+			jQuery('body').addClass('loaded');
+		}, 250);
+
+
+		// // jQuery(window).on('load', function() {
+		// // 	jQuery('.preloader').fadeOut(250);
+		// // 	jQuery('body').addClass('loaded');
+		// // });
+
+		// // Create Promises for each event
+		// const allImagesLoadedPromise = new Promise(resolve => {
+		// 	document.addEventListener('allImagesLoaded', resolve);
 		// });
 
-		// Create Promises for each event
-		const allImagesLoadedPromise = new Promise(resolve => {
-			document.addEventListener('allImagesLoaded', resolve);
-		});
+		// const allVideosLoadedPromise = new Promise(resolve => {
+		// 	document.addEventListener('allVideosLoaded', resolve);
+		// });
 
-		const allVideosLoadedPromise = new Promise(resolve => {
-			document.addEventListener('allVideosLoaded', resolve);
-		});
+		// // Use Promise.all() to wait for both promises to resolve
+		// Promise.all([allImagesLoadedPromise, allVideosLoadedPromise])
+		// 	.then(() => {
+		// 		document.querySelector('body').classList.add('loaded');
 
-		// Use Promise.all() to wait for both promises to resolve
-		Promise.all([allImagesLoadedPromise, allVideosLoadedPromise])
-			.then(() => {
-				document.querySelector('body').classList.add('loaded');
+		// 		document.querySelector('.preloader').classList.add('fadeOut');
 
-				document.querySelector('.preloader').classList.add('fadeOut');
+		// 		setTimeout(function() {
+		// 			document.querySelector('.preloader').style.display = 'none';
+		// 		}, 250);
+		// 	});
 
-				setTimeout(function() {
-					document.querySelector('.preloader').style.display = 'none';
-				}, 250);
-			});
+		// /**
+		//  * Create an event listener to see if all images without an
+		//  * attribute of loading="lazy" have loaded.
+		//  * */
+		// const images = document.querySelectorAll('img:not([loading="lazy"])');
 
-		/**
-		 * Create an event listener to see if all images without an
-		 * attribute of loading="lazy" have loaded.
-		 * */
-		const images = document.querySelectorAll('img:not([loading="lazy"])');
+		// images.forEach(image => {
+		// 	image.addEventListener('load', () => {
+		// 		// Check images array to see if each image has loaded
+		// 		if (images.length !== Array.from(images).filter(image => image.complete).length) {
+		// 			return;
+		// 		}
 
-		images.forEach(image => {
-			image.addEventListener('load', () => {
-				// Check images array to see if each image has loaded
-				if (images.length !== Array.from(images).filter(image => image.complete).length) {
-					return;
-				}
+		// 		document.dispatchEvent(new Event('allImagesLoaded'));
+		// 	});
+		// });
 
-				document.dispatchEvent(new Event('allImagesLoaded'));
-			});
-		});
+		// /**
+		//  * Create an event listener to see if all videos have loaded.
+		//  */
+		// const videos = document.querySelectorAll('video');
 
-		/**
-		 * Create an event listener to see if all videos have loaded.
-		 */
-		const videos = document.querySelectorAll('video');
+		// videos.forEach(video => {
+		// 	video.addEventListener('loadeddata', () => {
+		// 		// Check videos array to see if each video has loaded
+		// 		if (videos.length !== Array.from(videos).filter(video => video.readyState >= 3).length) {
+		// 			return;
+		// 		}
 
-		videos.forEach(video => {
-			video.addEventListener('loadeddata', () => {
-				// Check videos array to see if each video has loaded
-				if (videos.length !== Array.from(videos).filter(video => video.readyState >= 3).length) {
-					return;
-				}
+		// 		document.dispatchEvent(new Event('allVideosLoaded'));
+		// 	});
+		// });
 
-				document.dispatchEvent(new Event('allVideosLoaded'));
-			});
-		});
+		// // If no images or videos, dispatch event
+		// if (images.length === 0) {
+		// 	document.dispatchEvent(new Event('allImagesLoaded'));
+		// }
+
+		// if (videos.length === 0) {
+		// 	document.dispatchEvent(new Event('allVideosLoaded'));
+		// }
+
+		// // If browser is Safari, bypass preloader
+		// if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+		// 	document.dispatchEvent(new Event('allImagesLoaded'));
+		// 	document.dispatchEvent(new Event('allVideosLoaded'));
+		// }
+
+		// // If browser is Web0S; Linux/SmartTV, bypass preloader
+		// if (/web0s/i.test(navigator.userAgent)) {
+		// 	document.dispatchEvent(new Event('allImagesLoaded'));
+		// 	document.dispatchEvent(new Event('allVideosLoaded'));
+		// }
 	</script>
 
 <?php

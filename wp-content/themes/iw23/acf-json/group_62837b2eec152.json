@@ -3,9 +3,59 @@
     "title": "Block – Signup Form (Non-Event)",
     "fields": [
         {
+            "key": "field_64c8cc6098388",
+            "label": "Button Text",
+            "name": "button_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_64c8cc7798389",
+            "label": "Consent",
+            "name": "consent",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "choices": {
+                "assumed": "Assumed consent",
+                "opt_in": "Opt in to provide consent",
+                "opt_out": "Opt out from giving consent by default"
+            },
+            "default_value": "assumed",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_62837b34b00c6",
             "label": "Download",
             "name": "download",
+            "aria-label": "",
             "type": "post_object",
             "instructions": "",
             "required": 0,
@@ -43,5 +93,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1655206916
+    "modified": 1690881462
 }
