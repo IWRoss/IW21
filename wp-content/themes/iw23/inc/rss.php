@@ -23,7 +23,6 @@ function iw23_process_ajax_rss_feed_get_request()
 
   foreach ($rss_items as $item) {
 
-
     $response[] = iw23_get_template_part('template-parts/feed/feed', 'item', array(
       'title' => $item->get_title(),
       'link' => $item->get_permalink(),
@@ -47,7 +46,7 @@ function iw23_get_rss_feed($url)
   $rss = fetch_feed($url);
 
   if (!is_wp_error($rss)) {
-    $maxitems = $rss->get_item_quantity(5);
+    $maxitems = $rss->get_item_quantity(0);
     $rss_items = $rss->get_items(0, $maxitems);
   }
 

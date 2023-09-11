@@ -186,3 +186,40 @@ function iw23_get_post($post_id, $post_type = 'post', $strict = true)
 
   return $the_post;
 }
+
+/**
+ * 
+ */
+function iw23_wpcf7_send_success_notification($contact_form)
+{
+
+  $submission = WPCF7_Submission::get_instance();
+
+  if (!$submission) {
+    return;
+  }
+
+  $data = $submission->get_posted_data();
+
+  error_log(print_r($data, true));
+
+  // Get location
+  $location = get_post($contact_form->id());
+
+  // Message
+  $message = vsprintf('*There was a new signup on %s*%c%c> Name: %s %s%c> Organisation: %s%c> Email: %s', array(
+    $location->post_title,
+    10,
+    10,
+    $data['first_name'] ?? 'N/A',
+    $data['last_name'] ?? 'N/A',
+    10,
+    $data['organisation'] ?? 'N/A',
+    10,
+    $data['email'] ?? 'N/A',
+  ));
+
+  // Send Slack notification
+  return iw23_send_slack_notification($message, 'success');
+}
+add_action("wpcf7_before_send_mail", "iw23_wpcf7_send_success_notification");

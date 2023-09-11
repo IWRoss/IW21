@@ -1,7 +1,8 @@
 <div class="iw-block-post-grid-post fade">
 
-    <?php
-    echo iw23_media_tag(array('url' => $args['thumbnail']), 'iw-block-post-grid-post-background');; ?>
+    <?php if ($args['thumbnail']) : ?>
+        <img src="<?php echo $args['thumbnail']; ?>" class="iw-block-post-grid-post-thumbnail">
+    <?php endif; ?>
 
     <a href="<?php echo $args['link']; ?>" class="iw-block-post-grid-post-link">
 

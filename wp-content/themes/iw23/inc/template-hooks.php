@@ -406,9 +406,13 @@ add_action('parse_request', 'iw23_add_email_to_event_with_link');
 /**
  * 
  */
-function iw23_add_featured_image_if_exists()
+function iw23_add_featured_image_if_exists($template_args = array())
 {
     global $post;
+
+    if (!empty($template_args['thumbnail'])) {
+        return printf('<img class="feed-item__preview" src="%s" />', $template_args['thumbnail']);
+    }
 
     // Get featured image
     $featured_image = acf_get_attachment(get_post_thumbnail_id());

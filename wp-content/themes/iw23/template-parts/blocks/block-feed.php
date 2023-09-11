@@ -46,6 +46,7 @@ $masonry = get_field('masonry');
     /* Build our query */
     $feed_query = new WP_Query($args);
 
+
     if ($grouped) {
         remove_filter('posts_orderby', 'iw23_edit_posts_orderby');
     }

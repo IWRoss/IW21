@@ -28,8 +28,6 @@
 		</header><!-- .entry-header -->
 	<?php endif; ?>
 
-	<?php if ('post' === get_post_type()) get_template_part('template-parts/post/element', 'pinned-meta'); ?>
-
 	<div class="entry-content">
 		<?php
 

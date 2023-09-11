@@ -10,7 +10,7 @@
 
 <div <?php do_action('iw23_feed_item_html_outer_tag_attributes', $args); ?>>
 
-    <?php do_action('iw23_feed_item_before_link'); ?>
+    <?php do_action('iw23_feed_item_before_link', $args); ?>
 
     <a <?php do_action('iw23_feed_item_html_link_tag_attributes', $args); ?> class="feed-item-link">
 
